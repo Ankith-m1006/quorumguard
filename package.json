@@ -1,0 +1,14 @@
+{
+  "name": "quorumguard",
+  "version": "0.1.0",
+  "description": "Reads what a Sputnik DAO proposal really does, catches hidden instructions and description-vs-action lies before an AI or a human votes.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test",
+    "check": "node src/cli.js check",
+    "redteam:offline": "node redteam/run.js --offline"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,275 @@
+{
+  "when": "2026-11-08T06:24:14.579Z",
+  "daos": {
+    "marketing.sputnik-dao.near": {
+      "proposals": 1059,
+      "tally": {
+        "CLEAN": 1019,
+        "WARN": 22,
+        "BLOCK": 18
+      },
+      "byFamily": {
+        "warn:says-vs-does": 21,
+        "info:says-vs-does": 336,
+        "info:receiver": 217,
+        "block:says-vs-does": 15,
+        "block:receiver": 3,
+        "warn:ai-directed": 2
+      },
+      "blocks": [
+        {
+          "id": 25,
+          "status": "Approved",
+          "says": "Marketing Proposal for Naksh Nov 2021\n \nWe want to have a pool of 100N for at-least 50 Users as an incentive to test the site and give us feedback including the",
+          "does": "Transfer 400 NEAR to naksh.near",
+          "why": [
+            "moves 400 NEAR, more than any amount the description gives (100N / 200N / 100N): 2.0x more"
+          ]
+        },
+        {
+          "id": 43,
+          "status": "Rejected",
+          "says": "November payouts for administrating Stars Guild to Zhunda (1500 USD) Yana (1000 USD) Steve (1000 USD) and debt to Hidden GEM Team for 4 videos (300 NEAR)$$$$htt",
+          "does": "Transfer 690 NEAR to starsguild.near",
+          "why": [
+            "moves 690 NEAR, more than any amount the description gives (300 NEAR): 2.3x more"
+          ]
+        },
+        {
+          "id": 69,
+          "status": "Approved",
+          "says": "Hi, this propose is for the Airdrop sponsor of The Live-Show with Bailey12 in January and create a Mintbase Store to sales the Podcast Audio NFT\n\nType of Token:",
+          "does": "Transfer 26.5 NEAR to bailey12.near",
+          "why": [
+            "moves 26.5 NEAR, more than any amount the description gives (20N / 6.5N)"
+          ]
+        },
+        {
+          "id": 73,
+          "status": "Approved",
+          "says": "Near Turkey January Budget$$$$https://gov.near.org/t/approved-near-turkey-january/12353/13$$$$ProposeTransfer",
+          "does": "Transfer 305 NEAR to turkey.sputnik-dao.near",
+          "why": [
+            "turkey.sputnik-dao.near looks like turkey.sputnikdao.near, an account this DAO already knows"
+          ]
+        },
+        {
+          "id": 160,
+          "status": "Rejected",
+          "says": "Payment for the proposal approved and with report already delivered. In the amount of 166.66 dollars in NEAR. (1 NEAR again USD 8,77)$$$$https://gov.near.org/t/",
+          "does": "Transfer 19.003 NEAR to vinniegcp.near",
+          "why": [
+            "moves 19.003 NEAR, more than any amount the description gives (1 NEAR): 19x more"
+          ]
+        },
+        {
+          "id": 177,
+          "status": "Rejected",
+          "says": "https://gov.near.org/t/approved-near-ankara-istanbul-meeting/16159\nNear Turkey Ankara/Istanbul Meeting Expenses.\n$3018.6 / 9,6 = $314,43Near$$$$",
+          "does": "Transfer 314.43 NEAR to remziemrekahveci.near",
+          "why": [
+            "moves 314.43 NEAR, more than any amount the description gives (43Near): 7.3x more"
+          ]
+        },
+        {
+          "id": 194,
+          "status": "InProgress",
+          "says": "Request for funds for YouTube content marketing. \n40Near rewards, \nVideo-$200 (19.8N) \nPromotion - $200 (19.8N)\nLabour cost - $150 (14.9N)$$$$https://gov.near.o",
+          "does": "Transfer 94.5 NEAR to abdulkareem.near",
+          "why": [
+            "moves 94.5 NEAR, more than any amount the description gives (40Near / 19.8N / 19.8N / 14.9N): 2.4x more"
+          ]
+        },
+        {
+          "id": 195,
+          "status": "Rejected",
+          "says": "Request for funds for YouTube content marketing. \n40Near rewards, \nVideo-$200 (19.8N) \nPromotion - $200 (19.8N)\nLabour cost - $150 (14.9N)$$$$https://gov.near.o",
+          "does": "Transfer 94.5 NEAR to abdulkareem.near",
+          "why": [
+            "moves 94.5 NEAR, more than any amount the description gives (40Near / 19.8N / 19.8N / 14.9N): 2.4x more"
+          ]
+        },
+        {
+          "id": 196,
+          "status": "Rejected",
+          "says": "Request for funds for YouTube content marketing. \n40Near rewards, \nVideo-$200 (19.8N) \nPromotion - $200 (19.8N)\nLabour cost - $150 (14.9N)$$$$https://gov.near.o",
+          "does": "Transfer 94.5 NEAR to abdulkareem.near",
+          "why": [
+            "moves 94.5 NEAR, more than any amount the description gives (40Near / 19.8N / 19.8N / 14.9N): 2.4x more"
+          ]
+        },
+        {
+          "id": 258,
+          "status": "Rejected",
+          "says": "Approved YouTube Marketing for Month of April 💪 . talks on Near Blockchain 🌈 Near Prize as of Now - 15.4 N = $$$$https://gov.near.org/t/approved-global-youtub",
+          "does": "Transfer 35.59 NEAR to shubham007.near",
+          "why": [
+            "moves 35.59 NEAR, more than any amount the description gives (15.4 N): 2.3x more"
+          ]
+        },
+        {
+          "id": 296,
+          "status": "Rejected",
+          "says": "Approved Poll and Prospal By Marketing DAO Council for Graffiti DAO participation in Namastey Event and Onboarding Artist .1000$ Approved - 12.32N Price $$$$htt",
+          "does": "Transfer 81 NEAR to graffiti.sputnik-dao.near",
+          "why": [
+            "moves 81 NEAR, more than any amount the description gives (12.32N): 6.6x more"
+          ]
+        },
+        {
+          "id": 700,
+          "status": "InProgress",
+          "says": "azdazd",
+          "does": "Add frichard4.near to role \"Council\"",
+          "why": [
+            "AddMemberToRole changes control of the DAO, but the description never mentions it"
+          ]
+        },
+        {
+          "id": 701,
+          "status": "InProgress",
+          "says": "no way",
+          "does": "Remove frichard2.near from role \"Council\"",
+          "why": [
+            "RemoveMemberFromRole changes control of the DAO, but the description never mentions it"
+          ]
+        },
+        {
+          "id": 858,
+          "status": "Approved",
+          "says": "NEAR China community, community marketing activities in September 2023, 2679N ($3000, NEAR price 1.12, CoinMarketcap, 2023/9/20, 5pm, UTC+8), I have read and un",
+          "does": "Transfer 2728 NEAR to near-china-community.sputnik-dao.near",
+          "why": [
+            "moves 2728 NEAR, more than any amount the description gives (2679N)"
+          ]
+        },
+        {
+          "id": 958,
+          "status": "Rejected",
+          "says": "[Approved] Joyage Kingdom (CadeBergmann) Content Creation - Monthly Funding Request Feb 2024, Total requested amount $5,000 (1,818 N based on CoinMarketCap pric",
+          "does": "Transfer 5000 NEAR to joyagekingdom.near",
+          "why": [
+            "moves 5000 NEAR, more than any amount the description gives (1,818 N): 2.8x more"
+          ]
+        },
+        {
+          "id": 1024,
+          "status": "InProgress",
+          "says": "Contribute to matching pool for NEAR Marketing DAO pot (marketing.v1.potfactory.potlock.near) on Potlock",
+          "does": "Call marketing.v1.potfactory.potlock.near: donate({\"message\":\"\",\"matching_pool\":true,\"referrer_id\":null,\"bypass_protocol_fee\":true,\"custom_chef_fee_basis_points\":0}) with 4081.63 NEAR attached",
+          "why": [
+            "marketing.v1.potfactory.potlock.near looks like marketing.paras.near, an account this DAO already knows"
+          ]
+        },
+        {
+          "id": 1026,
+          "status": "Approved",
+          "says": "Contribute to matching pool for NEAR Marketing DAO pot (marketing.v1.potfactory.potlock.near) on Potlock",
+          "does": "Call marketing.v1.potfactory.potlock.near: donate({\"message\":\"\",\"matching_pool\":true,\"referrer_id\":null,\"bypass_protocol_fee\":true,\"custom_chef_fee_basis_points\":0}) with 1 NEAR attached",
+          "why": [
+            "marketing.v1.potfactory.potlock.near looks like marketing.paras.near, an account this DAO already knows"
+          ]
+        },
+        {
+          "id": 1039,
+          "status": "Approved",
+          "says": "Shitzu Community Boost initiative\nApproved Proposal Link: https://gov.near.org/t/proposal-shitzu-community-dao-boost-initiative/39185?u=agt\nAmount requested: $5",
+          "does": "Transfer 778 NEAR to cwpuzzles.near",
+          "why": [
+            "pays cwpuzzles.near, but the description names shitzu.sputnik-dao.near"
+          ]
+        }
+      ]
+    },
+    "creativesdao.sputnik-dao.near": {
+      "proposals": 143,
+      "tally": {
+        "CLEAN": 136,
+        "WARN": 5,
+        "BLOCK": 2
+      },
+      "byFamily": {
+        "info:says-vs-does": 74,
+        "info:receiver": 44,
+        "block:says-vs-does": 2,
+        "warn:says-vs-does": 5
+      },
+      "blocks": [
+        {
+          "id": 205,
+          "status": "InProgress",
+          "says": "For CreativesDAO BOSHACKS bounty. Remained of prizes will be given out for specific creatives dao builds like Passport for Milan. \n\nhttps://gov.near.org/t/appro",
+          "does": "Transfer 2678.6 NEAR to hacks.sputnik-dao.near",
+          "why": [
+            "moves 2678.6 NEAR, more than any amount the description gives (1.12 NEAR): 2392x more"
+          ]
+        },
+        {
+          "id": 329,
+          "status": "Approved",
+          "says": "removal$$$$$$$$ProposeRemoveMember",
+          "does": "Remove sahilmassey.near from role \"council\"",
+          "why": [
+            "RemoveMemberFromRole changes control of the DAO, but the description never mentions it"
+          ]
+        }
+      ]
+    },
+    "nearweek-news-contribution.sputnik-dao.near": {
+      "proposals": 1400,
+      "tally": {
+        "CLEAN": 1367,
+        "WARN": 29,
+        "BLOCK": 4
+      },
+      "byFamily": {
+        "info:says-vs-does": 1383,
+        "info:receiver": 29,
+        "warn:says-vs-does": 16,
+        "warn:mixed-script": 1,
+        "warn:hidden-unicode": 9,
+        "warn:ai-directed": 4,
+        "block:says-vs-does": 4,
+        "info:hidden-unicode": 1
+      },
+      "blocks": [
+        {
+          "id": 13189,
+          "status": "Approved",
+          "says": "Yett",
+          "does": "Add vikash.near to role \"council\"",
+          "why": [
+            "AddMemberToRole changes control of the DAO, but the description never mentions it"
+          ]
+        },
+        {
+          "id": 13338,
+          "status": "Approved",
+          "says": "gh",
+          "does": "Remove nearweek.near from role \"council\"",
+          "why": [
+            "RemoveMemberFromRole changes control of the DAO, but the description never mentions it"
+          ]
+        },
+        {
+          "id": 13577,
+          "status": "Approved",
+          "says": "Exciting Wallet Upgrade Announcement! 🚀🔥🐲\n\nWe're thrilled to announce a major upgrade to our wallet system! Storage fees are now lower than ever, a minimum o",
+          "does": "Transfer 0.5 NEAR to 008631f00492037859e1a6c2061ff7c266abd589ea6f658dee33387912ca619a",
+          "why": [
+            "moves 0.5 NEAR, more than any amount the description gives (0.4N)"
+          ]
+        },
+        {
+          "id": 13885,
+          "status": "Expired",
+          "says": "NEARDevHub! They've launched a major upgrade to DevHub, revolutionizing the funding journey. With input from many contributors, they've overhauled proposal subm",
+          "does": "Transfer 0.5 NEAR to 008631f00492037859e1a6c2061ff7c266abd589ea6f658dee33387912ca619a",
+          "why": [
+            "pays 008631f00492037859e1a6c2061ff7c266abd589ea6f658dee33387912ca619a, but the description names devhub.near"
+          ]
+        }
+      ]
+    }
+  }
+}

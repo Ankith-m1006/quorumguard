@@ -1,0 +1,2429 @@
+{
+  "when": "2026-11-08T06:15:16.281Z",
+  "daos": {
+    "marketing.sputnik-dao.near": {
+      "proposals": 1059,
+      "tally": {
+        "CLEAN": 656,
+        "WARN": 138,
+        "BLOCK": 265
+      },
+      "byFamily": {
+        "warn:says-vs-does": 96,
+        "block:says-vs-does": 280,
+        "warn:receiver": 216,
+        "block:receiver": 2,
+        "block:ai-directed": 2,
+        "block:mixed-script": 2
+      },
+      "blocks": [
+        {
+          "id": 4,
+          "status": "Approved",
+          "says": "NEAR Stars Guild ocotober promo for Mintbase$$$$https://gov.near.org/t/approved-near-stars-guild-october-plan-for-mintbase-promo/7636/4",
+          "does": "Transfer 350 NEAR to starsguild.near",
+          "why": [
+            "pays starsguild.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 5,
+          "status": "Approved",
+          "says": "NEAR Stars Guild promo for RefFinance$$$$https://gov.near.org/t/proposal-near-stars-guild-october-plan-for-reffinance-promo/7633",
+          "does": "Transfer 390 NEAR to starsguild.near",
+          "why": [
+            "pays starsguild.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 6,
+          "status": "Approved",
+          "says": "Marketing Vertical DAO council member remuneration - Sept/Oct 2021\nTwo months @ 400N per month$$$$https://gov.near.org/t/proposal-marketing-vertical-dao-council",
+          "does": "Transfer 800 NEAR to cryptocredit.near",
+          "why": [
+            "pays cryptocredit.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 7,
+          "status": "Approved",
+          "says": "First Monthly Payout for the NEAR VENEZUELA GUILD\n\nIn order two start with two marketing projects:\n\n- Crypto Beer\n- Cultural Human Heritage: Palmeros de Chacao$",
+          "does": "Transfer 965 NEAR to venezuela.sputnikdao.near",
+          "why": [
+            "pays venezuela.sputnikdao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 8,
+          "status": "Approved",
+          "says": "[PROPOSAL] RU Community Guild (Media Partnerships & Influencers) November 2021 for marketing dao vertical $$$$https://gov.near.org/t/proposal-ru-community-guild",
+          "does": "Transfer 864 NEAR to rucommunity.sputnikdao.near",
+          "why": [
+            "pays rucommunity.sputnikdao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 9,
+          "status": "Approved",
+          "says": "The r/ethtrader banner initiative came in over budget 2 (damn gas fees) by 0.0583 ETH ( ~ $225). The ETH was provided by me from my personal funds.$$$$https://g",
+          "does": "Transfer 30 NEAR to davidmo.near",
+          "why": [
+            "pays davidmo.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 10,
+          "status": "Approved",
+          "says": "AVB Council Member Remuneration - Oct, Sept 2021$$$$https://gov.near.org/t/proposal-marketing-vertical-dao-council-members-remuneration-september-october-2021/8",
+          "does": "Transfer 800 NEAR to alejandro.near",
+          "why": [
+            "pays alejandro.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 11,
+          "status": "Approved",
+          "says": "https://gov.near.org/t/proposal-near-stars-guild-october-plan-for-main-users-and-promo/7640/7?u=holuongduc\n\nPayout 900USD (120 NEAR) for working with Team Hidde",
+          "does": "Transfer 120 NEAR to ducho3.near",
+          "why": [
+            "pays ducho3.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 12,
+          "status": "Approved",
+          "says": "Nov budget for the Blockchain Club of Uganda$$$$https://gov.near.org/t/proposal-blockchain-club-of-uganda-guild-community-growth-november-budget/7868",
+          "does": "Transfer 650 NEAR to bcuganda.sputnik-dao.near",
+          "why": [
+            "pays bcuganda.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 13,
+          "status": "Approved",
+          "says": "social medias management The Clan -november$$$$https://gov.near.org/t/approved-november-2021-social-media-management-budget-for-the-clan/8867",
+          "does": "Transfer 60 NEAR to cavenaghi.near",
+          "why": [
+            "pays cavenaghi.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 14,
+          "status": "Approved",
+          "says": "NEAR Turkey DAO proposal$$$$https://gov.near.org/t/proposal-november-2021-marketing-budget-near-turkey-dao/8285/8",
+          "does": "Transfer 490 NEAR to turkey.sputnikdao.near",
+          "why": [
+            "pays turkey.sputnikdao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 15,
+          "status": "Approved",
+          "says": "Payout is for the month of November.  Report covers October efforts and outlines November plan.$$$$https://gov.near.org/t/october-reddit-ops-report/9052",
+          "does": "Transfer 983 NEAR to sue.near",
+          "why": [
+            "pays sue.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 16,
+          "status": "InProgress",
+          "says": "October Payout, KitchenGuild$$$$https://gov.near.org/t/report-october-kitchen-guild/8366",
+          "does": "Transfer 2100 NEAR to kitchenguild.near",
+          "why": [
+            "pays kitchenguild.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 17,
+          "status": "Approved",
+          "says": "Kitchen Guild TikTok Direction$$$$https://gov.near.org/t/proposal-kitchen-guild-october/7793",
+          "does": "Transfer 450 NEAR to kitchenguild.near",
+          "why": [
+            "pays kitchenguild.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 18,
+          "status": "Approved",
+          "says": "Kitchen Guild payout for October without TikTok$$$$https://gov.near.org/t/proposal-kitchen-guild-october/7793",
+          "does": "Transfer 1650 NEAR to kitchenguild.near",
+          "why": [
+            "pays kitchenguild.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 19,
+          "status": "Approved",
+          "says": "NEAR Mexico Guild November.\nOverview:\n\nWe aim to expand the presence of NEAR in Mexico, via NEAR Mexico, using social networks, creating groups in messaging app",
+          "does": "Transfer 190 NEAR to josedlujan.near",
+          "why": [
+            "pays josedlujan.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 20,
+          "status": "InProgress",
+          "says": "Request November budget for Team Hidden Gem. \nTeam Hidden Gem provides 4 videos and 2 articles every month.$$$$https://gov.near.org/t/proposal-near-stars-guild-",
+          "does": "Transfer 300 NEAR to ducho3.near",
+          "why": [
+            "pays ducho3.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 21,
+          "status": "InProgress",
+          "says": "Bounty for Steve for contacting Team Hidden Gem.$$$$https://gov.near.org/t/proposal-near-stars-guild-october-plan-for-main-users-and-promo/7640/7?u=holuongduc",
+          "does": "Transfer 50 NEAR to ducho3.near",
+          "why": [
+            "pays ducho3.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 22,
+          "status": "Approved",
+          "says": "[Approved] VR DAO November Social Media, communication and marketing$$$$https://gov.near.org/t/approved-vr-dao-november-social-media-communication-and-marketing",
+          "does": "Transfer 70 NEAR to vr-dao.sputnik-dao.near",
+          "why": [
+            "pays vr-dao.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 23,
+          "status": "InProgress",
+          "says": "Hi everyone,\nI'm here to request the payout for kickstarting the Italian community.\nIn October we created the Twitter and Instagram channels (closed Oct with 10",
+          "does": "Transfer 100 NEAR to giuseppebk.near",
+          "why": [
+            "pays giuseppebk.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 24,
+          "status": "InProgress",
+          "says": "Discord quiz in order to educate people about NEAR and increase engagement. $$$$https://gov.near.org/t/proposal-discord-quiz-with-rewards/9432",
+          "does": "Transfer 30 NEAR to andrbenz.near",
+          "why": [
+            "pays andrbenz.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 25,
+          "status": "Approved",
+          "says": "Marketing Proposal for Naksh Nov 2021\n \nWe want to have a pool of 100N for at-least 50 Users as an incentive to test the site and give us feedback including the",
+          "does": "Transfer 400 NEAR to naksh.near",
+          "why": [
+            "pays naksh.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 26,
+          "status": "Approved",
+          "says": " Incubadora DAO November Marketing Budget Request - 1060USD: 126N (coingecko 27.11 1.36pm GMT)$$$$https://gov.near.org/t/approved-incubadora-dao-november-market",
+          "does": "Transfer 126 NEAR to incubadora.sputnik-dao.near",
+          "why": [
+            "pays incubadora.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 27,
+          "status": "InProgress",
+          "says": "budget for the clan marketing projects$$$$https://gov.near.org/t/proposal-november-2021-marketing-budget-the-clan-guild/8990?u=whoiscavenaghi",
+          "does": "Transfer 215 NEAR to the-clan.sputnik-dao.near",
+          "why": [
+            "pays the-clan.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 28,
+          "status": "Approved",
+          "says": "Social Media + Blogs/ Content Creation Budget for Marma J Foundation $$$$https://gov.near.org/t/proposal-social-media-blogs-content-creation-budget-for-marma-j-",
+          "does": "Transfer 276.79 NEAR to marmaj.sputnik-dao.near",
+          "why": [
+            "pays marmaj.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 31,
+          "status": "Approved",
+          "says": "Budget for The Clan Marketing Activities$$$$https://gov.near.org/t/approved-november-2021-marketing-budget-the-clan-guild/8990?u=whoiscavenaghi$$$$ProposeTransf",
+          "does": "Transfer 231 NEAR to the-clan.sputnik-dao.near",
+          "why": [
+            "pays the-clan.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 32,
+          "status": "Approved",
+          "says": "Budget for December for marketing activities in the German community\n950$ = 120 NEAR (1 NEAR = 7.94$)$$$$https://gov.near.org/t/approved-near-germany/9771/13$$$",
+          "does": "Transfer 120 NEAR to cryptoheitzi.near",
+          "why": [
+            "pays cryptoheitzi.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 33,
+          "status": "Approved",
+          "says": "First month budget for Goa NEAR OpenWeb Guild (December2021 - January2022)\n2297 USD = 345 N (1NEAR = 6.65 USD)$$$$https://gov.near.org/t/approved-first-month-bu",
+          "does": "Transfer 345 NEAR to goa-dao.sputnik-dao.near",
+          "why": [
+            "pays goa-dao.sputnik-dao.near, but the description names gov.near",
+            "moves 345 NEAR, but the description says 1NEAR (345x more)"
+          ]
+        },
+        {
+          "id": 34,
+          "status": "Approved",
+          "says": "muti DAO social Media December $$$$https://gov.near.org/t/proposal-muti-dao-december-social-media-marketing-request/9448/6?u=tabear$$$$ProposeTransfer",
+          "does": "Transfer 78 NEAR to muticollective.near",
+          "why": [
+            "pays muticollective.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 36,
+          "status": "Approved",
+          "says": "Reddit Ops advance pay for December (report for November)$$$$https://gov.near.org/t/november-reddit-ops-report/10630$$$$ProposeTransfer",
+          "does": "Transfer 1374 NEAR to near-reddit-ops.sputnik-dao.near",
+          "why": [
+            "pays near-reddit-ops.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 37,
+          "status": "Approved",
+          "says": "NEAR Protocol Philippines September 2021 Payout Calculated @ 7.9 NEAR (From Coingecko) as of 5:50 AM UTC$$$$https://gov.near.org/t/approved-ph-guild-september-2",
+          "does": "Transfer 633 NEAR to nphil.near",
+          "why": [
+            "pays nphil.near, but the description names gov.near",
+            "moves 633 NEAR, but the description says 7.9 NEAR (80x more)"
+          ]
+        },
+        {
+          "id": 38,
+          "status": "Approved",
+          "says": "November payout$$$$https://gov.near.org/t/report-budget-kitchen-guild-for-november/10387$$$$ProposeTransfer",
+          "does": "Transfer 1300 NEAR to kitchenguildastro.sputnik-dao.near",
+          "why": [
+            "pays kitchenguildastro.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 39,
+          "status": "Approved",
+          "says": "Community council member payout for November 2021$$$$https://gov.near.org/t/proposal-marketing-dao-council-member-remuneration-november-2021/10662?u=cryptocredi",
+          "does": "Transfer 400 NEAR to cryptocredit.near",
+          "why": [
+            "pays cryptocredit.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 40,
+          "status": "Approved",
+          "says": "We have produced two videos so far, published and  Three article, and also created a Persian association in Telegram with the approval of the members of the ass",
+          "does": "Transfer 113 NEAR to pogbanear6.near",
+          "why": [
+            "pays pogbanear6.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 41,
+          "status": "Rejected",
+          "says": "NEAR Stars Guild budgeting for December$$$$https://gov.near.org/t/proposal-near-stars-guild-dao-creation-and-plan-for-december-budgeting/10071$$$$ProposeTransfe",
+          "does": "Transfer 5850 NEAR to stars-guild.sputnik-dao.near",
+          "why": [
+            "pays stars-guild.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 42,
+          "status": "Approved",
+          "says": "According to the link below I'm submitting the request for the founds that will cover the first 3 months of Activity of Near Italia. This budget includes also D",
+          "does": "Transfer 440 NEAR to giuseppebk.near",
+          "why": [
+            "pays giuseppebk.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 43,
+          "status": "Rejected",
+          "says": "November payouts for administrating Stars Guild to Zhunda (1500 USD) Yana (1000 USD) Steve (1000 USD) and debt to Hidden GEM Team for 4 videos (300 NEAR)$$$$htt",
+          "does": "Transfer 690 NEAR to starsguild.near",
+          "why": [
+            "pays starsguild.near, but the description names gov.near",
+            "moves 690 NEAR, but the description says 300 NEAR (2.3x more)"
+          ]
+        },
+        {
+          "id": 44,
+          "status": "Approved",
+          "says": "November payouts for administrating Stars Guild to Zhunda (1500 USD) Yana (1000 USD) Steve (1000 USD) $$$$https://gov.near.org/t/proposal-near-stars-guild-dao-c",
+          "does": "Transfer 390 NEAR to starsguild.near",
+          "why": [
+            "pays starsguild.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 45,
+          "status": "Approved",
+          "says": "Aurora x NEAR Telegram AMA \nThe rewards will be used for distributing rewards to quality questions (10-15 winners).$$$$https://gov.near.org/t/approved-telegram-",
+          "does": "Transfer 75 NEAR to nearlove.near",
+          "why": [
+            "pays nearlove.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 48,
+          "status": "Approved",
+          "says": "October 2021 Payout for NEAR Protocol PH. \nWith NEAR @ 9.23 USD (Taken for Coingecko at 12:45 AM UTC)$$$$https://gov.near.org/t/approved-ph-guild-october-2021-i",
+          "does": "Transfer 541.7 NEAR to nphil.near",
+          "why": [
+            "pays nphil.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 49,
+          "status": "Approved",
+          "says": "NEAR Telegram Quiz and Treasure Hunt Reward Distribution\n$$$$https://gov.near.org/t/approved-telegram-near-quiz-treasure-hunt/11001$$$$ProposeTransfer",
+          "does": "Transfer 495 NEAR to nearlove.near",
+          "why": [
+            "pays nearlove.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 50,
+          "status": "Approved",
+          "says": "Council Member Remuneration November 2021, AVB$$$$https://gov.near.org/t/proposal-marketing-daocouncil-member-remuneration-november-2021/11006$$$$ProposeTransfe",
+          "does": "Transfer 400 NEAR to siliconpty.near",
+          "why": [
+            "pays siliconpty.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 51,
+          "status": "Approved",
+          "says": "Christmas is NEAR, let your creativity flow$$$$https://gov.near.org/t/approved-christmas-is-near-let-your-creativity-flow/10853$$$$ProposeTransfer",
+          "does": "Transfer 230 NEAR to christmasnearer.near",
+          "why": [
+            "pays christmasnearer.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 52,
+          "status": "InProgress",
+          "says": "RU Community Guild (Media Partnerships & Influencers) January 2022\n\n$$$$https://gov.near.org/t/approved-ru-community-guild-media-partnerships-influencers-januar",
+          "does": "Transfer 825 NEAR to rucommunity.sputnikdao.near",
+          "why": [
+            "pays rucommunity.sputnikdao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 53,
+          "status": "InProgress",
+          "says": "RU Community Guild (Managing + Activities) December 2021$$$$https://gov.near.org/t/approved-ru-community-guild-managing-activities-december-2021/10866$$$$Propos",
+          "does": "Transfer 1245 NEAR to rucommunity.sputnikdao.near",
+          "why": [
+            "pays rucommunity.sputnikdao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 54,
+          "status": "Approved",
+          "says": "RU Community Guild (Media Partnerships & Influencers) January 2022$$$$https://gov.near.org/t/approved-ru-community-guild-media-partnerships-influencers-january-",
+          "does": "Transfer 825 NEAR to rucommunity.sputnikdao.near",
+          "why": [
+            "pays rucommunity.sputnikdao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 55,
+          "status": "Approved",
+          "says": "RU Community Guild (Managing + Activities) December 2021$$$$https://gov.near.org/t/approved-ru-community-guild-managing-activities-december-2021/10866$$$$Propos",
+          "does": "Transfer 1245 NEAR to rucommunity.sputnikdao.near",
+          "why": [
+            "pays rucommunity.sputnikdao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 56,
+          "status": "Approved",
+          "says": "Budget for holding AMA in Telegram (Persian)$$$$https://gov.near.org/t/approved-ama-telegram-offers-for-december-persian/10495?u=saeed01$$$$ProposeTransfer",
+          "does": "Transfer 390 NEAR to pogbanear6.near",
+          "why": [
+            "pays pogbanear6.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 57,
+          "status": "Rejected",
+          "says": "Funding for VanDAO initiatives - January 2022$$$$https://gov.near.org/t/proposal-vandao-monthly-funding-january-2022/11538$$$$ProposeTransfer",
+          "does": "Transfer 195 NEAR to vandao.sputnik-dao.near",
+          "why": [
+            "pays vandao.sputnik-dao.near, but the description names gov.near",
+            "vandao.sputnik-dao.near looks like vr-dao.sputnik-dao.near, an account this DAO already knows"
+          ]
+        },
+        {
+          "id": 58,
+          "status": "Approved",
+          "says": "December payout$$$$https://gov.near.org/t/report-budget-kitchen-guild-for-december/11636$$$$ProposeTransfer",
+          "does": "Transfer 455 NEAR to kitchenguildastro.sputnik-dao.near",
+          "why": [
+            "pays kitchenguildastro.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 59,
+          "status": "Approved",
+          "says": "Near Sports Engagement And Education Initiative: \n\nThis features (at the moment) a football competition (Near Amateur League) and a Viewing Centre (a small hall",
+          "does": "Transfer 266.2 NEAR to cryptomuse01.near",
+          "why": [
+            "pays cryptomuse01.near, but the description names gov.near",
+            "moves 266.2 NEAR, but the description says , Near (266x more)"
+          ]
+        },
+        {
+          "id": 60,
+          "status": "Approved",
+          "says": "NEAR x RVCJ Media $$$$https://gov.near.org/t/approved-january-2022-near-social-media-marketing-on-rvcj-media-budget-plan/11976$$$$ProposeTransfer",
+          "does": "Transfer 559 NEAR to rvcj.sputnik-dao.near",
+          "why": [
+            "pays rvcj.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 61,
+          "status": "Approved",
+          "says": "Incubadora DAO Dec/January budget$$$$https://gov.near.org/t/approved-incubadora-dao-december-january-2022-marketing-budget-request/11344/20$$$$ProposeTransfer",
+          "does": "Transfer 153.8 NEAR to incubadora.sputnik-dao.near",
+          "why": [
+            "pays incubadora.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 62,
+          "status": "Rejected",
+          "says": "@nearprotocolnews Instagram Community Account Reward$$$$https://gov.near.org/t/report-budget-dec-instagram-community-accounts/12102?u=zubairansari07$$$$ProposeT",
+          "does": "Transfer 20 NEAR to zubairansari.near",
+          "why": [
+            "pays zubairansari.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 63,
+          "status": "Rejected",
+          "says": "@nearcircle Instagram Community Account Reward\n\nInstagram account: https://www.instagram.com/nearcircle/ (@nearcircle)\nDiscord handle: antoniopeascanio#9074 \n\n$",
+          "does": "Transfer 13 NEAR to antoniopeascanio.near",
+          "why": [
+            "pays antoniopeascanio.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 65,
+          "status": "Approved",
+          "says": "CUDO DAO JANUARY Social Media, communication and marketing$$$$https://gov.near.org/t/approved-cudo-dao-january-social-media-communication-and-marketing/11956$$$",
+          "does": "Transfer 52 NEAR to cudo.sputnik-dao.near",
+          "why": [
+            "pays cudo.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 66,
+          "status": "Approved",
+          "says": "At the time of the receipt, the funds for the project in the link below, were exactly 464 dollars short. This means that at the current price of $15.20/Near (1:",
+          "does": "Transfer 32 NEAR to cryptomuse01.near",
+          "why": [
+            "pays cryptomuse01.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 67,
+          "status": "Approved",
+          "says": "Instagram Community Accounts Payout Reward: $600 in $NEAR\nAlso please reject the previously posted (mentioned below) reward claims by Individual contestants for",
+          "does": "Transfer 30 NEAR to naveen_in.near",
+          "why": [
+            "pays naveen_in.near, but the description names marketing.sputnik-dao.near, gov.near"
+          ]
+        },
+        {
+          "id": 68,
+          "status": "Approved",
+          "says": "Reward claim of pending 10N proposal from the main post: https://app.astrodao.com/dao/marketing.sputnik-dao.near/proposals/marketing.sputnik-dao.near-67\n\n$$$$ht",
+          "does": "Transfer 10 NEAR to naveen_in.near",
+          "why": [
+            "pays naveen_in.near, but the description names marketing.sputnik-dao.near"
+          ]
+        },
+        {
+          "id": 70,
+          "status": "Approved",
+          "says": "Near Indonesia Guild January Marketing Activities:\n1. Social Media Moderation\n2. Online Seminar & Discussion with Gudang Kripto 1, Paras, and Evolution Trading\n",
+          "does": "Transfer 67 NEAR to indonesiaguild.near",
+          "why": [
+            "pays indonesiaguild.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 71,
+          "status": "InProgress",
+          "says": "Funding of Twitter/Clubhouse AMAs by Onboarding DAO $$$$https://gov.near.org/t/approved-funding-of-twitter-clubhouse-amas-by-onboarding-dao/12261/14$$$$ProposeT",
+          "does": "Transfer 67 NEAR to onboarding-dao.sputnik-dao.near",
+          "why": [
+            "pays onboarding-dao.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 72,
+          "status": "Approved",
+          "says": "Requested budget Persian team (December)$$$$https://gov.near.org/t/approved-report-december-and-requested-budget-persian-team/11827?u=saeed01$$$$ProposeTransfer",
+          "does": "Transfer 154 NEAR to pogbanear6.near",
+          "why": [
+            "pays pogbanear6.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 73,
+          "status": "Approved",
+          "says": "Near Turkey January Budget$$$$https://gov.near.org/t/approved-near-turkey-january/12353/13$$$$ProposeTransfer",
+          "does": "Transfer 305 NEAR to turkey.sputnik-dao.near",
+          "why": [
+            "pays turkey.sputnik-dao.near, but the description names gov.near",
+            "turkey.sputnik-dao.near looks like turkey.sputnikdao.near, an account this DAO already knows"
+          ]
+        },
+        {
+          "id": 74,
+          "status": "Approved",
+          "says": "DAO council member remuneration - December 2021$$$$https://gov.near.org/t/proposal-marketing-dao-council-member-report-for-december-2021/12737?u=cryptocredit$$$",
+          "does": "Transfer 400 NEAR to cryptocredit.near",
+          "why": [
+            "pays cryptocredit.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 75,
+          "status": "InProgress",
+          "says": "Crypto Beer Project -> 2nd round -> into self sustainable marketing project$$$$https://gov.near.org/t/proposal-crypto-beer-project-into-company/12256$$$$Propose",
+          "does": "Transfer 400 NEAR to near-venezuela.sputnik-dao.near",
+          "why": [
+            "pays near-venezuela.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 76,
+          "status": "Approved",
+          "says": "Onboading funds for new users of NEAR (54 wallets presently)$$$$https://gov.near.org/t/help-wallet-funding-onboarding/12835$$$$ProposeTransfer",
+          "does": "Transfer 5.4 NEAR to ibohigboze.near",
+          "why": [
+            "pays ibohigboze.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 77,
+          "status": "Approved",
+          "says": "[November] NEAR MEME DAILY monthly expense \n2350 USD\nNEARUSDT: 17.7 [Binance, 12/1/22 9:17 PM IST]$$$$https://gov.near.org/t/approved-near-meme-daily-november-m",
+          "does": "Transfer 133 NEAR to memedaily.near",
+          "why": [
+            "pays memedaily.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 79,
+          "status": "InProgress",
+          "says": "Payment for January \n(late because I accidentally made the DAO request to our own reddit ops DAO lmao)$$$$https://gov.near.org/t/near-reddit-ops-december-summar",
+          "does": "Transfer 690 NEAR to sue.near",
+          "why": [
+            "pays sue.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 80,
+          "status": "InProgress",
+          "says": "KalakendraDAO Social Media Management for January 2022$$$$https://gov.near.org/t/approved-january-2022-social-media-marketing-budget-for-kalakendradao/12808",
+          "does": "Transfer 22 NEAR to kalakendradao.sputnik-dao.near",
+          "why": [
+            "pays kalakendradao.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 81,
+          "status": "InProgress",
+          "says": "VR-DAO January 2022 Funding$$$$https://gov.near.org/t/approved-vr-dao-december-january-marketing-budget-request/11763",
+          "does": "Transfer 41.3 NEAR to vr-dao.sputnik-dao.near",
+          "why": [
+            "pays vr-dao.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 82,
+          "status": "InProgress",
+          "says": "Hello!\n\nRequesting $6500 worth of NEAR tokens per the approved MarketingDAO proposal here: https://gov.near.org/t/approved-datality-com-pre-launch-marketing-bud",
+          "does": "Transfer 327 NEAR to datality.near",
+          "why": [
+            "pays datality.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 83,
+          "status": "InProgress",
+          "says": "Budget for January for marketing activities in the German community 1950$ = 163 NEAR (1 NEAR = 12.00$)$$$$https://gov.near.org/t/approved-near-german-community-",
+          "does": "Transfer 163 NEAR to cryptoheitzi.near",
+          "why": [
+            "pays cryptoheitzi.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 84,
+          "status": "InProgress",
+          "says": "Budget for Marketing Projects of The Clan - 4200 usdt - NEAR at the moment of proposal - 10.7$$$$https://gov.near.org/t/approved-social-medias-management-and-ma",
+          "does": "Transfer 382 NEAR to cavenaghi.near",
+          "why": [
+            "pays cavenaghi.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 91,
+          "status": "InProgress",
+          "says": "Budget for C1 social Media Management \n [ N 73  ] = CoinGecko =1 N * 11.06 = $ 807.24 usd $$$$https://gov.near.org/t/approved-c1-guild-november-social-media-man",
+          "does": "Transfer 73 NEAR to purpledot.near",
+          "why": [
+            "pays purpledot.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 97,
+          "status": "Rejected",
+          "says": "Wizards' Guild funding request\nhttps://gov.near.org/t/proposal-december-january-2022-social-media-marketing-budget-for-wizards-guild/10943/21$$$$",
+          "does": "Transfer 629.5 NEAR to jeremyp.near",
+          "why": [
+            "pays jeremyp.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 106,
+          "status": "Rejected",
+          "says": "[December] NEAR MEME DAILY Reward Grant | 260.7 $NEAR | Approved in Poll\n$$$$https://app.astrodao.com/dao/marketing.sputnik-dao.near/proposals/marketing.sputnik",
+          "does": "Transfer 260.7 NEAR to memedaily.near",
+          "why": [
+            "pays memedaily.near, but the description names marketing.sputnik-dao.near"
+          ]
+        },
+        {
+          "id": 107,
+          "status": "Rejected",
+          "says": "Proposal of Funding 36N for the NEAR SHOW with Bailey12 - February$$$$https://gov.near.org/t/approved-for-the-show-with-bailey12/14460/10",
+          "does": "Transfer 36 NEAR to bailey12.near",
+          "why": [
+            "pays bailey12.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 109,
+          "status": "InProgress",
+          "says": "NEAR Stars Guild international influencers cylce budgeting for 10 youtubers (9550 USD ~ 13,5 USD per NEAR).$$$$https://gov.near.org/t/proposal-near-stars-guild-",
+          "does": "Transfer 708 NEAR to starsguild.near",
+          "why": [
+            "pays starsguild.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 121,
+          "status": "Rejected",
+          "says": "Payment for January, February, and backpay for AMAs.  New compensation model in the gov post.$$$$https://gov.near.org/t/reddit-ops-backpay-and-new-compensation-",
+          "does": "Transfer 1767 NEAR to redditops.near",
+          "why": [
+            "pays redditops.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 128,
+          "status": "Rejected",
+          "says": "While balancing my accounts, if discovered an unfortunate oversight: the funds for the project are a good $500 short.\n\nI'm requesting $500 balance. $$$$https://",
+          "does": "Transfer 46 NEAR to cryptomuse01.near",
+          "why": [
+            "pays cryptomuse01.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 139,
+          "status": "Rejected",
+          "says": "While balancing my accounts, I discovered an unfortunate oversight: the grand total funds for the project are a good $500 short. I'm requesting a balance of $50",
+          "does": "Transfer 55 NEAR to cryptomuse01.near",
+          "why": [
+            "pays cryptomuse01.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 140,
+          "status": "Rejected",
+          "says": "While balancing my accounts, I discovered an unfortunate oversight: the grand total funds for the project are a good $500 short. I'm requesting a balance of $50",
+          "does": "Transfer 61 NEAR to cryptomuse01.near",
+          "why": [
+            "pays cryptomuse01.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 142,
+          "status": "Rejected",
+          "says": "Payout for this event \nhttps://gov.near.org/t/approved-9ja-musical-talent-hunt-activation/15205$$$$",
+          "does": "Transfer 176.13 NEAR to 9jamusical1.near",
+          "why": [
+            "pays 9jamusical1.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 144,
+          "status": "Approved",
+          "says": "DAO Advisor - Gen Crypto Bounty payout to Taylor\n$5000 @ 1 NEAR : $8,91 current exchange rate on Coingecko$$$$https://gov.near.org/t/gen-crypto-bounty-payout-to",
+          "does": "Transfer 561 NEAR to klint.near",
+          "why": [
+            "pays klint.near, but the description names gov.near",
+            "moves 561 NEAR, but the description says 1 NEAR (561x more)"
+          ]
+        },
+        {
+          "id": 145,
+          "status": "Approved",
+          "says": "DAO Advisor - Gen Crypto Bounty payout to Lorraine\n$5000 @ 1 NEAR: $8,91 current exchange rate on Coingecko $$$$",
+          "does": "Transfer 561 NEAR to so608.near",
+          "why": [
+            "moves 561 NEAR, but the description says 1 NEAR (561x more)"
+          ]
+        },
+        {
+          "id": 148,
+          "status": "Rejected",
+          "says": "In relation to the approved proposal for URUSHALIMA FOUNDATION\nhttps://gov.near.org/t/approved-urshalima-foundation-ama-with-onboarding/15099?u=ejabani\n$$$$",
+          "does": "Transfer 83.33 NEAR to ejabani.near",
+          "why": [
+            "pays ejabani.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 151,
+          "status": "Rejected",
+          "says": "Argentina Guild Marketing Budget. Budget for March, April and May included. \nSnapshot from Coingecko on february 24th, 10:32am price Near: 7.68$$$$https://gov.n",
+          "does": "Transfer 195.31 NEAR to argentinaguild.near",
+          "why": [
+            "pays argentinaguild.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 157,
+          "status": "Rejected",
+          "says": "Payment for the Social Media work done this February for Gambiarra, which was submitted to Marketing Dao. 166.66 USD in NEar ... Current Exchange Rate 17.82 NEA",
+          "does": "Transfer 17.82 NEAR to natashacremoneseartista.near",
+          "why": [
+            "pays natashacremoneseartista.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 160,
+          "status": "Rejected",
+          "says": "Payment for the proposal approved and with report already delivered. In the amount of 166.66 dollars in NEAR. (1 NEAR again USD 8,77)$$$$https://gov.near.org/t/",
+          "does": "Transfer 19.003 NEAR to vinniegcp.near",
+          "why": [
+            "pays vinniegcp.near, but the description names gov.near",
+            "moves 19.003 NEAR, but the description says 1 NEAR (19x more)"
+          ]
+        },
+        {
+          "id": 167,
+          "status": "InProgress",
+          "says": "Reimbursement travel expense Roadshow Paras & NEAR Protocol$$$$https://gov.near.org/t/approved-reimbursement-travel-expense-roadshow-paras-near-protocol/15473",
+          "does": "Transfer 70.3 NEAR to indonesiaguild.near",
+          "why": [
+            "pays indonesiaguild.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 173,
+          "status": "Rejected",
+          "says": "Payout for NEAR PH Guild March 2022 Activities with NEAR @ 9.87 | 10:50 AM UTC$$$$https://gov.near.org/t/approved-ph-guild-march-2022-inititiative/15825",
+          "does": "Transfer 506.5 NEAR to nphil.near",
+          "why": [
+            "pays nphil.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 177,
+          "status": "Rejected",
+          "says": "https://gov.near.org/t/approved-near-ankara-istanbul-meeting/16159\nNear Turkey Ankara/Istanbul Meeting Expenses.\n$3018.6 / 9,6 = $314,43Near$$$$",
+          "does": "Transfer 314.43 NEAR to remziemrekahveci.near",
+          "why": [
+            "pays remziemrekahveci.near, but the description names gov.near",
+            "moves 314.43 NEAR, but the description says 16159\nNear"
+          ]
+        },
+        {
+          "id": 194,
+          "status": "InProgress",
+          "says": "Request for funds for YouTube content marketing. \n40Near rewards, \nVideo-$200 (19.8N) \nPromotion - $200 (19.8N)\nLabour cost - $150 (14.9N)$$$$https://gov.near.o",
+          "does": "Transfer 94.5 NEAR to abdulkareem.near",
+          "why": [
+            "pays abdulkareem.near, but the description names gov.near",
+            "moves 94.5 NEAR, but the description says 40Near (2.4x more)"
+          ]
+        },
+        {
+          "id": 195,
+          "status": "Rejected",
+          "says": "Request for funds for YouTube content marketing. \n40Near rewards, \nVideo-$200 (19.8N) \nPromotion - $200 (19.8N)\nLabour cost - $150 (14.9N)$$$$https://gov.near.o",
+          "does": "Transfer 94.5 NEAR to abdulkareem.near",
+          "why": [
+            "pays abdulkareem.near, but the description names gov.near",
+            "moves 94.5 NEAR, but the description says 40Near (2.4x more)"
+          ]
+        },
+        {
+          "id": 196,
+          "status": "Rejected",
+          "says": "Request for funds for YouTube content marketing. \n40Near rewards, \nVideo-$200 (19.8N) \nPromotion - $200 (19.8N)\nLabour cost - $150 (14.9N)$$$$https://gov.near.o",
+          "does": "Transfer 94.5 NEAR to abdulkareem.near",
+          "why": [
+            "pays abdulkareem.near, but the description names gov.near",
+            "moves 94.5 NEAR, but the description says 40Near (2.4x more)"
+          ]
+        },
+        {
+          "id": 199,
+          "status": "Rejected",
+          "says": "February report for reddit ops, compensation for the month of March$$$$https://gov.near.org/t/february-report-for-reddit-ops-compensation-for-march/16792",
+          "does": "Transfer 814 NEAR to redditops.near",
+          "why": [
+            "pays redditops.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 241,
+          "status": "InProgress",
+          "says": "Implementing payout for C1 guild November Social Media Management.$$$$https://gov.near.org/t/approved-c1-guild-november-social-media-management/9170?u=purpledot",
+          "does": "Transfer 73 NEAR to purpledot.near",
+          "why": [
+            "pays purpledot.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 242,
+          "status": "Rejected",
+          "says": "Implementing payout for C1 guild November Social Media Management.$$$$https://gov.near.org/t/approved-c1-guild-november-social-media-management/9170?u=purpledot",
+          "does": "Transfer 73 NEAR to purpledot.near",
+          "why": [
+            "pays purpledot.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 243,
+          "status": "Rejected",
+          "says": "Implementing payout for C1 guild November Social Media Management.$$$$https://gov.near.org/t/approved-c1-guild-november-social-media-management/9170?u=purpledot",
+          "does": "Transfer 73 NEAR to purpledot.near",
+          "why": [
+            "pays purpledot.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 258,
+          "status": "Rejected",
+          "says": "Approved YouTube Marketing for Month of April 💪 . talks on Near Blockchain 🌈 Near Prize as of Now - 15.4 N = $$$$https://gov.near.org/t/approved-global-youtub",
+          "does": "Transfer 35.59 NEAR to shubham007.near",
+          "why": [
+            "pays shubham007.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 260,
+          "status": "Rejected",
+          "says": "Requesting the payout for our approved DAOrecords April Marketing proposal of $4,750 USD = 300.8 N (at $15.79 / N on 11/04/22 11:39am CoinGecko)$$$$https://gov.",
+          "does": "Transfer 300.8 NEAR to daorecords.sputnik-dao.near",
+          "why": [
+            "pays daorecords.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 272,
+          "status": "Rejected",
+          "says": "I propose a payout of $1000 for starting Near Book Club on Tertiary Institutions event$$$$https://gov.near.org/t/approved-starting-near-book-clubs-in-tertiary-i",
+          "does": "Transfer 65 NEAR to fabdab.near",
+          "why": [
+            "pays fabdab.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 296,
+          "status": "Rejected",
+          "says": "Approved Poll and Prospal By Marketing DAO Council for Graffiti DAO participation in Namastey Event and Onboarding Artist .1000$ Approved - 12.32N Price $$$$htt",
+          "does": "Transfer 81 NEAR to graffiti.sputnik-dao.near",
+          "why": [
+            "pays graffiti.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 327,
+          "status": "Rejected",
+          "says": "We are thankfully looking forward to the transfer of our APPROVED May 2022 marketing budget, paid in DAI. (Currently 1N = 6.76 USD)$$$$https://gov.near.org/t/ap",
+          "does": "Transfer 44.38 NEAR to lensdao.near",
+          "why": [
+            "pays lensdao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 358,
+          "status": "Rejected",
+          "says": "NEKO/Good Fortune Felines, NEAR NFT Ambassadors at Consensus 2022 Conference (Jun 9-12), $4,830 in NEAR.\nTarget Wallet: goodfortune.near$$$$https://gov.near.org",
+          "does": "Transfer 859.5 NEAR to goodfortune.near",
+          "why": [
+            "moves 859.5 NEAR, but the description says , NEAR (860x more)"
+          ]
+        },
+        {
+          "id": 364,
+          "status": "Rejected",
+          "says": "Good day! \nThis proposal was approved a month ago today. But the transfer was never made. \nhttps://gov.near.org/t/approved-launch-of-near-mexico-city-meet-ups-n",
+          "does": "Transfer 361 NEAR to montero.near",
+          "why": [
+            "pays montero.near, but the description names gov.near, marketing.sputnik-dao.near"
+          ]
+        },
+        {
+          "id": 370,
+          "status": "InProgress",
+          "says": "https://gov.near.org/t/approved-onboarding-university-students/22308/18?u=dabbie3229$$$$https://gov.near.org/t/approved-onboarding-university-students/22308/18?",
+          "does": "Transfer 100.84 NEAR to dabbie3229.near",
+          "why": [
+            "pays dabbie3229.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 371,
+          "status": "InProgress",
+          "says": "Onboarding University Students in Alvan Ikoku Federal College of Education$$$$https://gov.near.org/t/approved-onboarding-university-students/22308?u=dabbie3229",
+          "does": "Transfer 100.84 NEAR to dabbie3229.near",
+          "why": [
+            "pays dabbie3229.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 379,
+          "status": "Rejected",
+          "says": "Hi Marketing DAO! Thanks for approve our June Funding Request! This is my first time with you! I entered the value in NEAR, equivalent to the dollar amount at t",
+          "does": "Transfer 370 NEAR to fernandapaixao.near",
+          "why": [
+            "pays fernandapaixao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 381,
+          "status": "Rejected",
+          "says": "Hi Marketing DAO! Thanks for approve our June Funding Request! This is my first time with you! I entered the value in NEAR, equivalent to the dollar amount at t",
+          "does": "Transfer 370 NEAR to fernandapaixao.near",
+          "why": [
+            "pays fernandapaixao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 382,
+          "status": "Rejected",
+          "says": "[Approved] Ukraine Charity NFT Marketing - Launch 8th June / $2900$$$$https://gov.near.org/t/approved-ukraine-charity-nft-marketing-launch-8th-june/22194",
+          "does": "Transfer 835 NEAR to iindyverse4good.near",
+          "why": [
+            "pays iindyverse4good.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 383,
+          "status": "Rejected",
+          "says": "[Approved] Ukraine Charity NFT Marketing - Launch 8th June / $2900$$$$https://gov.near.org/t/approved-ukraine-charity-nft-marketing-launch-8th-june/22194",
+          "does": "Transfer 835 NEAR to iindyverse4good.near",
+          "why": [
+            "pays iindyverse4good.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 398,
+          "status": "Rejected",
+          "says": "NEAR SINGAPORE Kick-off Event Funding$$$$https://gov.near.org/t/proposal-near-singapore-guild-kick-off-event/23483?u=constance.near",
+          "does": "Transfer 1200 NEAR to 11x11xc.near",
+          "why": [
+            "pays 11x11xc.near, but the description names gov.near, constance.near"
+          ]
+        },
+        {
+          "id": 418,
+          "status": "Rejected",
+          "says": "Physical events in KL (myBUILDERS saga with founders), forums about NFTs, L1s etc, periodic AMAs with the community revolving around DeFi, NFTs, Web3 entreprene",
+          "does": "Transfer 1462.2 NEAR to nearmalaysia.near",
+          "why": [
+            "pays nearmalaysia.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 435,
+          "status": "Rejected",
+          "says": "Hello Creatives, We humbly request your assistance in voting YES for Spirityut New Dao July Budget, thanks.\n(Approved) Funding proposal for Spirityut Guild $1,8",
+          "does": "Signalling vote only: nothing happens on chain if it passes",
+          "why": [
+            "tells the reader how to vote"
+          ]
+        },
+        {
+          "id": 477,
+          "status": "Rejected",
+          "says": "New NEAR crypto Youtube channel$$$$https://gov.near.org/t/approved-near-future-youtube-channel/25997",
+          "does": "Transfer 175 NEAR to exela.near",
+          "why": [
+            "pays exela.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 493,
+          "status": "InProgress",
+          "says": "Follow https://gov.near.org/t/approved-openbisea-post-launch-social-media-marketing-campaign/25096/22$$$$",
+          "does": "Transfer 471.69 NEAR to openbisea.near",
+          "why": [
+            "pays openbisea.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 529,
+          "status": "Rejected",
+          "says": "Social Media promotion budget for ZomLand P2E game. ZomLand is an interactive P2E NFT card game with exciting gameplay and a lot of fun. You take on the leader’",
+          "does": "Transfer 2750 NEAR to rubycop.near",
+          "why": [
+            "pays rubycop.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 548,
+          "status": "Rejected",
+          "says": "NEAR Media & News Guild Social Media Moderation Budget August 2022 , $950 ~ 270 $NEAR(3.5) $$$$https://gov.near.org/t/approved-august-2022-near-media-news-guild",
+          "does": "Transfer 270000000000000000000000000 (raw units of meta-pool.near) meta-pool.near to nearmedia.near",
+          "why": [
+            "pays nearmedia.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 551,
+          "status": "Rejected",
+          "says": "Project name: Poker Space, Increasing Audience Engagement and Launch the Marketing Campaign, $4410.$$$$https://gov.near.org/t/approved-poker-space-marketing-fun",
+          "does": "Transfer 1225 NEAR to siniugin.near",
+          "why": [
+            "pays siniugin.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 565,
+          "status": "InProgress",
+          "says": "Project Name: ZomLand, marketing campaign$$$$https://gov.near.org/t/approved-sep-2022-social-media-promotion-budget-for-zomland-p2e-game/28571",
+          "does": "Transfer 5000 NEAR to rubycop.near",
+          "why": [
+            "pays rubycop.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 624,
+          "status": "Rejected",
+          "says": "Completing the tasks for Jan/Feb. \nTotal agreed amount: 1400 USD\n\nhttps://app.astrodao.com/dao/marketing.sputnik-dao.near/proposals/marketing.sputnik-dao.near-6",
+          "does": "Transfer 619.47 NEAR to beetogether_org.near",
+          "why": [
+            "pays beetogether_org.near, but the description names marketing.sputnik-dao.near, gov.near"
+          ]
+        },
+        {
+          "id": 629,
+          "status": "Approved",
+          "says": "https://gov.near.org/t/approved-near-day-community-content-bounty-program-for-eth-denver-2023/33152/14?u=awesome$$$$",
+          "does": "Transfer 10.1 NEAR to bossp.near",
+          "why": [
+            "pays bossp.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 631,
+          "status": "Approved",
+          "says": "https://gov.near.org/t/approved-near-day-community-content-bounty-program-for-eth-denver-2023/33152/14?u=dabbie3229$$$$",
+          "does": "Transfer 68 NEAR to dabbie3229.near",
+          "why": [
+            "pays dabbie3229.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 632,
+          "status": "Approved",
+          "says": "https://gov.near.org/t/approved-near-day-community-content-bounty-program-for-eth-denver-2023/33152/14$$$$",
+          "does": "Transfer 10.1 NEAR to abbakaka.near",
+          "why": [
+            "pays abbakaka.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 633,
+          "status": "Approved",
+          "says": "Tweet on Near Day $$$$https://gov.near.org/t/approved-near-day-community-content-bounty-program-for-eth-denver-2023/33152/14",
+          "does": "Transfer 10.1 NEAR to psalm.near",
+          "why": [
+            "pays psalm.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 635,
+          "status": "Approved",
+          "says": "ETH Denver/NEAR Day Content Bounty\nTweet + Retweet\nhttps://gov.near.org/t/approved-near-day-community-content-bounty-program-for-eth-denver-2023/33152/14$$$$htt",
+          "does": "Transfer 10.1 NEAR to muvaofmarketing.near",
+          "why": [
+            "pays muvaofmarketing.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 642,
+          "status": "Approved",
+          "says": "Retweeting Aurora tweet during EthDenver $$$$https://gov.near.org/t/approved-near-day-community-content-bounty-program-for-eth-denver-2023/33152/32?u=tonyesy",
+          "does": "Transfer 20000000 (raw units of a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near) a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near to tonyesy.near",
+          "why": [
+            "pays tonyesy.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 647,
+          "status": "InProgress",
+          "says": "https://gov.near.org/t/approved-near-day-community-content-bounty-program-for-eth-denver-2023/33152/33?u=bossbae$$$$",
+          "does": "Transfer 100000000 (raw units of a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near) a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near to yuppiefab1.near",
+          "why": [
+            "pays yuppiefab1.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 649,
+          "status": "InProgress",
+          "says": "https://gov.near.org/t/approved-near-day-community-content-bounty-program-for-eth-denver-2023/33152/33?u=bossbae$$$$https://twitter.com/nearunlimited/status/163",
+          "does": "Transfer 100000000 (raw units of a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near) a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near to yuppiefab1.near",
+          "why": [
+            "pays yuppiefab1.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 654,
+          "status": "InProgress",
+          "says": "https://gov.near.org/t/approved-near-day-community-content-bounty-program-for-eth-denver-2023/33152/33?u=bossbae $$$$https://twitter.com/nearunlimited/status/16",
+          "does": "Transfer 60000000 (raw units of a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near) a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near to yuppiefab1.near",
+          "why": [
+            "pays yuppiefab1.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 658,
+          "status": "Approved",
+          "says": "https://gov.near.org/t/approved-near-day-community-content-bounty-program-for-eth-denver-2023/33152/33?u=bossbae$$$$https://twitter.com/nearunlimited/status/163",
+          "does": "Transfer 20000000 (raw units of a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near) a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near to yuppiefab1.near",
+          "why": [
+            "pays yuppiefab1.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 664,
+          "status": "InProgress",
+          "says": "I already submitted this before but didn't fill the form before submitting so I'm doing this again expecting the previous one to be turned down and approve this",
+          "does": "Transfer 120000000 (raw units of a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near) a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near to nearweb3_club.near",
+          "why": [
+            "tells the reader how to vote"
+          ]
+        },
+        {
+          "id": 669,
+          "status": "InProgress",
+          "says": "Gameball Rally Proposal- Onboarding web 2 users/ crypto natives onto NEAR\n\nhttps://gov.near.org/t/approved-gameball-rally-proposal-onboarding-web-2-users-crypto",
+          "does": "Transfer 1800 NEAR to gameballrally.near",
+          "why": [
+            "pays gameballrally.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 678,
+          "status": "InProgress",
+          "says": "Apr-Jun 2023 funding for NEAR Malaysia.\n2250 USD = 1153.85 NEAR @ 1.95 per NEAR.$$$$https://gov.near.org/t/approved-near-malaysia-social-media-funding-apr-23-to",
+          "does": "Transfer 1153.85 NEAR to nearmalaysia.near",
+          "why": [
+            "pays nearmalaysia.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 700,
+          "status": "InProgress",
+          "says": "azdazd",
+          "does": "Add frichard4.near to role \"Council\"",
+          "why": [
+            "AddMemberToRole changes control of the DAO, but the description never mentions it"
+          ]
+        },
+        {
+          "id": 701,
+          "status": "InProgress",
+          "says": "no way",
+          "does": "Remove frichard2.near from role \"Council\"",
+          "why": [
+            "RemoveMemberFromRole changes control of the DAO, but the description never mentions it"
+          ]
+        },
+        {
+          "id": 719,
+          "status": "Rejected",
+          "says": "\nBEETOGETHER Social Media Moderation Budget for March/April/May for a total of USD 1500.-, paid in unlocked NEAR tokens\n- approved gov: https://gov.near.org/t/a",
+          "does": "Transfer 955 NEAR to beetogether_org.near",
+          "why": [
+            "pays beetogether_org.near, but the description names gov.near, marketing.sputnik-dao.near"
+          ]
+        },
+        {
+          "id": 772,
+          "status": "InProgress",
+          "says": "Ubuntu Photography community Marketing campaign (delayed)$$$$https://gov.near.org/t/on-hold-community-growth-brand-expansion-onboarding-to-ubuntu-photography-fe",
+          "does": "Transfer 203.23 NEAR to freedomandflow.near",
+          "why": [
+            "pays freedomandflow.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 776,
+          "status": "Approved",
+          "says": "[Approved] NEAR HUNTERS Community \n$6600 (5365 NEAR, Token price 1.23 6:00 PM UTC, 16 August 2023) \nI have read and understand the Terms of Conditions of the Ma",
+          "does": "Transfer 5365 NEAR to tolmindev.near",
+          "why": [
+            "pays tolmindev.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 777,
+          "status": "InProgress",
+          "says": "[Approved] NEAR HUNTERS Community \n$6600 (5365 NEAR, Token price 1.23 6:00 PM UTC, 16 August 2023) \nI have read and understand the Terms of Conditions of the Ma",
+          "does": "Transfer 5365 NEAR to tolmindev.near",
+          "why": [
+            "pays tolmindev.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 778,
+          "status": "Approved",
+          "says": "[APPROVED] Remuneration for RCDAO admins for the month of June. $9000 @ N1.24 6:30 PM UTC 16/08/2023. I have read and understand the Terms and Conditions of the",
+          "does": "Transfer 7258.0646 NEAR to igboze_builder.near",
+          "why": [
+            "pays igboze_builder.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 779,
+          "status": "Approved",
+          "says": "[Approved] NDC Degens Test Month (July -Approved) + (August, September) | Budget $10 000 (8045 NEAR, token price - 1.240 18:38 PM UTC, 16 August 2023) | I have ",
+          "does": "Transfer 8045 NEAR to ndc-degens.sputnik-dao.near",
+          "why": [
+            "pays ndc-degens.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 780,
+          "status": "Approved",
+          "says": "Near Ukraine Guild | Partnership & Marketing Platform to boost on-chain activity, 8.400$ (6885 NEAR tokens at the rate of 1.22, according to CoinMarketCap on 08",
+          "does": "Transfer 6885 NEAR to nearuaguild.sputnik-dao.near",
+          "why": [
+            "pays nearuaguild.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 781,
+          "status": "Approved",
+          "says": "Chill&Shill July Marketing Activities - 4279 Near ($5520 at 1.22). I have read and understand the Terms and Conditions of the Marketing DAO. KYC passed. $$$$htt",
+          "does": "Transfer 4279 NEAR to chillandshill.near",
+          "why": [
+            "pays chillandshill.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 782,
+          "status": "Approved",
+          "says": "Alpha Leaks w AVB Youtube Channel, July 2023. US$5,000 (4,098.46 NEAR @ $1.22 NEARea). I have read and understand the Terms and Conditions of the Marketing DAO.",
+          "does": "Transfer 4098.46 NEAR to siliconpty.near",
+          "why": [
+            "pays siliconpty.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 785,
+          "status": "InProgress",
+          "says": "Nearity, marketing activities in August 2023, 2083 NEAR tokens (at the rate of 1.20, according to CoinMarketCap on 08/17/23 at 15:30 UTC), 'I have read and unde",
+          "does": "Transfer 2083 NEAR to nearityorg.near",
+          "why": [
+            "pays nearityorg.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 798,
+          "status": "Approved",
+          "says": "[Approved] NEAR at NIGHT Twitter Spaces - Monthly Funding Request August 23' [Edited 08/13/23], $2500 (2100.85 NEAR @ $1.19 (Coinmarket Cap 08/27/23), I have re",
+          "does": "Transfer 2100.85 NEAR to trovelabs.near",
+          "why": [
+            "pays trovelabs.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 799,
+          "status": "Approved",
+          "says": "[APPROVED] RCDAO ADMIN RENUNCIATION FOR JULY $6k. We agree to all terms and conditions of MDAO. 4,878.04 NEAR @1.23 by 7:37 PM, 29/08/2023$$$$https://gov.near.o",
+          "does": "Transfer 4878.04 NEAR to igboze_builder.near",
+          "why": [
+            "pays igboze_builder.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 807,
+          "status": "Approved",
+          "says": "Boneyard Gaming Community Social Media/Content budget Aug 2023. ($2150, Near price 1.23, Coin Market Cap 08/29/2023 @10:50PM UTC).\n\nI have read and understand t",
+          "does": "Transfer 1748 NEAR to boneyardgaming.near",
+          "why": [
+            "pays boneyardgaming.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 809,
+          "status": "Approved",
+          "says": " NDC Aurora Ambassador's program budget for August 2023 to amplify elections, 5800N (7000$, Near price 1.20 Coinmarketcap 29/08/2023 7pm UTC), I have read and u",
+          "does": "Transfer 5800 NEAR to ac-dao.near",
+          "why": [
+            "pays ac-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 811,
+          "status": "Approved",
+          "says": "FDAO July and August Funding Request for 6100$ requested when NEAR is at 1.22  $$$$https://gov.near.org/t/approved-freelancer-dao-proposal-for-july-august/35862",
+          "does": "Transfer 5000 NEAR to freelancerdao.sputnik-dao.near",
+          "why": [
+            "pays freelancerdao.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 812,
+          "status": "InProgress",
+          "says": "FDAO July and August Funding Request for 6100$ requested when NEAR is at 1.22  $$$$https://gov.near.org/t/approved-freelancer-dao-proposal-for-july-august/35862",
+          "does": "Transfer 5000 NEAR to freelancerdao.sputnik-dao.near",
+          "why": [
+            "pays freelancerdao.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 813,
+          "status": "Approved",
+          "says": "Nearity, Marketing activities August 2023, $2500 (2050N @1.21 01:01 30 August 2023 - coinmarketcap ). I have read and understand the Terms and Conditions of the",
+          "does": "Transfer 2050 NEAR to nearityorg.near",
+          "why": [
+            "pays nearityorg.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 814,
+          "status": "Approved",
+          "says": "Hello! On behalf of the Marma J Foundation team, I am requesting funding for our approved proposal \"[Approved] Marma J Foundation Marketing Initiatives August -",
+          "does": "Transfer 1498 NEAR to marmaj.sputnik-dao.near",
+          "why": [
+            "pays marmaj.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 830,
+          "status": "Approved",
+          "says": "Marketing DAO Advisor remuneration - August 2023 US$1500 (1250 NEAR @ $1.20 at 3:40 PM 8/30/23 EST). I have read and understand the Terms and Conditions of the ",
+          "does": "Transfer 1250 NEAR to jarednotjerry.near",
+          "why": [
+            "pays jarednotjerry.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 831,
+          "status": "InProgress",
+          "says": "Payment for approved proposal - Near Brasil June 2023 - US$2000 (1769 NEAR @ $1.13 at 10/09/23). I have read and understand the Terms and Conditions of the Mark",
+          "does": "Transfer 1769 NEAR to nearbrasil.near",
+          "why": [
+            "pays nearbrasil.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 834,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - September 2023 US$4,000 (3604 NEAR @ $1.11 at 16:30 AM 09/19/23 EST). I have read and understand the Terms and Condi",
+          "does": "Transfer 3604 NEAR to cryptocredit.near",
+          "why": [
+            "pays cryptocredit.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 835,
+          "status": "Approved",
+          "says": "Nearity, Marketing activities September 2023, $2800 (~2523N @1.11 21:17 19 Sept 2023 - coinmarketcap ). I have read and understand the Terms and Conditions of t",
+          "does": "Transfer 2523 NEAR to nearityorg.near",
+          "why": [
+            "pays nearityorg.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 836,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - September 2023 USD $4,000 (3571.43 NEAR @ $1.12 at 4:34 PM CET 9/19/23). I have read and understand the Terms and Co",
+          "does": "Transfer 3571.43 NEAR to klint.near",
+          "why": [
+            "pays klint.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 837,
+          "status": "Approved",
+          "says": "Near Ukraine Guild | BOS tools and education in September 2023 | US$3,100 (3604 NEAR @ $1.11 at 14:30 09/19/23 UTC). I have read and understand the Terms and Co",
+          "does": "Transfer 2818 NEAR to nearuaguild.sputnik-dao.near",
+          "why": [
+            "pays nearuaguild.sputnik-dao.near, but the description names gov.near",
+            "moves 2818 NEAR, but the description says 3604 NEAR"
+          ]
+        },
+        {
+          "id": 838,
+          "status": "Approved",
+          "says": "NEAR Arabic - September 2023 activities, 2400$ (2151 NEAR, NEAR price 1.12 CoinMarketCap 19/09/2023 @ 14:33PM)\nI have read and understand the Terms and Conditio",
+          "does": "Transfer 2151 NEAR to neararabia.near",
+          "why": [
+            "pays neararabia.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 839,
+          "status": "Rejected",
+          "says": "NEAR Arabic - September 2023 activities, 2400$ (2151 NEAR, NEAR price 1.12 CoinMarketCap 19/09/2023 @ 14:33PM)\nI have read and understand the Terms and Conditio",
+          "does": "Transfer 2151 NEAR to neararabia.near",
+          "why": [
+            "pays neararabia.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 840,
+          "status": "InProgress",
+          "says": "NEAR Arabic - September 2023 activities, 2400$ (2151 NEAR, NEAR price 1.12 CoinMarketCap 19/09/2023 @ 14:33PM)\nI have read and understand the Terms and Conditio",
+          "does": "Transfer 2151 NEAR to neararabia.near",
+          "why": [
+            "pays neararabia.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 842,
+          "status": "Approved",
+          "says": "[APPROVED] Marketing Activities for Mental Maze. $3,300 @ 1.12 N, \n[APPROVED] Marketing Activities for Mental Maze. $3,300 @1.12 N on CoinGecko on 2:46 PM UTC 1",
+          "does": "Transfer 2946.43 NEAR to mentalmaze.near",
+          "why": [
+            "pays mentalmaze.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 843,
+          "status": "Approved",
+          "says": "Boneyard Gaming Community Social Media/Content budget Sep 2023. ($2800, Near price 1.12, Coin Market Cap 9/19/2023 @3:20PM UTC). I have read and understand the ",
+          "does": "Transfer 2500 NEAR to boneyardgaming.near",
+          "why": [
+            "pays boneyardgaming.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 846,
+          "status": "Approved",
+          "says": "[APPROVED] Driving the NEAR INDONESIA Strategy for Increasing Active Developers and Users on September. $2000 @1.12 on Coingecko 10:56 UTC+7 19/09/23 I have rea",
+          "does": "Transfer 1786 NEAR to indonesiaguild.near",
+          "why": [
+            "pays indonesiaguild.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 848,
+          "status": "Approved",
+          "says": "[APPROVED] NDC Degens Sept | Budget $10,000 (8 928 NEAR, token price - 1.120 16:45 UTC, 19.09.2023. \nI have read and understand the Terms and Conditions of the ",
+          "does": "Transfer 8928 NEAR to ndc-degens.sputnik-dao.near",
+          "why": [
+            "pays ndc-degens.sputnik-dao.near, but the description names gov.near",
+            "moves 8928 NEAR, but the description says 928 NEAR (9.6x more)"
+          ]
+        },
+        {
+          "id": 849,
+          "status": "InProgress",
+          "says": "[APPROVED] Building days with BOS | Workshops + NEAR Social promotion series in Mexico | Budget $4100 (4608.40 NEAR, token price - 1.120 18:02 UTC, 19.09.2023. ",
+          "does": "Transfer 4608.4 NEAR to open-web-academy.sputnik-dao.near",
+          "why": [
+            "pays open-web-academy.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 851,
+          "status": "Approved",
+          "says": "Near Brasil - September/2023, Total requested amount: $1500 USD (1328 NEAR, token price $1.13 (19/SEPT/23, 18h UTC); I understand and accept the Terms & Conditi",
+          "does": "Transfer 1328 NEAR to nearbrasil.near",
+          "why": [
+            "pays nearbrasil.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 853,
+          "status": "Approved",
+          "says": "For https://gov.near.org/t/approved-community-run-bos-weekly-code-review-content-distribution/35783/10\n\nBuild DAO Code Review Sessions approved in August\n\nPrice",
+          "does": "Transfer 4464.2 NEAR to codereview.near",
+          "why": [
+            "pays codereview.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 856,
+          "status": "Approved",
+          "says": "Andini - Paras, [APPROVED] Professional User-generated Content - Funding Request Sept, 3118N ($2800, Near Price $1.11, Coin Market Cap 20/09/2023 @7:30 AM UTC),",
+          "does": "Transfer 3118 NEAR to marketing.paras.near",
+          "why": [
+            "pays marketing.paras.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 857,
+          "status": "InProgress",
+          "says": "FrenchCommunity - [APPROVED] Near french Dao Monthly marketing and community Growth Budget - September , 2220N ($2000, Near Price $1.11, Coin Market Cap 20/09/2",
+          "does": "Transfer 2220 NEAR to near-french.sputnik-dao.near",
+          "why": [
+            "pays near-french.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 858,
+          "status": "Approved",
+          "says": "NEAR China community, community marketing activities in September 2023, 2679N ($3000, NEAR price 1.12, CoinMarketcap, 2023/9/20, 5pm, UTC+8), I have read and un",
+          "does": "Transfer 2728 NEAR to near-china-community.sputnik-dao.near",
+          "why": [
+            "pays near-china-community.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 861,
+          "status": "Approved",
+          "says": "[APPROVED] ShardDog Funding Proposal  - $10,000 USD [8928.57N   Near price $1.12- Coinmarketcap on 9/21/23 @ 2:55pm UTC] I have read and understand the Terms an",
+          "does": "Transfer 8928.57 NEAR to readylayerone.near",
+          "why": [
+            "pays readylayerone.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 862,
+          "status": "Approved",
+          "says": "[APPROVED] Building days with BOS | Workshops + NEAR Social promotion series in Mexico | Budget $4100 (3660.71 NEAR, token price - 1.120 18:02 UTC, 19.09.2023. ",
+          "does": "Transfer 3660.71 NEAR to open-web-academy.sputnik-dao.near",
+          "why": [
+            "pays open-web-academy.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 867,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - October 2023 US$4,000 (2649 NEAR @ $1.51 at 11:45 AM 11/07/23 CET). I have read and understand the Terms and Conditi",
+          "does": "Transfer 2649 NEAR to cryptocredit.near",
+          "why": [
+            "pays cryptocredit.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 868,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - October 2023 US$4,000 (2667 NEAR @ $1.50 at 06:00 AM 11/07/23 CET). I have read and understand the Terms and Conditi",
+          "does": "Transfer 2667 NEAR to whendacha.near",
+          "why": [
+            "pays whendacha.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 869,
+          "status": "Approved",
+          "says": "[Approved] NEAR Media & News - October 2023, Total requested amount: $1900 (1668 NEAR, token price $1.50; Target wallet: nearmedia.near ; I understand and accep",
+          "does": "Transfer 1268 NEAR to nearmedia.near",
+          "why": [
+            "moves 1268 NEAR, but the description says 1668 NEAR"
+          ]
+        },
+        {
+          "id": 871,
+          "status": "Approved",
+          "says": "[Approved] NDC Degens October | Budget $10,000 (6 632 NEAR, token price - 1.508 11:09 UTC, 07.11.2023. I have read and understand the Terms and Conditions of th",
+          "does": "Transfer 6632 NEAR to ndc-degens.sputnik-dao.near",
+          "why": [
+            "pays ndc-degens.sputnik-dao.near, but the description names gov.near",
+            "moves 6632 NEAR, but the description says 632 NEAR (10x more)"
+          ]
+        },
+        {
+          "id": 872,
+          "status": "Approved",
+          "says": "Marketing DAO Advisor remuneration - October 2023 US$1500 (1333 NEAR @ $1.512 at 13:18 PM 07/11/23 WAT). I have read and understand the Terms and Conditions of ",
+          "does": "Transfer 995 NEAR to abbakaka.near",
+          "why": [
+            "moves 995 NEAR, but the description says 1333 NEAR"
+          ]
+        },
+        {
+          "id": 873,
+          "status": "Approved",
+          "says": "Nearity, Marketing activities October 2023, $2800 (~1866N @1.5 18:16 7 Oct 2023 - coinmarketcap ). I have read and understand the Terms and Conditions of the Ma",
+          "does": "Transfer 1866 NEAR to nearityorg.near",
+          "why": [
+            "pays nearityorg.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 874,
+          "status": "Approved",
+          "says": "Marketing DAO  - October 2023 US$1,000 (667 NEAR @ $1.50 at 06:00 AM 11/07/23 CET). I have read and understand the Terms and Conditions of the Marketing DAO. KY",
+          "does": "Transfer 667 NEAR to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 880,
+          "status": "Approved",
+          "says": "Project name: Near Insider, Marketing activities (Nov 2023), 1379.3N ($2000, Near price $1.45, Coinmarketcap 7/11/2023 23:23 UTC+7), I have read and understand ",
+          "does": "Transfer 1379.3 NEAR to near_insider.near",
+          "why": [
+            "pays near_insider.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 881,
+          "status": "Rejected",
+          "says": "Boneyard Gaming Community Social Media/Content budget Oct 2023. ($2800, Near price 1.46, Coin Market Cap 11/07/2023 @4:30PM UTC). I have read and understand the",
+          "does": "Transfer 2800 NEAR to boneyardgaming.near",
+          "why": [
+            "pays boneyardgaming.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 886,
+          "status": "Approved",
+          "says": "[APPROVED] [APPROVED] Engage-a-thon at NEARCON w/ ShardDog: A Grant Proposal for MDAO  - $4250 USD [2931.03N Near price $1.45- Coinmarketcap on 11/7/23 @ 11:32p",
+          "does": "Transfer 2931.03 NEAR to readylayerone.near",
+          "why": [
+            "pays readylayerone.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 887,
+          "status": "Approved",
+          "says": "Wuipod October 2023, USD$6000 @ 1.44 per NEAR. $$$$https://gov.near.org/t/approved-wild-user-interviews-podcast-october-2023/36502",
+          "does": "Transfer 4166.66 NEAR to siliconpty.near",
+          "why": [
+            "pays siliconpty.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 894,
+          "status": "Rejected",
+          "says": "Marketing DAO - November 2023 US$1,500 (2715 NEAR @ $1.81 at 10:00 AM 11/29/23 EST). I have read and understand the Terms and Conditions of the Marketing DAO. K",
+          "does": "Transfer 2715 NEAR to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 899,
+          "status": "Approved",
+          "says": "Marketing DAO Advisor remuneration - October 2023 US$1500 (828 NEAR @ $1.815 at 16:36 PM 11/29/23 WAT). I have read and understand the Terms and Conditions of t",
+          "does": "Transfer 828 NEAR to abbakaka.near",
+          "why": [
+            "pays abbakaka.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 900,
+          "status": "Approved",
+          "says": "[Approved] NDC Degens November | Budget $10,000 (5 530,97 NEAR, token price - 1.808 15:41 UTC, 29.11.2023. I have read and understand the Terms and Conditions o",
+          "does": "Transfer 5530.97 NEAR to ndc-degens.sputnik-dao.near",
+          "why": [
+            "pays ndc-degens.sputnik-dao.near, but the description names gov.near",
+            "moves 5530.97 NEAR, but the description says 530,97 NEAR"
+          ]
+        },
+        {
+          "id": 901,
+          "status": "InProgress",
+          "says": "[Approved] NDC Degens November | Budget $10,000 (5 530,97 NEAR, token price - 1.808 15:41 UTC, 29.11.2023. I have read and understand the Terms and Conditions o",
+          "does": "Transfer 5530.97 NEAR to ndc-degens.sputnik-dao.near",
+          "why": [
+            "pays ndc-degens.sputnik-dao.near, but the description names gov.near",
+            "moves 5530.97 NEAR, but the description says 530,97 NEAR"
+          ]
+        },
+        {
+          "id": 911,
+          "status": "Rejected",
+          "says": "Near Ukraine Guild | Activities in November 2023 | US$2,400 (1334 NEAR @ $1.8 at 16:20 11/29/23 UTC). I have read and understand the Terms and Conditions of the",
+          "does": "Transfer 1334 NEAR to nearuaguild.sputnik-dao.near",
+          "why": [
+            "pays nearuaguild.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 912,
+          "status": "InProgress",
+          "says": "Near Ukraine Guild | Activities in November 2023 | US$2,400 (1334 NEAR @ $1.8 at 16:20 11/29/23 UTC). I have read and understand the Terms and Conditions of the",
+          "does": "Transfer 1334 NEAR to nearuaguild.sputnik-dao.near",
+          "why": [
+            "pays nearuaguild.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 913,
+          "status": "Approved",
+          "says": "Near Ukraine Guild | Activities in November 2023 | US$2,400 (1334 NEAR @ $1.8 at 16:20 11/29/23 UTC). I have read and understand the Terms and Conditions of the",
+          "does": "Transfer 1334 NEAR to nearuaguild.sputnik-dao.near",
+          "why": [
+            "pays nearuaguild.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 924,
+          "status": "Approved",
+          "says": "Marketing DAO - November 2023 US$1,500 (833 NEAR @ $1.80 at 10:00 AM 11/29/23 EST). I have read and understand the Terms and Conditions of the Marketing DAO. KY",
+          "does": "Transfer 833 NEAR to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 931,
+          "status": "Approved",
+          "says": "NDC SMM team lead for October and November. US$4,000 (2222 NEAR @ 1.80 at 9:00 PM UTC 29/11/2023). I have read and understand the Terms and Conditions of the Ma",
+          "does": "Transfer 2222 NEAR to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 932,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - November 2023 US$4,000 (2247NEAR @ $1.78 at 08:45 PM 29/11/23 EST). I have read and understand the Terms and Conditi",
+          "does": "Transfer 2247 NEAR to whendacha.near",
+          "why": [
+            "pays whendacha.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 933,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - November 2023 US$4,000 (2234NEAR @ $1.79 at 03:30 30/11/23 CET). I have read and understand the Terms and Conditions",
+          "does": "Transfer 2234 NEAR to cryptocredit.near",
+          "why": [
+            "pays cryptocredit.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 934,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - November 2023 US$4,000 (2151 NEAR @ $1.86 at 9:20AM 12/1/23 ET). I have read and understand the Terms and Conditions",
+          "does": "Transfer 2151 NEAR to so608.near",
+          "why": [
+            "pays so608.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 935,
+          "status": "Approved",
+          "says": "Development - US$2,000 (542 NEAR @ 3.69 at 1:40 PM UTC 30/12/2023)$$$$https://gov.near.org/t/approved-mini-games-play-portal-on-near-bos/36853",
+          "does": "Transfer 542 NEAR to kuiv.near",
+          "why": [
+            "pays kuiv.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 936,
+          "status": "InProgress",
+          "says": "Development - US$2,000 (542 NEAR @ 3.69 at 1:40 PM UTC 30/12/2023)$$$$https://gov.near.org/t/approved-mini-games-play-portal-on-near-bos/36853",
+          "does": "Transfer 542 NEAR to kuiv.near",
+          "why": [
+            "pays kuiv.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 937,
+          "status": "Approved",
+          "says": "Development + support MDAO app (https://near.org/ndcdev.near/widget/MDAO.App) on BOS (2500 USD @3.70)$$$$https://near.org/ndcdev.near/widget/MDAO.App",
+          "does": "Transfer 675 NEAR to rubycop.near",
+          "why": [
+            "pays rubycop.near, but the description names ndcdev.near"
+          ]
+        },
+        {
+          "id": 938,
+          "status": "Approved",
+          "says": "Design - MDAO app (https://near.org/ndcdev.near/widget/MDAO.App) on BOS (500 USD @3.63)$$$$https://near.org/ndcdev.near/widget/MDAO.App",
+          "does": "Transfer 138 NEAR to tolmindev.near",
+          "why": [
+            "pays tolmindev.near, but the description names ndcdev.near"
+          ]
+        },
+        {
+          "id": 941,
+          "status": "Approved",
+          "says": "Near Brasil - June/2023, Total requested amount: $2000 USD (647,25 NEAR, token price $3.09 (9/JAN/24, 17:19h UTC); I understand and accept the Terms & Condition",
+          "does": "Transfer 647 NEAR to nearbrasil.near",
+          "why": [
+            "pays nearbrasil.near, but the description names gov.near",
+            "moves 647 NEAR, but the description says 647,25 NEAR"
+          ]
+        },
+        {
+          "id": 945,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - November 2023 US$2,500 (788 NEAR @ $3.17 at 09:00 17/01/24 CET). I have read and understand the Terms and Conditions",
+          "does": "Transfer 788 NEAR to cryptocredit.near",
+          "why": [
+            "pays cryptocredit.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 946,
+          "status": "Approved",
+          "says": "Marketing DAO Advisor remuneration - December 2023 US$1500 (469.2 NEAR @ $3.2 at 9:52 am 01/17/24 WAT). I have read and understand the Terms and Conditions of t",
+          "does": "Transfer 469.2 NEAR to abbakaka.near",
+          "why": [
+            "pays abbakaka.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 949,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - December 2023 US$2,500 (765 NEAR @ $3.27 at 09:30PM 17/01/24 EST). I have read and understand the Terms and Conditio",
+          "does": "Transfer 765 NEAR to so608.near",
+          "why": [
+            "pays so608.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 955,
+          "status": "Approved",
+          "says": "Marketing DAO Advisor remuneration - January 2024 US$1500 (548 NEAR @ $2.73 at 5:45 am 01/06/24 WAT). I have read and understand the Terms and Conditions of the",
+          "does": "Transfer 549.3 NEAR to abbakaka.near",
+          "why": [
+            "pays abbakaka.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 960,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - January 2024 US$2,500 (925 NEAR @ $2.70 at 10:30 07/02/24 CET). I have read and understand the Terms and Conditions ",
+          "does": "Transfer 925 NEAR to cryptocredit.near",
+          "why": [
+            "pays cryptocredit.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 962,
+          "status": "InProgress",
+          "says": "Marketing DAO council member remuneration - January 2024 US$2,500 (925 NEAR @ $2.70 at 10:30 07/02/24 CET). I have read and understand the Terms and Conditions ",
+          "does": "Transfer 925 NEAR to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 963,
+          "status": "InProgress",
+          "says": "Marketing DAO council member remuneration - January 2024 US$2,500 (925 NEAR @ $2.70 at 10:30 07/02/24 CET). I have read and understand the Terms and Conditions ",
+          "does": "Transfer 925 NEAR to johanga108.near",
+          "why": [
+            "a word mixes Latin and Cyrillic letters (lookalike spelling)",
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 964,
+          "status": "InProgress",
+          "says": "Marketing DAO council member remuneration - January 2024 US$2,500 (925 NEAR @ $2.70 at 10:30 07/02/24 CET). I have read and understand the Terms and Conditions ",
+          "does": "Transfer 925 NEAR to johanga108.near",
+          "why": [
+            "a word mixes Latin and Cyrillic letters (lookalike spelling)",
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 965,
+          "status": "InProgress",
+          "says": "Transfer proposal\n\nProposal Link: [https://gov.near.org/t/digital-billboard-truck-eth-denver/37936](https://gov.near.org/t/digital-billboard-truck-eth-denver/37",
+          "does": "Transfer 3500000000 (raw units of a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near) a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near to nextgenlabs.near",
+          "why": [
+            "pays nextgenlabs.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 966,
+          "status": "InProgress",
+          "says": "Marketing DAO council member remuneration - January 2024 US$2,500 (925 NEAR @ $2.70 at 10:30 07/02/24 CET). I have read and understand the Terms and Conditions ",
+          "does": "Transfer 926 NEAR to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 967,
+          "status": "InProgress",
+          "says": "Marketing DAO council member remuneration - January 2024 US$2,500 (925 NEAR by current price on Coinmarketcap). I have read and understand the Terms and Conditi",
+          "does": "Transfer 925 NEAR to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 968,
+          "status": "Approved",
+          "says": "Transfer proposal\n\nProposal Link: [https://gov.near.org/t/digital-billboard-truck-eth-denver/37936](https://gov.near.org/t/digital-billboard-truck-eth-denver/37",
+          "does": "Transfer 3500000000 (raw units of a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near) a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near to nextgenlabs.near",
+          "why": [
+            "pays nextgenlabs.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 970,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - January 2024 US$2,500 (856 NEAR by current price 2/8/24 at $2.92). I have read and understand the Terms and Conditio",
+          "does": "Transfer 856 NEAR to so608.near",
+          "why": [
+            "pays so608.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 971,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - January 2024 US$1,500 . I have read and understand the Terms and Conditions of the Marketing DAO. KYC Passed. Propos",
+          "does": "Transfer 1500000000 (raw units of a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near) a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 972,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - January 2024 US$1,000 (337 NEAR by current price 10/2/24 at $2.97). I have read and understand the Terms and Conditi",
+          "does": "Transfer 336 NEAR to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 977,
+          "status": "InProgress",
+          "says": "Transfer proposal for discoverbos. \n\nhttps://gov.near.org/t/approved-discoverbos-the-b-o-s-reference-from-resources-to-marketing-jan-2024/37631",
+          "does": "Transfer 4000000000 (raw units of usdt.tether-token.near) usdt.tether-token.near to inspiratibiz.near",
+          "why": [
+            "pays inspiratibiz.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 979,
+          "status": "InProgress",
+          "says": "Transfer proposal $8900\n\nhttps://gov.near.org/t/approved-eth-denver-music-video-x-egg-a-thon-savetheeggs/37812",
+          "does": "Transfer 8900000000 (raw units of a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near) a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near to rhymetaylor.near",
+          "why": [
+            "pays rhymetaylor.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 984,
+          "status": "Approved",
+          "says": "Transfer proposal\n\n1285 NEAR at 6.93 totaling $8900 \n\nhttps://gov.near.org/t/approved-eth-denver-music-video-x-egg-a-thon-savetheeggs/37812/2",
+          "does": "Transfer 1285 NEAR to rhymetaylor.near",
+          "why": [
+            "pays rhymetaylor.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 987,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - February 2024 US$2,500 (360.8 NEAR by rate at $6.93). I have read and understand the Terms and Conditions of the Mar",
+          "does": "Transfer 360.8 NEAR to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 991,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - February 2024 US$2,500 (360 NEAR by rate at $6.93). I have read and understand the Terms and Conditions of the Marke",
+          "does": "Transfer 360 NEAR to cryptocredit.near",
+          "why": [
+            "pays cryptocredit.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 994,
+          "status": "Approved",
+          "says": "Chill&Shill founder support. Proposal: https://near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1706993266073   $4980 @ 6.93 = 718.614 near \nI understand ",
+          "does": "Transfer 718.614 NEAR to yourdad.near",
+          "why": [
+            "pays yourdad.near, but the description names ndcdev.near"
+          ]
+        },
+        {
+          "id": 995,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - February 2024 US$2,500 (360 NEAR by rate at $6.93). I have read and understand the Terms and Conditions of the Marke",
+          "does": "Transfer 360 NEAR to so608.near",
+          "why": [
+            "pays so608.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 996,
+          "status": "Approved",
+          "says": "Calimero Network marketing support. Proposal:https://near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1706792925354 $5000 @ 6.93 = 721.5 near \nI understan",
+          "does": "Transfer 721.5 NEAR to calimero.near",
+          "why": [
+            "pays calimero.near, but the description names ndcdev.near"
+          ]
+        },
+        {
+          "id": 997,
+          "status": "Approved",
+          "says": "V-Art Protocol: https://near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1707240351707 $2,000 (287 NEAR at $6.93). I have read and understand the Terms an",
+          "does": "Transfer 287 NEAR to client-vart.near",
+          "why": [
+            "pays client-vart.near, but the description names ndcdev.near"
+          ]
+        },
+        {
+          "id": 998,
+          "status": "Approved",
+          "says": "Forefront Tak : https://near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1709805653085  $3,000 USD (413 NEAR at $7.28 current price). I have read and unde",
+          "does": "Transfer 413 NEAR to forefront_tak.near",
+          "why": [
+            "pays forefront_tak.near, but the description names ndcdev.near"
+          ]
+        },
+        {
+          "id": 999,
+          "status": "Approved",
+          "says": "Geovox Full Stack Marketing Campaign: https://near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1709833468129 $3,734 USD (517.34 NEAR at $7.22 current pric",
+          "does": "Transfer 517.34 NEAR to mkt-geovox.near",
+          "why": [
+            "pays mkt-geovox.near, but the description names ndcdev.near"
+          ]
+        },
+        {
+          "id": 1000,
+          "status": "Approved",
+          "says": "Chill&Shill founder support. Proposal: https://near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1709924578645 $4980 @ 7.26  = 718.614 near I understand an",
+          "does": "Transfer 685.95 NEAR to yourdad.near",
+          "why": [
+            "pays yourdad.near, but the description names ndcdev.near",
+            "moves 685.95 NEAR, but the description says 718.614 near"
+          ]
+        },
+        {
+          "id": 1001,
+          "status": "Approved",
+          "says": "Zealy and meetups for virtual Latin communities. Proposal: https://near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1709871384740 $4500 @ 7.20 = 625 near ",
+          "does": "Transfer 625 NEAR to open-web-academy.sputnik-dao.near",
+          "why": [
+            "pays open-web-academy.sputnik-dao.near, but the description names ndcdev.near"
+          ]
+        },
+        {
+          "id": 1003,
+          "status": "Approved",
+          "says": "Marketing DAO Council remuneration for March 2024 USD $2500 (357 NEAR  at a rate of $7.01) I have read and understand the Terms and Conditions of the Marketing ",
+          "does": "Transfer 357 NEAR to cryptocredit.near",
+          "why": [
+            "pays cryptocredit.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1004,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - March 2024 US$2,500 (353.1 NEAR by rate at $7.08). I have read and understand the Terms and Conditions of the Market",
+          "does": "Transfer 353 NEAR to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1005,
+          "status": "Approved",
+          "says": "\nMarketing DAO Advisor remuneration - March 2024 US$1500 (208.3 NEAR @ $7.2. I have read and understand the Terms and Conditions of the Marketing DAO. KYC Passe",
+          "does": "Transfer 208.3 NEAR to abbakaka.near",
+          "why": [
+            "pays abbakaka.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1007,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - March 2024 US$2,500 (374 NEAR by rate at $6.69 via CoinMarketCap at 11:02AM ET 4/1/24). I have read and understand t",
+          "does": "Transfer 374 NEAR to so608.near",
+          "why": [
+            "pays so608.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1013,
+          "status": "Approved",
+          "says": "Forefront Tak : https://gov.near.org/t/approved-twitter-reports-by-forefront-tak-marketing/38885/6 $3,000 USD (508.5 NEAR at $5.9 current price). I have read an",
+          "does": "Transfer 508.5 NEAR to forefront_tak.near",
+          "why": [
+            "pays forefront_tak.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1014,
+          "status": "Approved",
+          "says": "NPunks Approved Proposal Link: https://gov.near.org/t/approved-npunks-ecosystem-marketing-support/38882 Amount requested: $5000 (825 NEAR at $6.06/NEAR at 15:02",
+          "does": "Transfer 825 NEAR to npunks_rewards.near",
+          "why": [
+            "pays npunks_rewards.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1015,
+          "status": "Approved",
+          "says": "BTC Pizza Day - Near Antigua \nApproved Proposal Link: https://gov.near.org/t/approved-1300-for-btc-pizza-day-near-antigua/39040\n\nAmount requested: $1300 (213 NE",
+          "does": "Transfer 213 NEAR to near-antigua.sputnik-dao.near",
+          "why": [
+            "pays near-antigua.sputnik-dao.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1016,
+          "status": "Approved",
+          "says": "Project Name: Near Ukraine\nApproved Proposal Link: https://gov.near.org/t/approved-near-ukraine-guild-attendance-at-incrypted-conference-2024/38927\nAmount reque",
+          "does": "Transfer 852.55 NEAR to denbite.near",
+          "why": [
+            "pays denbite.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1017,
+          "status": "InProgress",
+          "says": "Chill&Shill, approved https://gov.near.org/t/approved-chill-shill-founder-and-ecosystem-support/38928 Amount requested 4980 (844.06N @5.9) I have read and under",
+          "does": "Transfer 844.07 NEAR to chillandshill.near",
+          "why": [
+            "pays chillandshill.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1019,
+          "status": "Approved",
+          "says": "Chill&Shill, approved https://gov.near.org/t/approved-chill-shill-founder-and-ecosystem-support/38928 Amount requested 4980 (844.06N @5.9) I have read and under",
+          "does": "Transfer 844.06 NEAR to yourdad.near",
+          "why": [
+            "pays yourdad.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1020,
+          "status": "Approved",
+          "says": "Transfer for Assisterr \nApproved Proposal Link: https://gov.near.org/t/approved-assisterr-incentive-program-funding-application-marketing-budget/38915/6\n\nAmount",
+          "does": "Transfer 8000000000 (raw units of 17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1) 17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1 to assisterr_ai.near",
+          "why": [
+            "pays assisterr_ai.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1021,
+          "status": "Approved",
+          "says": "Marketing DAO Advisor remuneration - MaMay 2024 US$1500 (2234.3 NEAR @ $6 4. I have read and understand the Terms and Conditions of the Marketing DAO. KYC Passe",
+          "does": "Transfer 234.3 NEAR to abbakaka.near",
+          "why": [
+            "moves 234.3 NEAR, but the description says 2234.3 NEAR"
+          ]
+        },
+        {
+          "id": 1022,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - April 2024 US$2,500 (365 NEAR @ $6.85). I have read and understand the Terms and Conditions of the Marketing DAO. KY",
+          "does": "Transfer 365 NEAR to cryptocredit.near",
+          "why": [
+            "pays cryptocredit.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1023,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - April 2024 US$2,500 (365 NEAR @ $6.85). I have read and understand the Terms and Conditions of the Marketing DAO. KY",
+          "does": "Transfer 2500000000 (raw units of 17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1) 17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1 to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1025,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration - April 2024 US$2,500 (340 NEAR @ $7.35). I have read and understand the Terms and Conditions of the Marketing DAO. KY",
+          "does": "Transfer 340 NEAR to so608.near",
+          "why": [
+            "pays so608.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1028,
+          "status": "InProgress",
+          "says": "Description\nV-Art Protocol: https://near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1712613804534 $4,900 (735 NEAR at $6.66). I have read and understand ",
+          "does": "Transfer 735 NEAR to client-vart.near",
+          "why": [
+            "pays client-vart.near, but the description names ndcdev.near"
+          ]
+        },
+        {
+          "id": 1029,
+          "status": "Approved",
+          "says": "Description V-Art Protocol: https://near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1712613804534 $4,900 (682 NEAR at $7.19). I have read and understand ",
+          "does": "Transfer 682 NEAR to client-vart.near",
+          "why": [
+            "pays client-vart.near, but the description names ndcdev.near"
+          ]
+        },
+        {
+          "id": 1033,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration for May&June 2024 US$5,000 (765 NEAR @ $6.54). I have read and understand the Terms and Conditions of the Marketing DA",
+          "does": "Transfer 765 NEAR to johanga108.near",
+          "why": [
+            "pays johanga108.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1035,
+          "status": "Approved",
+          "says": "Marketing DAO council member remuneration for May&June 2024 US$5,000 (765 NEAR @ $6.54). I have read and understand the Terms and Conditions of the Marketing DA",
+          "does": "Transfer 765 NEAR to so608.near",
+          "why": [
+            "pays so608.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1036,
+          "status": "InProgress",
+          "says": "Marketing DAO council member remuneration for May&June 2024 US$5,000 (765 NEAR @ $6.54). I have read and understand the Terms and Conditions of the Marketing DA",
+          "does": "Transfer 765 NEAR to so608.near",
+          "why": [
+            "pays so608.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1038,
+          "status": "InProgress",
+          "says": "Myosin Public Relations & Marketing\nApproved Proposal Link: https://dev.near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1713712590713\nAmount requested: $",
+          "does": "Transfer 3062.787136 NEAR to myosinxyz.near",
+          "why": [
+            "pays myosinxyz.near, but the description names dev.near, ndcdev.near"
+          ]
+        },
+        {
+          "id": 1039,
+          "status": "Approved",
+          "says": "Shitzu Community Boost initiative\nApproved Proposal Link: https://gov.near.org/t/proposal-shitzu-community-dao-boost-initiative/39185?u=agt\nAmount requested: $5",
+          "does": "Transfer 778 NEAR to cwpuzzles.near",
+          "why": [
+            "pays cwpuzzles.near, but the description names gov.near, shitzu.sputnik-dao.near"
+          ]
+        },
+        {
+          "id": 1040,
+          "status": "InProgress",
+          "says": "Project Name: Plato\nApproved [Proposal Link for Plato](https://gov.near.org/t/proposal-marketing-dao-june-2024-funding-request-activities/39377)\nAmount requeste",
+          "does": "Transfer 1496 NEAR to platoeats.near",
+          "why": [
+            "pays platoeats.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1041,
+          "status": "Approved",
+          "says": "Project Name: Plato\nApproved [Proposal Link for Plato](https://gov.near.org/t/proposal-marketing-dao-june-2024-funding-request-activities/39377)\nAmount requeste",
+          "does": "Transfer 1496 NEAR to platoeats.near",
+          "why": [
+            "pays platoeats.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1042,
+          "status": "Approved",
+          "says": "NEAR ECOSYSTEM CONTENT BOUNTIES BY NEARWEEK\n\nGOV PROPOSAL:\n\nhttps://gov.near.org/t/proposal-near-ecosystem-content-bounties/39325\n\n10,000 USD equivalent in NEAR",
+          "does": "Transfer 1631.32 NEAR to summoners.near",
+          "why": [
+            "pays summoners.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1043,
+          "status": "Approved",
+          "says": "Project Name: B4B\nApproved Proposal Link: https://gov.near.org/t/approved-b4b-influencer-marketing-support-for-near-founders/39287 \nAmount requested: $7500 (113",
+          "does": "Transfer 1136.4 NEAR to b4b_world.near",
+          "why": [
+            "pays b4b_world.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1044,
+          "status": "InProgress",
+          "says": "NEAR Media | https://gov.near.org/t/approved-near-media-june-2024/39251 | 2950$ (483.60 N at 1:00 pm IST via coinmarketcap) | I have read and understand the Ter",
+          "does": "Transfer 483.6 NEAR to nearmedia.near",
+          "why": [
+            "pays nearmedia.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1045,
+          "status": "Approved",
+          "says": "NEAR Media | https://gov.near.org/t/approved-near-media-june-2024/39251 | 2950$ (481.23 N at 6.13N on 1:00 pm IST 13th June, 2024 via coinmarketcap) | I have re",
+          "does": "Transfer 481.23 NEAR to nearmedia.near",
+          "why": [
+            "pays nearmedia.near, but the description names gov.near"
+          ]
+        },
+        {
+          "id": 1046,
+          "status": "Approved",
+          "says": "Myosin Public Relations & Marketing - Month 2\nApproved Proposal Link: https://dev.near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1713712590713 Amount re",
+          "does": "Transfer 1639.344262 NEAR to myosinxyz.near",
+          "why": [
+            "pays myosinxyz.near, but the description names dev.near, ndcdev.near"
+          ]
+        },
+        {
+          "id": 1047,
+          "status": "InProgress",
+          "says": "Myosin Public Relations & Marketing - Month 2\nApproved Proposal Link: https://dev.near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1713712590713 Amount re",
+          "does": "Transfer 1642.036124 NEAR to myosinxyz.near",
+          "why": [
+            "pays myosinxyz.near, but the description names dev.near, ndcdev.near"
+          ]
+        },
+        {
+          "id": 1048,
+          "status": "InProgress",
+          "says": "Myosin Public Relations & Marketing - Month 3 Approved Proposal Link: https://dev.near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1713712590713 Amount re",
+          "does": "Transfer 1642.036124 NEAR to myosinxyz.near",
+          "why": [
+            "pays myosinxyz.near, but the description names dev.near, ndcdev.near"
+          ]
+        },
+        {
+          "id": 1053,
+          "status": "Failed",
+          "says": "Myosin Public Relations & Marketing - Month 3 Approved Proposal Link: https://dev.near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1713712590713 \nAmount r",
+          "does": "Transfer 10000000000 (raw units of a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near) a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.factory.bridge.near to myosinxyz.near",
+          "why": [
+            "pays myosinxyz.near, but the description names dev.near, ndcdev.near"
+          ]
+        },
+        {
+          "id": 1054,
+          "status": "Approved",
+          "says": "Myosin Public Relations & Marketing - Month 3 Approved Proposal Link: https://dev.near.org/ndcdev.near/widget/MDAO.App?page=proposals&id=1713712590713 Amount re",
+          "does": "Transfer 10000000000 (raw units of 17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1) 17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1 to myosinxyz.near",
+          "why": [
+            "pays myosinxyz.near, but the description names dev.near, ndcdev.near"
+          ]
+        }
+      ]
+    }
+  }
+}
