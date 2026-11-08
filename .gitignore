@@ -4,3 +4,5 @@ node_modules/
 *.pem
 credentials/
 .near-credentials/
+results/scan/
+results/scan-all.log
