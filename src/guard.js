@@ -19,8 +19,8 @@ const stable = (v) => Array.isArray(v) ? `[${v.map(stable).join(",")}]` : v && t
 export const reportHash = (report) => crypto.createHash("sha256").update(stable({ ...report, hash: undefined, ai: undefined })).digest("hex");
 
 /** Pure check for proposals that are not on chain yet (red-team suite, drafts, tests). */
-export function checkOffline({ description, kind }, { meta, known, accounts = {} } = {}) {
-  const decoded = decodeKind(kind, { meta });
+export function checkOffline({ description, kind }, { meta, known, accounts = {}, policyBefore = null } = {}) {
+  const decoded = decodeKind(kind, { meta, policyBefore });
   const s = scan(description);
   const c = compareClaims(s.visibleText + "\n" + s.hiddenText, decoded);
   const findings = [...s.findings, ...c.findings];

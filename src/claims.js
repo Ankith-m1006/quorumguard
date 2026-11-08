@@ -40,10 +40,12 @@ export function extractClaims(text = "") {
     if (!Number.isFinite(value) || value <= 0) continue;
     // "N" means NEAR only as a capital N right after the number ("400N", "1,818 N"), never with k/m ("16Mn").
     if (!m[1] && m[5].toUpperCase() === "N" && (m[5] !== "N" || m[4])) continue;
-    const before = clean.slice(Math.max(0, m.index - 4), m.index);
+    const before = clean.slice(Math.max(0, m.index - 14), m.index);
     const after = clean.slice(m.index + m[0].length, m.index + m[0].length + 12);
     // Exchange rates ("1 NEAR = $3.4", "$3.4 per NEAR") and rates per period ("400N per month") are prices, not the payment.
-    if (value === 1 && (/^\s*=/.test(after) || /=\s*$/.test(before))) continue;
+    if (value === 1 && /^\s*=/.test(after)) continue;
+    // The price side of a rate: "1 NEAR = $1.12", "1NEAR=6.65USD".
+    if (/\b1\s*(near|n|usd|\$)?\s*=\s*\$?\s*$/i.test(before)) continue;
     if (/^\s*(per\b|\/|each\b|a month|monthly|a week|weekly)/i.test(after) || /@\s*$/.test(before)) continue;
     if (/^\s*=\s*1\s*(near|n\b|usd|\$)/i.test(after)) continue;
     amounts.push({ value, unit: m[1] ? "USD" : unitOf(m[5]), text: m[0].trim() });
@@ -108,7 +110,7 @@ export function compareClaims(description, decoded) {
     add(loose ? "warn" : "block", `gives ${x.member} a place in "${x.role}" ${loose ? "naming them only loosely" : "without naming them in the description"}`, x.member);
   }
   if (decoded.type === "AddMemberToRole" && decoded.facts.receivers[0] && !description.toLowerCase().includes(decoded.facts.receivers[0].toLowerCase()))
-    add("warn", `adds ${decoded.facts.receivers[0]} without naming them in the description`, decoded.facts.receivers[0]);
+    add("block", `gives ${decoded.facts.receivers[0]} voting power in "${decoded.facts.role}" without naming them in the description`, decoded.facts.receivers[0]);
   const methodWords = (decoded.facts.methods || []).flatMap((m) => m.split("_")).filter((w) => w.length >= 4);
   const disclosed = /\b(transfer|withdraw|owner|admin|upgrade|migrat|pay|send)/i.test(description) || methodWords.some((w) => description.toLowerCase().includes(w.toLowerCase()));
   if (decoded.type === "FunctionCall" && decoded.lines.some((l) => /can move funds or change control|Sets (owner|admin)/i.test(l)) && !disclosed)
