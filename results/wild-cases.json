@@ -1,0 +1,97 @@
+[
+  {
+    "dao": "build.sputnik-dao.near",
+    "id": 286,
+    "status": "Approved",
+    "note": "The description credits starchu.near; the transfer went to strachu.near. Two letters swapped. Either is a typo, and a voter cannot tell which from the text.",
+    "says": "Transfer proposal\n\n@Starchu.near has been working on this repo: [QuestVerse](https://github.com/Quest-Protocol/questverse-monorepo). Specifically, he is working on the QuestVerse contract to which allows verification and claiming of quests as well as making the proper integrations to make this work.  \n\n[PR](https://github.com/Quest-Protocol/questverse-monorepo/pull/37)\n\nI request BuildDAO to pay h",
+    "does": "Transfer 65 NEAR to strachu.near",
+    "verdict": "BLOCK",
+    "why": [
+      "pays strachu.near, but the description names starchu.near"
+    ]
+  },
+  {
+    "dao": "marketing.sputnik-dao.near",
+    "id": 73,
+    "status": "Approved",
+    "note": "Pays turkey.sputnik-dao.near; the DAO had been paying turkey.sputnikdao.near. Same name under a different parent account.",
+    "says": "Near Turkey January Budget$$$$https://gov.near.org/t/approved-near-turkey-january/12353/13$$$$ProposeTransfer",
+    "does": "Transfer 305 NEAR to turkey.sputnik-dao.near",
+    "verdict": "BLOCK",
+    "why": [
+      "turkey.sputnik-dao.near looks like turkey.sputnikdao.near, an account this DAO already knows"
+    ]
+  },
+  {
+    "dao": "nearweek-news-contribution.sputnik-dao.near",
+    "id": 13189,
+    "status": "Approved",
+    "note": "Adds a council member. The whole description is \"Yett\". It passed.",
+    "says": "Yett",
+    "does": "Add vikash.near to role \"council\"",
+    "verdict": "BLOCK",
+    "why": [
+      "AddMemberToRole changes control of the DAO, but the description never mentions it",
+      "gives vikash.near voting power in \"council\" without naming them in the description"
+    ]
+  },
+  {
+    "dao": "nearweek-news-contribution.sputnik-dao.near",
+    "id": 13338,
+    "status": "Approved",
+    "note": "Removes nearweek.near from the council. The whole description is \"gh\". It passed.",
+    "says": "gh",
+    "does": "Remove nearweek.near from role \"council\"",
+    "verdict": "BLOCK",
+    "why": [
+      "RemoveMemberFromRole changes control of the DAO, but the description never mentions it"
+    ]
+  },
+  {
+    "dao": "marketing.sputnik-dao.near",
+    "id": 1021,
+    "status": "Approved",
+    "note": "The description says 2234.3 NEAR; the transfer is 234.3 NEAR. The DAO paid less than the text says, but a reader of the text alone would expect ten times more.",
+    "says": "Marketing DAO Advisor remuneration - MaMay 2024 US$1500 (2234.3 NEAR @ $6 4. I have read and understand the Terms and Conditions of the Marketing DAO. KYC Passed",
+    "does": "Transfer 234.3 NEAR to abbakaka.near",
+    "verdict": "WARN",
+    "why": [
+      "moves 234.3 NEAR; the description gives 2234.3 NEAR"
+    ]
+  },
+  {
+    "dao": "marketing.sputnik-dao.near",
+    "id": 869,
+    "status": "Approved",
+    "note": "The description says 1668 NEAR; the transfer is 1268 NEAR.",
+    "says": "[Approved] NEAR Media & News - October 2023, Total requested amount: $1900 (1668 NEAR, token price $1.50; Target wallet: nearmedia.near ; I understand and accept the Terms & Conditions of the MARKETING DAO and the KYC (PASSED KYC)$$$$https://gov.near.org/t/approved-near-media-news-october-2023/36579",
+    "does": "Transfer 1268 NEAR to nearmedia.near",
+    "verdict": "WARN",
+    "why": [
+      "moves 1268 NEAR; the description gives 1668 NEAR"
+    ]
+  },
+  {
+    "dao": "marketing.sputnik-dao.near",
+    "id": 858,
+    "status": "Approved",
+    "note": "The transfer is 2728 NEAR; the largest amount in the description is 2679 NEAR.",
+    "says": "NEAR China community, community marketing activities in September 2023, 2679N ($3000, NEAR price 1.12, CoinMarketcap, 2023/9/20, 5pm, UTC+8), I have read and understand the terms and conditions of the Marketing DAO$$$$https://gov.near.org/t/approved-near-china-community-september-proposal/36215/9",
+    "does": "Transfer 2728 NEAR to near-china-community.sputnik-dao.near",
+    "verdict": "BLOCK",
+    "why": [
+      "moves 2728 NEAR, more than any amount the description gives (2679N)"
+    ]
+  },
+  {
+    "dao": "build.sputnik-dao.near",
+    "id": 28,
+    "status": "Approved",
+    "note": "Changes the voting period from 7 to 37 days and lowers bonds, described as \"update settings\". Settings only, so QuorumGuard passes it but shows exactly what changed.",
+    "says": "update settings$$$$$$$$ProposeChangeBonds",
+    "does": "Change the DAO policy: proposal bond 0.1 -> 0.01 NEAR; voting period 7.0 -> 37.0 days; bounty bond 0.1 -> 0.01 NEAR; bounty forgiveness period changes",
+    "verdict": "CLEAN",
+    "why": []
+  }
+]

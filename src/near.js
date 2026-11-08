@@ -1,7 +1,7 @@
 // Read-only NEAR RPC: view calls and account lookups. No keys needed.
 const ENDPOINTS = {
-  mainnet: [process.env.NEAR_RPC_MAINNET, "https://rpc.mainnet.fastnear.com", "https://free.rpc.fastnear.com", "https://near.lava.build", "https://rpc.mainnet.near.org"].filter(Boolean),
-  testnet: [process.env.NEAR_RPC_TESTNET, "https://rpc.testnet.fastnear.com", "https://test.rpc.fastnear.com", "https://neart.lava.build", "https://rpc.testnet.near.org"].filter(Boolean),
+  mainnet: [process.env.NEAR_RPC_MAINNET, "https://rpc.mainnet.fastnear.com", "https://free.rpc.fastnear.com", "https://near.lava.build"].filter(Boolean),
+  testnet: [process.env.NEAR_RPC_TESTNET, "https://rpc.testnet.fastnear.com", "https://test.rpc.fastnear.com", "https://neart.lava.build"].filter(Boolean),
 };
 
 export const networkOf = (accountId) => (/\.testnet$/.test(accountId) ? "testnet" : "mainnet");
@@ -37,7 +37,8 @@ async function rpcOnce(url, method, params) {
       const text = await r.text();
       if (!r.ok && !text.startsWith("{")) throw new Error(`HTTP ${r.status} ${text.slice(0, 80)}`);
       const j = JSON.parse(text);
-      if (j.error) throw Object.assign(new Error(j.error.cause?.name || j.error.data || j.error.message || "rpc error"), { rpc: j.error });
+      if (j.error && !j.error.cause?.name) throw new Error(`endpoint error: ${String(j.error.data || j.error.message).slice(0, 80)}`);
+      if (j.error) throw Object.assign(new Error(j.error.cause.name), { rpc: j.error });
       return j.result;
     }
   }
@@ -48,6 +49,8 @@ export async function view(accountId, method, args = {}, network = networkOf(acc
     request_type: "call_function", finality: "final", account_id: accountId, method_name: method,
     args_base64: Buffer.from(JSON.stringify(args)).toString("base64"),
   });
+  // A contract panic (e.g. "ERR_NO_PROPOSAL") comes back inside the result, not as an RPC error.
+  if (res.error || !res.result) throw Object.assign(new Error(`contract panicked: ${String(res.error || "no result").slice(0, 160)}`), { panic: true });
   return JSON.parse(Buffer.from(res.result).toString("utf-8"));
 }
 

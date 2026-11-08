@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuorumGuard</title>
+<meta name="description" content="Reads what a Sputnik DAO proposal actually does on chain, and checks it against what the proposal text says, before an AI or a human votes.">
+<link rel="icon" href="/mark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14161a;--ink2:#3d424b;--mute:#6b717c;--line:#e4e2dc;--paper:#fbfaf7;--card:#fff;
+  --clean:#1d6b47;--cleanbg:#e8f3ec;--warn:#8a5a00;--warnbg:#fbf1dc;--block:#a8201a;--blockbg:#fbe7e5;
+  --hl:#fff2a8;--focus:#2347c5;
+  --sans:"IBM Plex Sans",system-ui,sans-serif;--serif:"IBM Plex Serif",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--line);background:var(--card)}
+.top{display:flex;align-items:center;gap:14px;padding:18px 0}
+.top img{width:30px;height:30px}
+.word{font:500 21px/1 var(--serif);letter-spacing:-.01em}
+.top .tag{color:var(--mute);font-size:14px;margin-left:auto;text-align:right}
+nav{display:flex;gap:4px}
+nav button{font:500 14px var(--sans);background:none;border:0;border-bottom:2px solid transparent;padding:12px 14px 11px;color:var(--mute);cursor:pointer}
+nav button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--ink)}
+nav button:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+main.wrap{padding:38px 20px 80px}
+h1{font:500 34px/1.15 var(--serif);letter-spacing:-.015em;margin:0 0 10px;max-width:760px}
+.lede{color:var(--ink2);max-width:700px;margin:0 0 26px}
+form.check{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+label{display:flex;flex-direction:column;gap:5px;font-size:13px;color:var(--mute)}
+input{font:15px var(--mono);border:1px solid var(--line);border-radius:6px;padding:10px 12px;background:var(--paper);color:var(--ink)}
+input#dao{width:340px;max-width:100%}input#pid{width:120px}
+.btn{font:600 15px var(--sans);background:var(--ink);color:#fff;border:0;border-radius:6px;padding:11px 20px;cursor:pointer}
+.btn[disabled]{opacity:.55;cursor:wait}
+.ex{margin:14px 0 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;color:var(--mute)}
+.ex button{font:13px var(--mono);background:var(--card);border:1px solid var(--line);border-radius:99px;padding:5px 11px;cursor:pointer;color:var(--ink2)}
+.ex button:hover{border-color:var(--ink2)}
+.msg{margin:18px 0 0;color:var(--block)}
+.verdict{margin:28px 0 0;border-radius:10px;padding:18px 20px;display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.verdict b{font:600 13px var(--mono);letter-spacing:.08em;padding:4px 9px;border-radius:4px;color:#fff}
+.verdict.CLEAN{background:var(--cleanbg)}.verdict.CLEAN b{background:var(--clean)}
+.verdict.WARN{background:var(--warnbg)}.verdict.WARN b{background:var(--warn)}
+.verdict.BLOCK{background:var(--blockbg)}.verdict.BLOCK b{background:var(--block)}
+.verdict span{font-size:16px;color:var(--ink)}
+.verdict small{color:var(--mute);margin-left:auto;font:12px var(--mono)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.cols{grid-template-columns:1fr}.top .tag{display:none}input#dao{width:100%}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;min-width:0}
+.panel h3{font:600 12px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--mute);margin:0 0 10px}
+.says{white-space:pre-wrap;word-break:break-word;font-size:15px;color:var(--ink2);max-height:320px;overflow:auto}
+.does{font:500 17px/1.45 var(--sans);word-break:break-word}
+.notes{margin:10px 0 0;padding:0;list-style:none;font-size:14px;color:var(--ink2)}
+.notes li{padding:3px 0}
+.hidden{margin-top:12px;background:var(--hl);border-radius:6px;padding:10px 12px;font:14px var(--mono);word-break:break-word}
+.hidden em{font:600 11px var(--mono);letter-spacing:.08em;display:block;font-style:normal;color:var(--warn);margin-bottom:4px}
+.findings{list-style:none;margin:0;padding:0}
+.findings li{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.findings li:first-child{border-top:0}
+.sev{font:600 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;padding-top:3px}
+.sev.block{color:var(--block)}.sev.warn{color:var(--warn)}.sev.info{color:var(--mute)}
+.fam{display:block;font:12px var(--mono);color:var(--mute)}
+.proof{font:13px/1.7 var(--mono);color:var(--ink2);word-break:break-all}
+.proof .ok{color:var(--clean)}.proof .no{color:var(--block)}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;font-size:14px}
+th{text-align:left;font:600 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--mute);padding:10px 12px;border-bottom:1px solid var(--line);background:var(--paper)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+.pill{font:600 11px var(--mono);letter-spacing:.05em;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.pill.CLEAN{background:var(--cleanbg);color:var(--clean)}.pill.WARN{background:var(--warnbg);color:var(--warn)}.pill.BLOCK{background:var(--blockbg);color:var(--block)}
+.pill.honest{background:#eef0f3;color:var(--ink2)}.pill.poison{background:#2b2f36;color:#fff}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin:0 0 22px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.stat strong{display:block;font:500 30px/1.1 var(--serif)}
+.stat span{font-size:14px;color:var(--ink2)}
+.case{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:12px}
+.case h4{margin:0 0 6px;font:500 13px var(--mono);color:var(--mute);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.case p{margin:6px 0}
+.case .q{color:var(--ink)}
+.case .sd{display:grid;grid-template-columns:70px 1fr;gap:4px 12px;font-size:14px;margin-top:10px}
+.case .sd b{font:600 11px var(--mono);letter-spacing:.07em;color:var(--mute);padding-top:3px}
+.case .sd div{word-break:break-word;color:var(--ink2)}
+.case button{font:13px var(--sans);background:none;border:0;padding:0;color:var(--focus);cursor:pointer;margin-top:8px}
+section[hidden]{display:none}
+.foot{margin-top:40px;color:var(--mute);font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <img src="/mark.svg" alt="">
+      <span class="word">QuorumGuard</span>
+      <span class="tag">Built at NEAR HACKATHON · Sputnik DAO · NEAR AI Cloud</span>
+    </div>
+    <nav role="tablist">
+      <button role="tab" aria-selected="true" data-tab="check">Check a proposal</button>
+      <button role="tab" aria-selected="false" data-tab="redteam">Red team</button>
+      <button role="tab" aria-selected="false" data-tab="wild">Found in the wild</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="check">
+    <h1>Read what a proposal does before anyone votes on it.</h1>
+    <p class="lede">DAOs are starting to let AI read and vote on proposals, and the proposer writes the text the AI reads. QuorumGuard decodes the on-chain action, compares it with the description, and flags hidden instructions, lookalike accounts and amounts that do not match.</p>
+    <form class="check" id="f">
+      <label>DAO account<input id="dao" value="build.sputnik-dao.near" spellcheck="false" autocomplete="off"></label>
+      <label>Proposal #<input id="pid" value="286" inputmode="numeric" autocomplete="off"></label>
+      <button class="btn" id="go">Check</button>
+    </form>
+    <div class="ex" id="examples">Try:</div>
+    <p class="msg" id="msg" role="alert"></p>
+    <div id="out"></div>
+  </section>
+
+  <section id="redteam" hidden>
+    <h1>31 poisoned proposals, 15 honest ones.</h1>
+    <p class="lede">Seven attack families against an AI that reads proposals: hidden Unicode, hidden markup, fake authority, says-one-thing-does-another, high-power actions dressed as routine, other languages, and plausible cover stories. The honest set copies how real DAO members write: links, dollar conversions, "400N", emojis, text pasted from X.</p>
+    <div class="stats" id="rtstats"></div>
+    <div id="rttable"></div>
+  </section>
+
+  <section id="wild" hidden>
+    <h1>Real proposals, real DAOs, all approved.</h1>
+    <p class="lede">We ran QuorumGuard over every proposal of three busy mainnet DAOs. Most pass. The ones it stops are worth a question before a vote, and an AI voter would have waved them through. These are questions, not accusations: most are probably typos. That is the point: a typo in a receiver sends real money to someone else.</p>
+    <div class="stats" id="wstats"></div>
+    <div id="cases"></div>
+  </section>
+
+  <p class="foot">Open source (MIT). Read-only: QuorumGuard never signs anything for you. Verdicts: <b>BLOCK</b> means an AI must not vote on it alone; <b>WARN</b> means a human should read it; <b>CLEAN</b> means the text matches the action.</p>
+</main>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (t) => String(t ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const VERB = { CLEAN: "The description matches what the proposal does.", WARN: "Something here deserves a human read before voting.", BLOCK: "Do not let an AI vote on this alone. A human must look." };
+
+// Tabs
+document.querySelectorAll("nav button").forEach((b) => b.onclick = () => {
+  document.querySelectorAll("nav button").forEach((x) => x.setAttribute("aria-selected", x === b));
+  document.querySelectorAll("main > section").forEach((s) => s.hidden = s.id !== b.dataset.tab);
+  if (b.dataset.tab === "redteam") loadRedteam();
+  if (b.dataset.tab === "wild") loadWild();
+});
+
+// Invisible characters made visible inside the "says" panel.
+function showInvisible(t) {
+  return esc(t).replace(/[​-‏⁠-⁤﻿­‪-‮]/g, (c) => `<mark title="U+${c.codePointAt(0).toString(16).toUpperCase()}">·</mark>`)
+    .replace(/[\u{E0000}-\u{E007F}]/gu, "");
+}
+
+function render({ report: r, proposal: p, ai }) {
+  const findings = r.findings.slice().sort((a, b) => ["block", "warn", "info"].indexOf(a.severity) - ["block", "warn", "info"].indexOf(b.severity));
+  const proof = [`report  ${r.version}`, `sha256  ${r.hash}`];
+  if (ai && !ai.error) {
+    proof.push(`model   ${ai.model} (TEE, NEAR AI Cloud)`, `chat    ${ai.chatId}`);
+    if (ai.proof?.signer) proof.push(`signer  ${ai.proof.signer}`, `<span class="${ai.proof.verified ? "ok" : "no"}">${ai.proof.verified ? "✓ signature verified against the model's attestation" : "✗ signature not verified: " + esc(ai.proof.reason || JSON.stringify(ai.proof.checks))}</span>`);
+  } else proof.push(ai?.error ? `AI check unavailable: ${esc(ai.error)}` : "AI check off on this server (code checks only)");
+  $("#out").innerHTML = `
+    <div class="verdict ${r.verdict}"><b>${r.verdict}</b><span>${VERB[r.verdict]}</span><small>${esc(r.dao)} #${r.id} · ${esc(p.status)}</small></div>
+    <div class="cols">
+      <div class="panel"><h3>What it says</h3><div class="says">${showInvisible(p.description) || "<i>(empty description)</i>"}</div>
+        ${r.hiddenText ? `<div class="hidden"><em>INVISIBLE TEXT, DECODED</em>${esc(r.hiddenText)}</div>` : ""}</div>
+      <div class="panel"><h3>What it does on chain</h3><div class="does">${esc(r.does)}</div>
+        ${r.notes.length ? `<ul class="notes">${r.notes.map((n) => `<li>${esc(n)}</li>`).join("")}</ul>` : ""}</div>
+    </div>
+    <div class="cols">
+      <div class="panel"><h3>Why</h3>${findings.length ? `<ul class="findings">${findings.map((f) => `<li><span class="sev ${f.severity}">${f.severity}</span><span>${esc(f.why)}<span class="fam">${esc(f.family)}</span></span></li>`).join("")}</ul>` : "<p>No findings.</p>"}</div>
+      <div class="panel"><h3>Proof</h3><div class="proof">${proof.join("<br>")}</div></div>
+    </div>`;
+}
+
+async function check(dao, id) {
+  $("#msg").textContent = ""; $("#go").disabled = true; $("#go").textContent = "Reading the chain…";
+  try {
+    const r = await fetch(`/api/check?dao=${encodeURIComponent(dao)}&id=${encodeURIComponent(id)}`);
+    const j = await r.json();
+    if (!r.ok) { $("#msg").textContent = j.error; $("#out").innerHTML = ""; return; }
+    render(j);
+    history.replaceState(null, "", `?dao=${encodeURIComponent(dao)}&id=${id}`);
+  } catch { $("#msg").textContent = "Could not reach the server."; }
+  finally { $("#go").disabled = false; $("#go").textContent = "Check"; }
+}
+$("#f").onsubmit = (e) => { e.preventDefault(); check($("#dao").value.trim(), $("#pid").value.trim()); };
+
+const EXAMPLES = [["build.sputnik-dao.near", 286, "swapped letters"], ["nearweek-news-contribution.sputnik-dao.near", 13338, "council change, \"gh\""], ["marketing.sputnik-dao.near", 73, "lookalike DAO"], ["build.sputnik-dao.near", 28, "settings only"]];
+$("#examples").innerHTML += EXAMPLES.map(([d, i, l]) => `<button type="button" data-d="${d}" data-i="${i}">${l}</button>`).join("");
+$("#examples").onclick = (e) => { const b = e.target.closest("button"); if (!b) return; $("#dao").value = b.dataset.d; $("#pid").value = b.dataset.i; check(b.dataset.d, b.dataset.i); };
+
+let rtLoaded = false;
+async function loadRedteam() {
+  if (rtLoaded) return; rtLoaded = true;
+  const { code, ai } = await (await fetch("/api/redteam")).json();
+  const aiBy = new Map((ai?.rows || []).map((r) => [r.n, r]));
+  const P = code.filter((r) => r.poisoned), H = code.filter((r) => !r.poisoned);
+  const stopped = (rows, get) => rows.filter((r) => get(r) === "BLOCK").length;
+  const withAi = (r) => aiBy.get(r.n)?.quorumguard || r.verdict;
+  $("#rtstats").innerHTML = `
+    <div class="stat"><strong>${stopped(P, (r) => r.verdict)}/${P.length}</strong><span>attacks blocked by code checks alone</span></div>
+    ${ai ? `<div class="stat"><strong>${stopped(P, withAi)}/${P.length}</strong><span>blocked with the TEE model's claims check added</span></div>
+            <div class="stat"><strong>${ai.naive?.approved ?? "–"}/${P.length}</strong><span>approved by a naive AI delegate (same model, no guard)</span></div>` : ""}
+    <div class="stat"><strong>${stopped(H, ai ? withAi : (r) => r.verdict)}/${H.length}</strong><span>honest proposals wrongly blocked</span></div>`;
+  $("#rttable").innerHTML = `<table><thead><tr><th>#</th><th>Set</th><th>Attack</th><th>Code</th>${ai ? "<th>+ AI</th><th>Naive AI</th>" : ""}<th>Main reason</th></tr></thead><tbody>${code.map((r) => `
+    <tr><td>${r.n}</td><td><span class="pill ${r.poisoned ? "poison" : "honest"}">${r.poisoned ? esc(r.family) : "honest"}</span></td><td>${esc(r.title)}</td>
+    <td><span class="pill ${r.verdict}">${r.verdict}</span></td>
+    ${ai ? `<td><span class="pill ${withAi(r)}">${withAi(r)}</span></td><td>${esc(aiBy.get(r.n)?.naiveVote || "–")}</td>` : ""}
+    <td>${esc((r.why[0] || "").replace(/^\w+: /, ""))}</td></tr>`).join("")}</tbody></table>`;
+}
+
+let wLoaded = false;
+async function loadWild() {
+  if (wLoaded) return; wLoaded = true;
+  const { study, cases } = await (await fetch("/api/wild")).json();
+  const daos = Object.entries(study?.daos || {});
+  const total = daos.reduce((a, [, v]) => a + v.proposals, 0), blocks = daos.reduce((a, [, v]) => a + v.tally.BLOCK, 0);
+  $("#wstats").innerHTML = `<div class="stat"><strong>${total.toLocaleString()}</strong><span>real proposals checked in ${daos.length} mainnet DAOs</span></div>
+    <div class="stat"><strong>${(100 * blocks / Math.max(total, 1)).toFixed(1)}%</strong><span>stopped for a human (${blocks})</span></div>
+    ${daos.map(([d, v]) => `<div class="stat"><strong>${(100 * v.tally.BLOCK / v.proposals).toFixed(1)}%</strong><span>${esc(d.replace(".sputnik-dao.near", ""))}: ${v.tally.BLOCK} of ${v.proposals}</span></div>`).join("")}`;
+  $("#cases").innerHTML = (cases || []).map((c) => `<div class="case">
+    <h4><span class="pill ${c.verdict}">${c.verdict}</span>${esc(c.dao)} #${c.id} · ${esc(c.status)}</h4>
+    <p class="q">${esc(c.note)}</p>
+    <div class="sd"><b>SAYS</b><div>${esc(c.says.slice(0, 220))}${c.says.length > 220 ? "…" : ""}</div><b>DOES</b><div>${esc(c.does)}</div></div>
+    <button type="button" data-d="${c.dao}" data-i="${c.id}">Open the full check →</button></div>`).join("");
+  $("#cases").onclick = (e) => { const b = e.target.closest("button"); if (!b) return; document.querySelector('nav button[data-tab="check"]').click(); $("#dao").value = b.dataset.d; $("#pid").value = b.dataset.i; check(b.dataset.d, b.dataset.i); };
+}
+
+const q = new URLSearchParams(location.search);
+if (q.get("dao") && q.get("id")) { $("#dao").value = q.get("dao"); $("#pid").value = q.get("id"); }
+check($("#dao").value, $("#pid").value);
+</script>
+</body>
+</html>
