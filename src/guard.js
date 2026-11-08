@@ -56,14 +56,34 @@ export function policyAt(current, proposals, id) {
 }
 
 /** Check a proposal object against a DAO context (policy + other proposals). */
-export async function checkProposal(proposal, { dao, network, policy, proposals }) {
-  const decoded = await decodeProposal(proposal, { network, ftMetadata, policyBefore: policyAt(policy, proposals, proposal.id) });
+export async function checkProposal(proposal, { dao, network, policy, proposals }, fast = null) {
+  // fast (bulk scans): { known, policyBefore } precomputed by the caller, and no per-account network lookups.
+  const policyBefore = fast ? fast.policyBefore : policyAt(policy, proposals, proposal.id);
+  const decoded = await decodeProposal(proposal, { network, ftMetadata, policyBefore });
   const s = scan(proposal.description);
   const c = compareClaims(`${s.visibleText}\n${s.hiddenText}`, decoded);
   // Known accounts are built only from proposals BEFORE this one, as a voter at the time would see them.
-  const known = knownAccounts(policy, proposals.filter((p) => p.id < proposal.id));
-  const r = await checkReceivers(decoded, known, (a) => account(a, network));
+  const known = fast ? fast.known : knownAccounts(policy, proposals.filter((p) => p.id < proposal.id));
+  const r = await checkReceivers(decoded, known, fast ? async () => null : (a) => account(a, network));
   return finish({ decoded, findings: [...s.findings, ...c.findings, ...r], hiddenText: s.hiddenText, dao, id: proposal.id, network });
+}
+
+/** Bulk check of every proposal in a DAO, in id order, with known accounts and policy built incrementally. */
+export async function* checkAll(ctx) {
+  const sorted = [...ctx.proposals].sort((a, b) => a.id - b.id);
+  const known = knownAccounts(ctx.policy, []);
+  let policyBefore = sorted.some((p) => p.status === "Approved" && p.kind?.ChangePolicy) ? null : ctx.policy;
+  for (const p of sorted) {
+    let report = null;
+    try { report = await checkProposal(p, ctx, { known, policyBefore }); } catch {}
+    yield { proposal: p, report };
+    if (p.status === "Approved") {
+      const k = p.kind || {};
+      const r = k.Transfer?.receiver_id || k.FunctionCall?.receiver_id || k.BountyDone?.receiver_id || k.AddMemberToRole?.member_id;
+      if (r) known.pastReceivers.set(r, (known.pastReceivers.get(r) || 0) + 1);
+      if (k.ChangePolicy) policyBefore = k.ChangePolicy.policy;
+    }
+  }
 }
 
 export async function loadDao(dao, { history = 200, upTo } = {}) {

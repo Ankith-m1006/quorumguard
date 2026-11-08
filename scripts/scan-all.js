@@ -3,7 +3,7 @@
 // Writes results/scan/<dao>.json per DAO and results/scan-summary.json at the end.
 import fs from "node:fs";
 import path from "node:path";
-import { checkProposal, loadDao } from "../src/guard.js";
+import { checkAll, loadDao } from "../src/guard.js";
 import { view } from "../src/near.js";
 
 const OUT = "results/scan";
@@ -20,9 +20,8 @@ async function scanDao(dao) {
   if (fs.existsSync(file)) return "skip";
   const ctx = await loadDao(dao, { history: 100000 });
   const tally = { CLEAN: 0, WARN: 0, BLOCK: 0 }, families = {}, flagged = [];
-  for (const p of ctx.proposals) {
-    let r;
-    try { r = await checkProposal(p, ctx); } catch { continue; }
+  for await (const { proposal: p, report: r } of checkAll(ctx)) {
+    if (!r) continue;
     tally[r.verdict]++;
     for (const f of r.findings) if (f.severity !== "info") families[`${f.severity}:${f.family}`] = (families[`${f.severity}:${f.family}`] || 0) + 1;
     if (r.verdict !== "CLEAN") flagged.push({
