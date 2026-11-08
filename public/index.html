@@ -86,6 +86,9 @@ tr:last-child td{border-bottom:0}
 .case .sd div{word-break:break-word;color:var(--ink2)}
 .case button{font:13px var(--sans);background:none;border:0;padding:0;color:var(--focus);cursor:pointer;margin-top:8px}
 section[hidden]{display:none}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--clean);margin-left:5px;vertical-align:middle;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.25}}
+@media (prefers-reduced-motion:reduce){.dot{animation:none}}
 .foot{margin-top:40px;color:var(--mute);font-size:13px}
 </style>
 </head>
@@ -99,6 +102,7 @@ section[hidden]{display:none}
     </div>
     <nav role="tablist">
       <button role="tab" aria-selected="true" data-tab="check">Check a proposal</button>
+      <button role="tab" aria-selected="false" data-tab="live">Live <span class="dot" aria-hidden="true"></span></button>
       <button role="tab" aria-selected="false" data-tab="redteam">Red team</button>
       <button role="tab" aria-selected="false" data-tab="wild">Found in the wild</button>
     </nav>
@@ -117,6 +121,13 @@ section[hidden]{display:none}
     <div class="ex" id="examples">Try:</div>
     <p class="msg" id="msg" role="alert"></p>
     <div id="out"></div>
+  </section>
+
+  <section id="live" hidden>
+    <h1>Every new NEAR DAO proposal, checked as it lands.</h1>
+    <p class="lede">QuorumGuard follows NEAR mainnet block by block. When anyone opens a proposal in any of the 2,098 Sputnik DAOs, it is decoded and checked within seconds, long before the vote closes. Councils can get these alerts in Telegram.</p>
+    <div class="stats" id="lstats"></div>
+    <div id="feed"></div>
   </section>
 
   <section id="redteam" hidden>
@@ -146,6 +157,7 @@ document.querySelectorAll("nav button").forEach((b) => b.onclick = () => {
   document.querySelectorAll("nav button").forEach((x) => x.setAttribute("aria-selected", x === b));
   document.querySelectorAll("main > section").forEach((s) => s.hidden = s.id !== b.dataset.tab);
   if (b.dataset.tab === "redteam") loadRedteam();
+  if (b.dataset.tab === "live") loadLive();
   if (b.dataset.tab === "wild") loadWild();
 });
 
@@ -192,6 +204,27 @@ $("#f").onsubmit = (e) => { e.preventDefault(); check($("#dao").value.trim(), $(
 const EXAMPLES = [["build.sputnik-dao.near", 286, "swapped letters"], ["nearweek-news-contribution.sputnik-dao.near", 13338, "council change, \"gh\""], ["marketing.sputnik-dao.near", 73, "lookalike DAO"], ["build.sputnik-dao.near", 28, "settings only"]];
 $("#examples").innerHTML += EXAMPLES.map(([d, i, l]) => `<button type="button" data-d="${d}" data-i="${i}">${l}</button>`).join("");
 $("#examples").onclick = (e) => { const b = e.target.closest("button"); if (!b) return; $("#dao").value = b.dataset.d; $("#pid").value = b.dataset.i; check(b.dataset.d, b.dataset.i); };
+
+let liveTimer = null;
+async function loadLive() {
+  const draw = async () => {
+    const j = await (await fetch("/api/feed")).json();
+    const sc = j.scan;
+    $("#lstats").innerHTML = `
+      <div class="stat"><strong>${(j.blocksRead || 0).toLocaleString()}</strong><span>blocks read since this server started${j.lastTick ? " · last " + new Date(j.lastTick).toLocaleTimeString() : ""}</span></div>
+      <div class="stat"><strong>${j.items.length}</strong><span>new proposals checked</span></div>
+      ${sc ? `<div class="stat"><strong>${sc.proposals.toLocaleString()}</strong><span>past proposals checked in ${sc.daosWithProposals.toLocaleString()} DAOs</span></div>
+             <div class="stat"><strong>${sc.approvedBlocked.toLocaleString()}</strong><span>approved proposals QuorumGuard would have stopped</span></div>` : ""}`;
+    $("#feed").innerHTML = j.items.length ? j.items.map((c) => `<div class="case">
+      <h4><span class="pill ${c.verdict}">${c.verdict}</span>${esc(c.dao)} #${c.id} · ${new Date(c.at).toLocaleString()}</h4>
+      <div class="sd"><b>SAYS</b><div>${esc(c.says.slice(0, 200))}</div><b>DOES</b><div>${esc(c.does)}</div>${c.why.length ? `<b>WHY</b><div>${esc(c.why.join("; "))}</div>` : ""}</div>
+      <button type="button" data-d="${c.dao}" data-i="${c.id}">Open the full check →</button></div>`).join("")
+      : `<div class="case"><p>Watching. No new proposals since this server started; they appear here within seconds of being opened on chain.</p></div>`;
+  };
+  await draw();
+  clearInterval(liveTimer); liveTimer = setInterval(() => { if (!$("#live").hidden) draw(); }, 15000);
+  $("#feed").onclick = (e) => { const b = e.target.closest("button"); if (!b) return; document.querySelector('nav button[data-tab="check"]').click(); $("#dao").value = b.dataset.d; $("#pid").value = b.dataset.i; check(b.dataset.d, b.dataset.i); };
+}
 
 let rtLoaded = false;
 async function loadRedteam() {

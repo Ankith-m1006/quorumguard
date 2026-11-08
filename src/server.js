@@ -12,6 +12,8 @@ import { decodeProposal } from "./decode.js";
 import { ftMetadata, view } from "./near.js";
 import { aiConfigured, attestation } from "./nearai.js";
 import { runDeterministic } from "../redteam/offline-check.js";
+import { state as live, tick } from "./watch.js";
+import { pollCommands, telegramConfigured } from "./telegram.js";
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(dir, "..");
@@ -54,6 +56,13 @@ const server = http.createServer(async (req, res) => {
     }
     if (url.pathname === "/api/redteam") return send(res, 200, { code: runDeterministic(), ai: readJson("results/redteam-ai.json") });
     if (url.pathname === "/api/wild") return send(res, 200, { study: readJson("results/realworld.json"), cases: readJson("results/wild-cases.json") });
+    if (url.pathname === "/api/feed") return send(res, 200, { lastTick: live.lastTick, cursor: live.cursor, blocksRead: live.blocksRead, items: live.feed.slice(0, 100), scan: readJson("results/scan-summary.json") });
+    if (url.pathname === "/api/tick") {
+      // Called every minute by a scheduler (or by the in-process loop below). Protected by TICK_SECRET when set.
+      if (process.env.TICK_SECRET && req.headers["x-tick-secret"] !== process.env.TICK_SECRET) return send(res, 403, { error: "forbidden" });
+      const r = await runTick();
+      return send(res, 200, r);
+    }
     if (url.pathname === "/api/health") return send(res, 200, { ai: aiConfigured(), model: aiConfigured() ? (await attestation().catch(() => null))?.model : null });
     // Static files from public/, never outside it.
     const rel = url.pathname === "/" ? "index.html" : decodeURIComponent(url.pathname).replace(/^\/+/, "");
@@ -66,5 +75,18 @@ const server = http.createServer(async (req, res) => {
     send(res, /UNKNOWN_ACCOUNT|doesn't exist|does not exist|No proposal|panicked/i.test(msg) ? 404 : 502, { error: /UNKNOWN_ACCOUNT/.test(msg) ? "That DAO account does not exist" : /panicked|ERR_NO_PROPOSAL|No proposal/i.test(msg) ? "That proposal number does not exist in this DAO" : msg.slice(0, 200) });
   }
 });
+
+let ticking = null;
+async function runTick() {
+  if (ticking) return ticking; // one tick at a time
+  ticking = (async () => {
+    const r = await tick({ max: Number(process.env.TICK_MAX_BLOCKS || 400) });
+    await pollCommands().catch(() => {});
+    return { head: r.head, cursor: r.cursor, behind: r.behind, found: r.found.length, telegram: telegramConfigured() };
+  })().finally(() => { ticking = null; });
+  return ticking;
+}
+// Local / always-on mode: follow the chain in-process. On Cloud Run (min instances 0) a scheduler calls /api/tick.
+if (process.env.WATCH === "1") (async function loop() { try { const r = await runTick(); setTimeout(loop, r.behind > 10 ? 500 : 4000); } catch { setTimeout(loop, 8000); } })();
 
 server.listen(PORT, () => console.log(`quorumguard on http://localhost:${PORT}`));
