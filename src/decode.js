@@ -112,6 +112,7 @@ export function decodeKind(kind, { meta = () => null, policyBefore = null, roleP
         const m = meta(body.receiver_id);
         out.power = "money";
         out.facts.receivers.push(json.receiver_id);
+        (out.facts.payees ||= []).push(json.receiver_id);
         out.facts.amounts.push({ raw: json.amount, value: m ? Number(formatUnits(json.amount, m.decimals)) : null, symbol: m?.symbol || body.receiver_id, token: body.receiver_id });
         detail = ` sending ${m ? formatUnits(json.amount, m.decimals) : json.amount} ${m?.symbol || "tokens"} to ${json.receiver_id}`;
       }
@@ -119,7 +120,8 @@ export function decodeKind(kind, { meta = () => null, policyBefore = null, roleP
       else if (NOTABLE_METHOD.test(a.method_name)) out.lines.push(`Method ${a.method_name} may create, move or authorise assets.`);
       if (json) for (const [k, v] of Object.entries(json)) {
         if (typeof v === "string" && /^[a-z0-9_.-]+\.(near|testnet)$|^[0-9a-f]{64}$/.test(v) && !out.facts.receivers.includes(v)) out.facts.receivers.push(v);
-        if (/owner|admin/i.test(k)) out.lines.push(`Sets ${k} = ${JSON.stringify(v)}.`);
+        // owner_id in nft_mint/ft_transfer is a recipient; only setter-style methods change who controls a contract.
+        if (/owner|admin/i.test(k) && /owner|admin|config|init|migrate|^set_|update/i.test(a.method_name)) out.lines.push(`Sets ${k} = ${JSON.stringify(v)}.`);
       }
       if (!json && text) out.lines.push(`Arguments of ${a.method_name} are not JSON (${text.length} bytes).`);
       parts.push(`${a.method_name}(${json ? JSON.stringify(json).slice(0, 160) : "…"})${deposit > 0n ? ` with ${formatUnits(a.deposit, NEAR_DECIMALS)} NEAR attached` : ""}${detail}`);

@@ -55,7 +55,7 @@ export function extractClaims(text = "") {
 
 // Words a description should use when the action is high power. Silence about it is the lie.
 const POWER_WORDS = {
-  ChangePolicy: /\b(polic(y|ies)|role|council|member|permission|quorum|threshold|vote polic|group|admin|setting|bond|period)/i,
+  ChangePolicy: /\b(polic(y|ies)|role|council|member|permission|quorum|threshold|vote|voting|decision|governance|rules?|group|admin|setting|bond|period)/i,
   ChangePolicyAddOrUpdateRole: /\b(role|council|member|permission)/i,
   ChangePolicyRemoveRole: /\b(role|council|member|permission)/i,
   ChangePolicyUpdateDefaultVotePolicy: /\b(vote|voting|quorum|threshold)/i,
@@ -79,15 +79,32 @@ export function compareClaims(description, decoded) {
   const english = looksEnglish(description);
   // How serious is "the text never mentions it"? Depends on what the action can do, and whether we can read the text.
   const rp = decoded.facts.rolePower;
-  const controlSev = !english ? "warn" : rp && (rp.level === "low") ? "info" : rp && rp.level === "medium" ? "warn" : "block";
+  // "add futureancestar to the council" names futureancestar.near; implicit 64-hex accounts can be named by a prefix.
+  const lower = description.toLowerCase();
+  const names = (acct) => {
+    const a = String(acct).toLowerCase();
+    if (lower.includes(a)) return true;
+    if (/^[0-9a-f]{64}$/.test(a)) return lower.includes(a.slice(0, 8));
+    const label = a.split(".")[0];
+    return label.length >= 4 && new RegExp(`(^|[^a-z0-9_-])${label.replace(/[-_]/g, "[-_ ]?")}([^a-z0-9_-]|$)`).test(lower);
+  };
+  const loosely = (acct) => {
+    const label = String(acct).toLowerCase().split(".")[0];
+    return (lower.match(/[a-z]{4,}/g) || []).some((w) => label.startsWith(w) && !["council", "member", "add", "adding", "this", "with", "from", "dao"].includes(w));
+  };
+  const controlSev = !english ? "warn" : rp && rp.level === "low" ? "info" : rp && (rp.level === "medium" || rp.level === "unknown") ? "warn" : "block";
   const said = extractClaims(description);
   const add = (severity, why, evidence) => findings.push({ family: "says-vs-does", severity, why, evidence: String(evidence).slice(0, 200) });
 
   if (decoded.power === "money") {
     // Receivers: if the description names accounts, the money must go to one of them.
-    for (const r of decoded.facts.receivers) {
+    // A direct Transfer pays its receiver; a token call pays the payees in its arguments, not the token contract.
+    const payees = decoded.type === "Transfer" ? decoded.facts.receivers : decoded.facts.payees || [];
+    for (const r of payees) {
       const payTalk = /\b(pay|paid|payment|payout|recipient|receiver|receiving|wallet|send|transfer|remuneration|compensation|invoice|reimburse|grant|fund(s|ing)?|address)\b/i.test(description);
-      if (said.accounts.length && !said.accounts.includes(r.toLowerCase())) add(payTalk ? "block" : "warn", `pays ${r}, but the description names ${said.accounts.join(", ")}`, `receiver ${r}`);
+      // Bulk-payment and other contract-mediated payments list counts, not every payee: ask, don't block.
+      const sev = payTalk && decoded.type === "Transfer" ? "block" : "warn";
+      if (said.accounts.length && !said.accounts.includes(r.toLowerCase()) && !names(r)) add(sev, `pays ${r}, but the description names ${said.accounts.join(", ")}`, `receiver ${r}`);
       else if (!said.accounts.length) add("info", `the description never names who gets paid (${r})`, `receiver ${r}`);
     }
     // Amounts: compare claims and facts that share a unit; a match anywhere clears it.
@@ -111,16 +128,16 @@ export function compareClaims(description, decoded) {
   const re = decoded.facts.settingsOnly ? /\b(bond|period|setting|config|parameter|duration|deposit)/i : POWER_WORDS[decoded.type];
   if (re && !re.test(description)) add(decoded.facts.settingsOnly ? "warn" : controlSev, `${decoded.type} ${decoded.facts.settingsOnly ? "changes DAO settings" : "changes control of the DAO"}, but the description never mentions it${english ? "" : " (description not in English; checked by the AI layer)"}`, decoded.summary);
   for (const x of decoded.facts.policyDiff?.added || []) {
-    if (description.toLowerCase().includes(x.member.toLowerCase())) continue;
+    if (names(x.member)) continue;
     // "Keypom DAO bot" for dao-bot.keypom.near: every word of the account appears, so it is named loosely, not hidden.
     const words = x.member.toLowerCase().split(/[.\-_]/).filter((w) => w.length >= 3 && !["near", "testnet", "sputnik"].includes(w));
     const loose = words.length && words.every((w) => description.toLowerCase().includes(w));
-    add(loose || !english ? "warn" : "block", `gives ${x.member} a place in "${x.role}" ${loose ? "naming them only loosely" : "without naming them in the description"}`, x.member);
+    add(loose || !english || loosely(x.member) ? "warn" : "block", `gives ${x.member} a place in "${x.role}" ${loose ? "naming them only loosely" : "without naming them in the description"}`, x.member);
   }
-  if (decoded.type === "AddMemberToRole" && decoded.facts.receivers[0] && !description.toLowerCase().includes(decoded.facts.receivers[0].toLowerCase()))
-    add(controlSev, `gives ${decoded.facts.receivers[0]} ${rp?.level === "low" ? "a place" : "voting power"} in "${decoded.facts.role}" without naming them in the description`, decoded.facts.receivers[0]);
+  if (decoded.type === "AddMemberToRole" && decoded.facts.receivers[0] && !names(decoded.facts.receivers[0]))
+    add(loosely(decoded.facts.receivers[0]) && controlSev === "block" ? "warn" : controlSev, `gives ${decoded.facts.receivers[0]} ${rp?.level === "low" ? "a place" : "voting power"} in "${decoded.facts.role}" ${loosely(decoded.facts.receivers[0]) ? "naming them only loosely" : "without naming them in the description"}`, decoded.facts.receivers[0]);
   const methodWords = (decoded.facts.methods || []).flatMap((m) => m.split("_")).filter((w) => w.length >= 4);
-  const disclosed = /\b(transfer|withdraw|owner|admin|upgrade|migrat|pay|send)/i.test(description) || methodWords.some((w) => description.toLowerCase().includes(w.toLowerCase()));
+  const disclosed = /\b(transfer|withdraw|owner|admin|upgrade|migrat|pay|send|deposit|stake|swap|fund|move|wrap|bridge|supply|lend|repay|reserve)/i.test(description) || methodWords.some((w) => description.toLowerCase().includes(w.toLowerCase()));
   if (decoded.type === "FunctionCall" && decoded.lines.some((l) => /can move funds or change control|Sets (owner|admin)/i.test(l)) && !disclosed)
     add(english ? "block" : "warn", "the call can move funds or change control, but the description does not say so", decoded.summary);
   else if (decoded.type === "FunctionCall" && decoded.lines.some((l) => /may create, move or authorise/i.test(l)) && !disclosed)

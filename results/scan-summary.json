@@ -1,17 +1,17 @@
 {
-  "when": "2026-11-09T10:47:54.596Z",
-  "daos": 2094,
-  "daosWithProposals": 1634,
-  "proposals": 86986,
+  "when": "2026-11-09T12:18:15.564Z",
+  "daos": 2095,
+  "daosWithProposals": 1636,
+  "proposals": 86992,
   "tally": {
-    "CLEAN": 72508,
-    "WARN": 3209,
-    "BLOCK": 11268
+    "CLEAN": 74429,
+    "WARN": 7949,
+    "BLOCK": 4614
   },
   "families": {
-    "block:says-vs-does": 18128,
+    "block:says-vs-does": 6649,
+    "warn:says-vs-does": 10747,
     "warn:ai-directed": 2477,
-    "warn:says-vs-does": 1358,
     "block:receiver": 194,
     "block:fake-authority": 33,
     "block:mixed-script": 14,
@@ -21,5 +21,5 @@
     "warn:hidden-unicode": 48,
     "block:ai-directed": 5
   },
-  "approvedBlocked": 7932
+  "approvedBlocked": 3538
 }
