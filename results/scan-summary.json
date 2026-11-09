@@ -1,16 +1,16 @@
 {
-  "when": "2026-11-09T12:18:15.564Z",
+  "when": "2026-11-09T13:50:29.653Z",
   "daos": 2095,
   "daosWithProposals": 1636,
   "proposals": 86992,
   "tally": {
-    "CLEAN": 74429,
-    "WARN": 7949,
-    "BLOCK": 4614
+    "CLEAN": 75047,
+    "WARN": 8271,
+    "BLOCK": 3674
   },
   "families": {
-    "block:says-vs-does": 6649,
-    "warn:says-vs-does": 10747,
+    "block:says-vs-does": 5611,
+    "warn:says-vs-does": 10913,
     "warn:ai-directed": 2477,
     "block:receiver": 194,
     "block:fake-authority": 33,
@@ -21,5 +21,5 @@
     "warn:hidden-unicode": 48,
     "block:ai-directed": 5
   },
-  "approvedBlocked": 3538
+  "approvedBlocked": 2821
 }
