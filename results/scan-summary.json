@@ -1,0 +1,25 @@
+{
+  "when": "2026-11-09T10:47:54.596Z",
+  "daos": 2094,
+  "daosWithProposals": 1634,
+  "proposals": 86986,
+  "tally": {
+    "CLEAN": 72508,
+    "WARN": 3209,
+    "BLOCK": 11268
+  },
+  "families": {
+    "block:says-vs-does": 18128,
+    "warn:ai-directed": 2477,
+    "warn:says-vs-does": 1358,
+    "block:receiver": 194,
+    "block:fake-authority": 33,
+    "block:mixed-script": 14,
+    "warn:fake-authority": 17,
+    "warn:mixed-script": 4,
+    "block:hidden-unicode": 2,
+    "warn:hidden-unicode": 48,
+    "block:ai-directed": 5
+  },
+  "approvedBlocked": 7932
+}

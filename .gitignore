@@ -6,3 +6,5 @@ credentials/
 .near-credentials/
 results/scan/
 results/scan-all.log
+results/raw/
+results/scan2/

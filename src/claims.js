@@ -70,8 +70,16 @@ const POWER_WORDS = {
  * decoded: output of decodeKind. Returns findings in the same shape as scan().
  * Amounts: a claimed amount in the same unit must match an actual amount within 1%.
  */
+// Keyword checks only work on English text. A Portuguese "Criar grupo..." is not silent about a policy change.
+const EN = /\b(the|and|this|with|our|we|is|are|of|for|to|please|will|from|by)\b/gi; // words other Latin-script languages rarely use
+export const looksEnglish = (t) => (String(t).match(EN) || []).length >= 1 || String(t).replace(/[^a-z]/gi, "").length < 12;
+
 export function compareClaims(description, decoded) {
   const findings = [];
+  const english = looksEnglish(description);
+  // How serious is "the text never mentions it"? Depends on what the action can do, and whether we can read the text.
+  const rp = decoded.facts.rolePower;
+  const controlSev = !english ? "warn" : rp && (rp.level === "low") ? "info" : rp && rp.level === "medium" ? "warn" : "block";
   const said = extractClaims(description);
   const add = (severity, why, evidence) => findings.push({ family: "says-vs-does", severity, why, evidence: String(evidence).slice(0, 200) });
 
@@ -101,19 +109,21 @@ export function compareClaims(description, decoded) {
 
   // High-power actions must be named in the description.
   const re = decoded.facts.settingsOnly ? /\b(bond|period|setting|config|parameter|duration|deposit)/i : POWER_WORDS[decoded.type];
-  if (re && !re.test(description)) add(decoded.facts.settingsOnly ? "warn" : "block", `${decoded.type} ${decoded.facts.settingsOnly ? "changes DAO settings" : "changes control of the DAO"}, but the description never mentions it`, decoded.summary);
+  if (re && !re.test(description)) add(decoded.facts.settingsOnly ? "warn" : controlSev, `${decoded.type} ${decoded.facts.settingsOnly ? "changes DAO settings" : "changes control of the DAO"}, but the description never mentions it${english ? "" : " (description not in English; checked by the AI layer)"}`, decoded.summary);
   for (const x of decoded.facts.policyDiff?.added || []) {
     if (description.toLowerCase().includes(x.member.toLowerCase())) continue;
     // "Keypom DAO bot" for dao-bot.keypom.near: every word of the account appears, so it is named loosely, not hidden.
     const words = x.member.toLowerCase().split(/[.\-_]/).filter((w) => w.length >= 3 && !["near", "testnet", "sputnik"].includes(w));
     const loose = words.length && words.every((w) => description.toLowerCase().includes(w));
-    add(loose ? "warn" : "block", `gives ${x.member} a place in "${x.role}" ${loose ? "naming them only loosely" : "without naming them in the description"}`, x.member);
+    add(loose || !english ? "warn" : "block", `gives ${x.member} a place in "${x.role}" ${loose ? "naming them only loosely" : "without naming them in the description"}`, x.member);
   }
   if (decoded.type === "AddMemberToRole" && decoded.facts.receivers[0] && !description.toLowerCase().includes(decoded.facts.receivers[0].toLowerCase()))
-    add("block", `gives ${decoded.facts.receivers[0]} voting power in "${decoded.facts.role}" without naming them in the description`, decoded.facts.receivers[0]);
+    add(controlSev, `gives ${decoded.facts.receivers[0]} ${rp?.level === "low" ? "a place" : "voting power"} in "${decoded.facts.role}" without naming them in the description`, decoded.facts.receivers[0]);
   const methodWords = (decoded.facts.methods || []).flatMap((m) => m.split("_")).filter((w) => w.length >= 4);
   const disclosed = /\b(transfer|withdraw|owner|admin|upgrade|migrat|pay|send)/i.test(description) || methodWords.some((w) => description.toLowerCase().includes(w.toLowerCase()));
   if (decoded.type === "FunctionCall" && decoded.lines.some((l) => /can move funds or change control|Sets (owner|admin)/i.test(l)) && !disclosed)
-    add("block", "the call can move funds or change control, but the description does not say so", decoded.summary);
+    add(english ? "block" : "warn", "the call can move funds or change control, but the description does not say so", decoded.summary);
+  else if (decoded.type === "FunctionCall" && decoded.lines.some((l) => /may create, move or authorise/i.test(l)) && !disclosed)
+    add("warn", "the call may create, move or authorise assets, and the description does not say so", decoded.summary);
   return { findings, said };
 }

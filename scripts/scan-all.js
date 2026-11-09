@@ -6,8 +6,11 @@ import path from "node:path";
 import { checkAll, loadDao } from "../src/guard.js";
 import { view } from "../src/near.js";
 
-const OUT = "results/scan";
+import zlib from "node:zlib";
+const OUT = process.env.SCAN_OUT || "results/scan";
+const RAW = "results/raw"; // gzipped proposals + policy per DAO, so rules can be re-scored offline (scripts/rescore.js)
 fs.mkdirSync(OUT, { recursive: true });
+fs.mkdirSync(RAW, { recursive: true });
 const CONC = Number(process.argv[2] || 2);
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -18,7 +21,9 @@ let next = 0, done = 0, failed = 0;
 async function scanDao(dao) {
   const file = path.join(OUT, `${dao}.json`);
   if (fs.existsSync(file)) return "skip";
-  const ctx = await loadDao(dao, { history: 100000 });
+  const rawFile = path.join(RAW, `${dao}.json.gz`);
+  const ctx = fs.existsSync(rawFile) ? JSON.parse(zlib.gunzipSync(fs.readFileSync(rawFile)).toString("utf-8")) : await loadDao(dao, { history: 100000 });
+  if (!fs.existsSync(rawFile)) fs.writeFileSync(rawFile, zlib.gzipSync(JSON.stringify(ctx)));
   const tally = { CLEAN: 0, WARN: 0, BLOCK: 0 }, families = {}, flagged = [];
   for await (const { proposal: p, report: r } of checkAll(ctx)) {
     if (!r) continue;
@@ -51,7 +56,7 @@ async function worker() {
 await Promise.all(Array.from({ length: CONC }, worker));
 
 // Summary across all scanned DAOs.
-const all = fs.readdirSync(OUT).filter((f) => f.endsWith(".json")).map((f) => JSON.parse(fs.readFileSync(path.join(OUT, f), "utf-8")));
+const all = fs.readdirSync(OUT).filter((f) => f.endsWith(".json") && !f.startsWith("_")).map((f) => JSON.parse(fs.readFileSync(path.join(OUT, f), "utf-8")));
 const sum = { when: new Date().toISOString(), daos: all.length, daosWithProposals: all.filter((d) => d.proposals).length, proposals: 0, tally: { CLEAN: 0, WARN: 0, BLOCK: 0 }, families: {}, approvedBlocked: 0 };
 for (const d of all) {
   sum.proposals += d.proposals;
@@ -59,5 +64,5 @@ for (const d of all) {
   for (const k in d.families) sum.families[k] = (sum.families[k] || 0) + d.families[k];
   sum.approvedBlocked += d.flagged.filter((f) => f.verdict === "BLOCK" && f.status === "Approved").length;
 }
-fs.writeFileSync("results/scan-summary.json", JSON.stringify(sum, null, 2));
+fs.writeFileSync(process.env.SCAN_SUMMARY || "results/scan-summary.json", JSON.stringify(sum, null, 2));
 console.error("SUMMARY", JSON.stringify(sum));

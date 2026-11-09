@@ -20,7 +20,7 @@ export const reportHash = (report) => crypto.createHash("sha256").update(stable(
 
 /** Pure check for proposals that are not on chain yet (red-team suite, drafts, tests). */
 export function checkOffline({ description, kind }, { meta, known, accounts = {}, policyBefore = null } = {}) {
-  const decoded = decodeKind(kind, { meta, policyBefore });
+  const decoded = decodeKind(kind, { meta, policyBefore, rolePolicy: policyBefore });
   const s = scan(description);
   const c = compareClaims(s.visibleText + "\n" + s.hiddenText, decoded);
   const findings = [...s.findings, ...c.findings];
@@ -59,7 +59,7 @@ export function policyAt(current, proposals, id) {
 export async function checkProposal(proposal, { dao, network, policy, proposals }, fast = null) {
   // fast (bulk scans): { known, policyBefore } precomputed by the caller, and no per-account network lookups.
   const policyBefore = fast ? fast.policyBefore : policyAt(policy, proposals, proposal.id);
-  const decoded = await decodeProposal(proposal, { network, ftMetadata, policyBefore });
+  const decoded = await decodeProposal(proposal, { network, ftMetadata, policyBefore, rolePolicy: policy });
   const s = scan(proposal.description);
   const c = compareClaims(`${s.visibleText}\n${s.hiddenText}`, decoded);
   // Known accounts are built only from proposals BEFORE this one, as a voter at the time would see them.

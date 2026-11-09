@@ -27,7 +27,20 @@ const HIGH_POWER = {
 };
 
 // Methods that move money or control when called by the DAO.
-const RISKY_METHOD = /(^|_)(transfer|withdraw|send|pay|unstake|delete|upgrade|migrate|set_owner|owner|add_key|add_full_access|set_admin|grant|approve|mint|burn|claim)(_|$)/i;
+// Methods that move the DAO's money or hand over control (block if undisclosed) vs ones worth a look (warn).
+const RISKY_METHOD = /(^|_)(transfer|withdraw|unstake|delete|upgrade|migrate|set_owner|owner|add_key|add_full_access|set_admin)(_|$)/i;
+const NOTABLE_METHOD = /(^|_)(send|pay|grant|approve|mint|burn|claim)(_|$)/i;
+
+// What a role can do. "high": it can approve money or control moves and is small enough that one more member matters.
+const POWER_ACTIONS = /^(\*|transfer|call|policy|upgrade_self|upgrade_remote|add_member_to_role|remove_member_from_role|config|set_vote_token|bounty_done|add_bounty):(VoteApprove|\*)$/;
+export function rolePower(policy, roleName) {
+  const role = (policy?.roles || []).find((r) => r.name === roleName);
+  if (!role) return { level: "unknown" };
+  const size = role.kind === "Everyone" ? Infinity : (role.kind?.Group || []).length;
+  const approves = (role.permissions || []).some((p) => POWER_ACTIONS.test(p));
+  const level = !approves ? "low" : size <= 10 ? "high" : "medium";
+  return { level, size, approves };
+}
 
 function tryJson(b64) {
   try {
@@ -69,7 +82,7 @@ export function diffPolicy(before, after) {
   return { changes, added, removed, controlChanges };
 }
 
-export function decodeKind(kind, { meta = () => null, policyBefore = null } = {}) {
+export function decodeKind(kind, { meta = () => null, policyBefore = null, rolePolicy = null } = {}) {
   const type = typeof kind === "string" ? kind : Object.keys(kind)[0];
   const body = typeof kind === "string" ? {} : kind[type];
   const out = { type, highPower: Boolean(HIGH_POWER[type]), facts: { receivers: [], amounts: [] }, lines: [] };
@@ -103,6 +116,7 @@ export function decodeKind(kind, { meta = () => null, policyBefore = null } = {}
         detail = ` sending ${m ? formatUnits(json.amount, m.decimals) : json.amount} ${m?.symbol || "tokens"} to ${json.receiver_id}`;
       }
       if (RISKY_METHOD.test(a.method_name)) out.lines.push(`Method ${a.method_name} can move funds or change control.`);
+      else if (NOTABLE_METHOD.test(a.method_name)) out.lines.push(`Method ${a.method_name} may create, move or authorise assets.`);
       if (json) for (const [k, v] of Object.entries(json)) {
         if (typeof v === "string" && /^[a-z0-9_.-]+\.(near|testnet)$|^[0-9a-f]{64}$/.test(v) && !out.facts.receivers.includes(v)) out.facts.receivers.push(v);
         if (/owner|admin/i.test(k)) out.lines.push(`Sets ${k} = ${JSON.stringify(v)}.`);
@@ -115,7 +129,11 @@ export function decodeKind(kind, { meta = () => null, policyBefore = null } = {}
     out.power = "control";
     out.facts.receivers.push(body.member_id);
     out.facts.role = body.role;
+    out.facts.rolePower = rolePower(policyBefore || rolePolicy, body.role);
     out.summary = `${type === "AddMemberToRole" ? "Add" : "Remove"} ${body.member_id} ${type === "AddMemberToRole" ? "to" : "from"} role "${body.role}"`;
+    const rp = out.facts.rolePower;
+    if (rp.level !== "unknown") out.lines.push(rp.level === "high" ? `Role "${body.role}" (${rp.size} members) can approve transfers, calls or policy changes.` : rp.level === "medium" ? `Role "${body.role}" can approve, but has ${rp.size === Infinity ? "everyone" : rp.size + " members"}.` : `Role "${body.role}" cannot approve money or control moves.`);
+    if (rp.level === "low" || rp.level === "medium") out.highPower = false;
   } else if (type === "ChangePolicy") {
     out.power = "control";
     out.facts.policy = body.policy;
@@ -160,7 +178,7 @@ export function decodeKind(kind, { meta = () => null, policyBefore = null } = {}
 }
 
 /** Fetch token metadata for every token a kind touches, then decode. */
-export async function decodeProposal(proposal, { network, ftMetadata, policyBefore = null }) {
+export async function decodeProposal(proposal, { network, ftMetadata, policyBefore = null, rolePolicy = null }) {
   const tokens = new Set();
   const k = proposal.kind;
   if (k?.Transfer?.token_id) tokens.add(k.Transfer.token_id);
@@ -168,5 +186,5 @@ export async function decodeProposal(proposal, { network, ftMetadata, policyBefo
   if (k?.AddBounty?.bounty?.token) tokens.add(k.AddBounty.bounty.token);
   const metas = {};
   await Promise.all([...tokens].map(async (t) => { metas[t] = await ftMetadata(t, network); }));
-  return decodeKind(k, { meta: (t) => metas[t] || null, policyBefore });
+  return decodeKind(k, { meta: (t) => metas[t] || null, policyBefore, rolePolicy });
 }
