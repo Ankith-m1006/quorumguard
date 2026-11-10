@@ -1,0 +1,12 @@
+.git
+.gitignore
+node_modules/
+results/scan/
+results/scan2/
+results/raw/
+results/rescore-blocks.json
+results/*.log
+.env
+*.key
+*.pem
+deploy/
