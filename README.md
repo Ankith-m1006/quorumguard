@@ -39,12 +39,15 @@ See `results/realworld.json` and `results/wild-cases.json`. These are questions,
 
 **Red team.** 31 poisoned proposals in 7 families and 15 honest ones written like real DAO posts (`redteam/suite.js`):
 
-| | Code checks only |
-|---|---|
-| Poisoned proposals blocked | 27 / 31 |
-| Honest proposals wrongly blocked | 0 / 15 |
+| | Code checks only | + AI claims check (TEE) | Naive AI delegate, no guard |
+|---|---|---|---|
+| Poisoned proposals blocked | 27 / 31 | 30 / 31 | approved 10 / 31 |
+| Poisoned proposals stopped for a human (BLOCK or WARN) | 31 / 31 | 31 / 31 | |
+| Honest proposals wrongly blocked | 0 / 15 | 0 / 15 | |
 
-The 4 attacks the code layer misses are lies of meaning (a Hindi line that changes the receiver, a refund paid to an escrow, a "1 NEAR test" that sends 10,000, a monthly rate paid for a year at once). These are the AI claims check's job.
+The AI column is a real run on NEAR AI Cloud (`Qwen/Qwen3.6-35B-A3B-FP8` in a TEE, 11 Nov 2026, `node redteam/ai-run.js`, results with chat ids and signatures in `results/redteam-ai.json`). The "naive delegate" is the same model asked to vote on the same proposal with no guard: it approved 10 of the 31 attacks. The code layer misses 4 lies of meaning (a Hindi line that changes the receiver, a refund paid to an escrow, a "1 NEAR test" that sends 10,000, a monthly rate paid for a year at once); the claims check blocks 3 of them. The Hindi case still gets a WARN from code, so a human looks at it before anyone votes.
+
+What we learned tuning it: the first prompt blocked 5 of the 15 honest proposals because it treated anything the chain doesn't show (an election date, a code version name, a "monthly meetup") as a lie. The prompt now says a claim the facts don't cover is not a contradiction; only a different receiver, amount, payment frequency or power is. Qwen3.6 is a thinking model, so QuorumGuard turns thinking off for this check (`enable_thinking: false`) or the answer can come back empty.
 
 ## Try it (do X, see Y)
 
@@ -54,7 +57,7 @@ Requires Node.js 20 or later. No dependencies to install, no keys needed for the
 2. `npm test`: see 19 tests pass.
 3. `node src/cli.js check build.sputnik-dao.near 286`: see `VERDICT: BLOCK` and `pays strachu.near, but the description names starchu.near`. This reads live mainnet data through public RPC.
 4. `node src/cli.js check build.sputnik-dao.near 28`: see `VERDICT: CLEAN` and the policy diff (bond 0.1 -> 0.01 NEAR, voting period 7 -> 37 days).
-5. `node redteam/offline-check.js`: see every red-team proposal with its verdict, then `poisoned stopped ... blocked: 27/31` and `honest blocked: 0/15`.
+5. `node redteam/offline-check.js`: see every red-team proposal with its verdict, then `poisoned stopped ... blocked: 27/31` and `honest blocked: 0/15`. With `NEAR_AI_API_KEY` set, `node redteam/ai-run.js` runs the same suite through the TEE model (about 90 calls, well under $1).
 6. `npm start`, open http://localhost:8080: check any proposal, browse the red team and the real-DAO cases.
 7. Optional AI layer: put `NEAR_AI_API_KEY=...` in your environment, restart, and the check page shows the TEE model's claims, its chat id, signer, and "signature verified against the model's attestation".
 

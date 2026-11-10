@@ -47,10 +47,10 @@ export async function attestation(model = MODEL) {
  * One chat completion with proof. Returns { content, chatId, proof: { requestSha256, responseSha256, text, signature, signer, verified } }.
  * The request body is built once and hashed as sent; the response is hashed before parsing.
  */
-export async function complete(messages, { model = MODEL, temperature = 0, json = true, maxTokens = 1200 } = {}) {
+export async function complete(messages, { model = MODEL, temperature = 0, json = true, maxTokens = 3000, think = false } = {}) {
   if (!aiConfigured()) throw new Error("NEAR_AI_API_KEY is not set");
   const att = await attestation(model);
-  const body = Buffer.from(JSON.stringify({ model, messages, temperature, max_tokens: maxTokens, ...(json ? { response_format: { type: "json_object" } } : {}) }), "utf-8");
+  const body = Buffer.from(JSON.stringify({ model, messages, temperature, max_tokens: maxTokens, ...(think ? {} : { chat_template_kwargs: { enable_thinking: false } }), ...(json ? { response_format: { type: "json_object" } } : {}) }), "utf-8");
   const r = await fetch(`${BASE}/chat/completions`, {
     method: "POST",
     headers: { ...auth(), "Content-Type": "application/json", "Accept-Encoding": "identity", "x-no-aliasing": "true" },
