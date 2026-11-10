@@ -76,11 +76,13 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-let ticking = null;
+let ticking = null, tickStarted = 0;
 async function runTick() {
-  if (ticking) return ticking; // one tick at a time
+  if (ticking && Date.now() - tickStarted < 150000) return ticking; // one tick at a time; a hung tick is dropped after 2.5 min
+  tickStarted = Date.now();
   ticking = (async () => {
-    const r = await tick({ max: Number(process.env.TICK_MAX_BLOCKS || 400) });
+    await pollCommands().catch(() => {}); // answer the bot first, so /watch never waits behind block reading
+    const r = await tick({ max: Number(process.env.TICK_MAX_BLOCKS || 400), budgetMs: Number(process.env.TICK_BUDGET_MS || 40000) });
     await pollCommands().catch(() => {});
     return { head: r.head, cursor: r.cursor, behind: r.behind, found: r.found.length, telegram: telegramConfigured() };
   })().finally(() => { ticking = null; });

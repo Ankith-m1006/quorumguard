@@ -61,13 +61,15 @@ async function handle(p, height) {
 }
 
 /** Process blocks from the cursor up to the latest final block (at most `max` blocks per call). */
-export async function tick({ max = 900, startBack = 600 } = {}) {
+export async function tick({ max = 900, startBack = 600, budgetMs = Infinity } = {}) {
+  const stopAt = Date.now() + budgetMs;
   const last = await getJson(`${DATA}/last_block/final`);
   const head = last.block.header.height;
   if (state.cursor === null) state.cursor = head - startBack; // first run: look back ~10 minutes
   const to = Math.min(head, state.cursor + max);
   const found = [];
   for (let h = state.cursor + 1; h <= to; h++) {
+    if (Date.now() > stopAt) break; // the rest waits for the next tick
     let block = null;
     try { block = await getJson(`${DATA}/block/${h}`); } catch { state.errors++; break; }
     state.cursor = h;
