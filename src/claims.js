@@ -32,7 +32,8 @@ const stripUrls = (t) => t
   .replace(/\b[\w-]+(?:\.[\w-]+)*\.(?:org|com|io|xyz|app|page|me|so|gg|link|net|social)(?:\/\S*)?/gi, " ");
 
 export function extractClaims(text = "") {
-  const clean = stripUrls(String(text));
+  // Sputnik joins description parts with "$$$$"; that separator is not a dollar sign.
+  const clean = stripUrls(String(text).replace(/\${2,}/g, " "));
   const accounts = [...new Set(clean.toLowerCase().match(ACCOUNT) || [])];
   const amounts = [];
   for (const m of clean.matchAll(AMOUNT)) {
@@ -43,9 +44,10 @@ export function extractClaims(text = "") {
     const before = clean.slice(Math.max(0, m.index - 14), m.index);
     const after = clean.slice(m.index + m[0].length, m.index + m[0].length + 12);
     // Exchange rates ("1 NEAR = $3.4", "$3.4 per NEAR") and rates per period ("400N per month") are prices, not the payment.
-    if (value === 1 && /^\s*=/.test(after)) continue;
-    // The price side of a rate: "1 NEAR = $1.12", "1NEAR=6.65USD".
-    if (/\b1\s*(near|n|usd|\$)?\s*=\s*\$?\s*$/i.test(before)) continue;
+    // "=", "~" and "≈" all mark a rate: "1 NEAR = $3.4", "1N ~ $16.65".
+    if (value === 1 && /^\s*[=~≈]/.test(after)) continue;
+    // The price side of a rate: "1 NEAR = $1.12", "1NEAR=6.65USD", "1N ~ $16.65".
+    if (/\b1\s*(near|n|usd|\$)?\s*[=~≈]\s*\$?\s*$/i.test(before)) continue;
     if (/^\s*(per\b|\/|each\b|a month|monthly|a week|weekly)/i.test(after) || /@\s*$/.test(before)) continue;
     if (/^\s*=\s*1\s*(near|n\b|usd|\$)/i.test(after)) continue;
     amounts.push({ value, unit: m[1] ? "USD" : unitOf(m[5]), text: m[0].trim() });
@@ -59,9 +61,9 @@ const POWER_WORDS = {
   ChangePolicyAddOrUpdateRole: /\b(role|council|member|permission)/i,
   ChangePolicyRemoveRole: /\b(role|council|member|permission)/i,
   ChangePolicyUpdateDefaultVotePolicy: /\b(vote|voting|quorum|threshold)/i,
-  ChangePolicyUpdateParameters: /\b(bond|period|parameter)/i,
-  AddMemberToRole: /\b(add|onboard|welcome|join|member|council|role)/i,
-  RemoveMemberFromRole: /\b(remove|offboard|member|council|role)/i,
+  ChangePolicyUpdateParameters: /\b(bond|period|parameter|duration|voting time|deadline|expir)/i,
+  AddMemberToRole: /\b(add|onboard|welcome|join|member|council|role|consul|represent|lead|nominat|appoint|elect)/i,
+  RemoveMemberFromRole: /\b(remove|offboard|member|council|role|wrong|mistake|incorrect|replace|leav|step(ping)? down)/i,
   UpgradeSelf: /\b(upgrade|contract|code|migrat|version)/i,
   UpgradeRemote: /\b(upgrade|contract|code|migrat|version)/i,
 };
@@ -112,13 +114,20 @@ export function compareClaims(description, decoded) {
       if (a.value == null) continue;
       const claims = said.amounts.filter((c) => sameUnit(c.unit, a.symbol));
       if (!claims.length) continue;
-      const ok = claims.some((c) => Math.abs(c.value - a.value) <= Math.max(0.01 * a.value, 1e-9));
+      const close = (x) => Math.abs(x - a.value) <= Math.max(0.01 * a.value, 1e-9);
+      // A match anywhere clears it, and so do parts that add up ("250 USDC for October and 250 USDC for November").
+      const ok = claims.some((c) => close(c.value)) || (claims.length > 1 && close(claims.reduce((s, c) => s + c.value, 0)));
       if (ok) continue;
       const most = Math.max(...claims.map((c) => c.value));
       const listed = claims.map((c) => c.text).join(" / ");
+      // "2 payments of $4250", "3 months at 400 NEAR": a stated count times a stated amount explains the total.
+      const ratio = a.value / most;
+      const times = Math.round(ratio);
+      const counted = times >= 2 && times <= 24 && close(times * most) &&
+        new RegExp(String.raw`\b${times}\s*(x\s*)?(payments?|months?|weeks?|installments?|instalments?|tranches?|milestones?|sessions?|people|persons|members|contributors|editions?|episodes?)\b`, "i").test(description);
+      if (counted) { add("warn", `moves ${a.value} ${a.symbol}; the description gives ${listed} ${times} times`, `${a.value} ${a.symbol}`); continue; }
       // Paying MORE than any amount the text mentions is the attack; paying less than stated is a mismatch to ask about.
       if (a.value > most * 1.01) {
-        const ratio = a.value / most;
         add("block", `moves ${a.value} ${a.symbol}, more than any amount the description gives (${listed})${ratio >= 2 ? `: ${ratio.toFixed(ratio >= 10 ? 0 : 1)}x more` : ""}`, `${a.value} ${a.symbol}`);
       } else add("warn", `moves ${a.value} ${a.symbol}; the description gives ${listed}`, `${a.value} ${a.symbol}`);
     }

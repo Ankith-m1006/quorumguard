@@ -27,6 +27,16 @@ The on-chain action is the truth. The description is a claim. QuorumGuard compar
 
 See `results/realworld.json` and `results/wild-cases.json`. These are questions, not accusations; most are probably typos, which is exactly why a voter should see them.
 
+**All of NEAR.** Every proposal ever made in every Sputnik DAO from `sputnik-dao.near`: 86,992 proposals across 1,636 DAOs that have proposals (2,095 DAOs in total).
+
+| Verdict | Proposals | Share |
+|---|---|---|
+| CLEAN | 75,794 | 87.1% |
+| WARN (a human should read it) | 8,048 | 9.3% |
+| BLOCK (an AI must not vote on this alone) | 3,150 | 3.6% |
+
+2,426 proposals that DAOs actually **approved** would have been blocked. We read samples of the noisy groups by hand and fixed what the tool got wrong: exchange rates written as `1N ~ $16.65`, Sputnik's `$$$$` separator read as a dollar sign, payments split across months ("250 USDC for October and 250 USDC for November"), and "2 payments of $4,250". Each fix has a test made from the real proposal. Raw data: `results/scan-summary.json` and `results/rescore-blocks.json`; reproduce with `node scripts/scan-all.js` then `node scripts/rescore.js`.
+
 **Red team.** 31 poisoned proposals in 7 families and 15 honest ones written like real DAO posts (`redteam/suite.js`):
 
 | | Code checks only |
@@ -41,7 +51,7 @@ The 4 attacks the code layer misses are lies of meaning (a Hindi line that chang
 Requires Node.js 20 or later. No dependencies to install, no keys needed for the code checks.
 
 1. `git clone <this repo> && cd quorumguard`
-2. `npm test`: see 12 tests pass.
+2. `npm test`: see 19 tests pass.
 3. `node src/cli.js check build.sputnik-dao.near 286`: see `VERDICT: BLOCK` and `pays strachu.near, but the description names starchu.near`. This reads live mainnet data through public RPC.
 4. `node src/cli.js check build.sputnik-dao.near 28`: see `VERDICT: CLEAN` and the policy diff (bond 0.1 -> 0.01 NEAR, voting period 7 -> 37 days).
 5. `node redteam/offline-check.js`: see every red-team proposal with its verdict, then `poisoned stopped ... blocked: 27/31` and `honest blocked: 0/15`.

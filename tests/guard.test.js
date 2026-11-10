@@ -88,3 +88,31 @@ test("ed25519 verification of TEE-style signatures", () => {
   assert.equal(verifyEd25519("model:abc:def", sig, raw), true);
   assert.equal(verifyEd25519("model:abc:dex", sig, raw), false);
 });
+
+// Real approved mainnet proposals the scan blocked by mistake (spot-check 10 Nov).
+const nearMeta = (t) => USDC_META[t] || null;
+const transfer = (receiver_id, amount, token_id = "") => ({ Transfer: { token_id, receiver_id, amount } });
+const verdictFor = (description, kind) => verdictOf(checkOffline({ description, kind }, { ...opts, meta: nearMeta }).findings);
+
+test("an exchange rate written with ~ is not the payment", () => {
+  const c = extractClaims("USD 5000 to Liberation Wellness in DAOcubator cohort 2. 1N ~ $16.65");
+  assert.ok(!c.amounts.some((a) => a.value === 1 || a.value === 16.65), JSON.stringify(c.amounts));
+});
+
+test("Sputnik's $$$$ separator is not a dollar amount", () => {
+  const c = extractClaims("Mixing Vocal Editing Payout term 2$$$$https://gov.near.org/t/x/33151");
+  assert.equal(c.amounts.length, 0, JSON.stringify(c.amounts));
+});
+
+test("two stated amounts that add up to the payment are fine", () => {
+  assert.notEqual(verdictFor("Reduced council grant for October (250 USDC) and November (250 USDC).", { Transfer: { token_id: "usdc.fakes.testnet", receiver_id: "thephilosopher.testnet", amount: "500000000" } }), "BLOCK");
+});
+
+test("'2 payments of $4250' explains paying 8500", () => {
+  assert.notEqual(verdictFor("Missed one payment, this is for 2 payments of $4250 to the engineers", { Transfer: { token_id: "usdc.fakes.testnet", receiver_id: "aufacicenta.testnet", amount: "8500000000" } }), "BLOCK");
+});
+
+test("plain-language control changes are understood", () => {
+  assert.notEqual(verdictFor("Title: Update policy - Voting Duration. Summary: change voting duration from 10 to 1 day.", { ChangePolicyUpdateParameters: { parameters: { proposal_period: "86400000000000" } } }), "BLOCK");
+  assert.notEqual(verdictFor("This is the wrong wallet.", { RemoveMemberFromRole: { member_id: "russlive215.testnet", role: "council" } }), "BLOCK");
+});
