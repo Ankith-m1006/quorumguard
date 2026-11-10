@@ -35,6 +35,8 @@ const save = async () => {
 let offset = 0;
 
 export const telegramConfigured = () => Boolean(TOKEN());
+let checker = null; // (dao, id) => { report, proposal }, set by the server for /check
+export const setChecker = (fn) => { checker = fn; };
 
 async function call(method, body) {
   const r = await fetch(API(method), { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), signal: AbortSignal.timeout(20000) });
@@ -65,14 +67,23 @@ export async function pollCommands() {
   for (const u of r.result || []) {
     offset = u.update_id + 1;
     const chat = String(u.message?.chat?.id || "");
-    const [cmd, arg] = String(u.message?.text || "").trim().split(/\s+/);
+    const [cmd, arg, arg2] = String(u.message?.text || "").trim().split(/\s+/);
     if (!chat || !cmd) continue;
+    if (Date.now() / 1000 - (u.message?.date || 0) > 600) continue; // stale after a restart: already answered
     const dao = (arg || "").toLowerCase();
     let reply;
     if (cmd === "/watch" && ACCOUNT_RE.test(dao)) { subs[chat] = [...new Set([...(subs[chat] || []), dao])].slice(0, 20); await save(); reply = `Watching ${dao}. You'll get every new proposal with QuorumGuard's verdict.`; }
     else if (cmd === "/stop" && dao) { subs[chat] = (subs[chat] || []).filter((d) => d !== dao); await save(); reply = `Stopped watching ${dao}.`; }
+    else if (cmd === "/check" && ACCOUNT_RE.test(dao) && /^\d+$/.test(arg2 || "") && checker) {
+      await call("sendMessage", { chat_id: chat, text: `Checking ${dao} #${arg2}...` });
+      try {
+        const { report, proposal } = await checker(dao, Number(arg2));
+        await call("sendMessage", { chat_id: chat, parse_mode: "HTML", disable_web_page_preview: true, text: message({ dao, id: Number(arg2), verdict: report.verdict, does: report.does, says: String(proposal.description || ""), why: report.findings.filter((f) => f.severity !== "info").map((f) => f.why) }) });
+      } catch (e) { await call("sendMessage", { chat_id: chat, text: `Could not check ${dao} #${arg2}: ${String(e.message || e).slice(0, 120)}` }); }
+      continue;
+    }
     else if (cmd === "/list") reply = (subs[chat] || []).length ? `Watching: ${subs[chat].join(", ")}` : "Not watching any DAO yet. Send /watch yourdao.sputnik-dao.near";
-    else reply = "QuorumGuard checks what a NEAR DAO proposal really does before anyone votes.\n/watch yourdao.sputnik-dao.near\n/stop yourdao.sputnik-dao.near\n/list";
+    else reply = "QuorumGuard checks what a NEAR DAO proposal really does before anyone votes.\n/check yourdao.sputnik-dao.near 12\n/watch yourdao.sputnik-dao.near\n/stop yourdao.sputnik-dao.near\n/list";
     await call("sendMessage", { chat_id: chat, text: reply });
   }
 }

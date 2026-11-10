@@ -13,7 +13,7 @@ import { ftMetadata, view } from "./near.js";
 import { aiConfigured, attestation } from "./nearai.js";
 import { runDeterministic } from "../redteam/offline-check.js";
 import { state as live, tick } from "./watch.js";
-import { pollCommands, telegramConfigured } from "./telegram.js";
+import { pollCommands, telegramConfigured, setChecker } from "./telegram.js";
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(dir, "..");
@@ -25,6 +25,7 @@ const send = (res, status, body) => { res.writeHead(status, { "Content-Type": "a
 const readJson = (p) => { try { return JSON.parse(fs.readFileSync(path.join(root, p), "utf-8")); } catch { return null; } };
 
 const cache = new Map(); // dao:id -> report (proposals don't change once voting ends; 10 min is plenty)
+setChecker((dao, id) => liveCheck(dao, id));
 async function liveCheck(dao, id) {
   const key = `${dao}:${id}`;
   const hit = cache.get(key);
