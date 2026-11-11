@@ -90,6 +90,7 @@ section[hidden]{display:none}
 @keyframes pulse{50%{opacity:.25}}
 @media (prefers-reduced-motion:reduce){.dot{animation:none}}
 .foot{margin-top:40px;color:var(--mute);font-size:13px}
+.notchecked{border-style:dashed;margin:12px 0}
 </style>
 </head>
 <body>
@@ -175,7 +176,8 @@ function render({ report: r, proposal: p, ai }) {
     if (ai.proof?.signer) proof.push(`signer  ${ai.proof.signer}`, `<span class="${ai.proof.verified ? "ok" : "no"}">${ai.proof.verified ? "✓ signature verified against the model's attestation" : "✗ signature not verified: " + esc(ai.proof.reason || JSON.stringify(ai.proof.checks))}</span>`);
   } else proof.push(ai?.error ? `AI check unavailable: ${esc(ai.error)}` : "AI check off on this server (code checks only)");
   $("#out").innerHTML = `
-    <div class="verdict ${r.verdict}"><b>${r.verdict}</b><span>${VERB[r.verdict]}</span><small>${esc(r.dao)} #${r.id} · ${esc(p.status)}</small></div>
+    <div class="verdict ${r.verdict}"><b>${r.verdict}${r.partly && r.verdict === "CLEAN" ? " · PARTLY CHECKED" : ""}</b><span>${r.partly && r.verdict === "CLEAN" ? "Nothing wrong found, but some of it could not be checked: read the list below." : VERB[r.verdict]}</span><small>${esc(r.dao)} #${r.id} · ${esc(p.status)}</small></div>
+    ${(r.notChecked || []).length ? `<div class="panel notchecked"><h3>Not checked</h3><ul class="notes">${r.notChecked.map((n) => `<li>${esc(n)}</li>`).join("")}</ul></div>` : ""}
     <div class="cols">
       <div class="panel"><h3>What it says</h3><div class="says">${showInvisible(p.description) || "<i>(empty description)</i>"}</div>
         ${r.hiddenText ? `<div class="hidden"><em>INVISIBLE TEXT, DECODED</em>${esc(r.hiddenText)}</div>` : ""}</div>

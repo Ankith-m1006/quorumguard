@@ -20,7 +20,10 @@ The on-chain action is the truth. The description is a claim. QuorumGuard compar
 2. **Scans the text** for content aimed at an AI: invisible Unicode tag characters (decoded and shown), zero-width and bidi tricks, HTML/markdown comments, hidden spans, base64, fake chat roles, "ignore previous instructions", fake approvals, Cyrillic lookalike spellings, and lines in another script (Hindi, Kannada).
 3. **Compares says vs does**: amounts (in real-world formats like `8 928 NEAR`, `647,25`, `400N`, `$1,200 = 345 NEAR`), receivers named in the text, lookalike receivers (one letter off, swapped letters, same name under another parent account), and high-power actions the text never mentions.
 4. **AI claims check on NEAR AI Cloud** (optional): a TEE-hosted model gets the decoded facts from code and the description as quoted, untrusted data, and lists claims that contradict the action ("refund to alice" paid to an escrow, a "1 NEAR test" that sends 10,000). Every AI answer is checked against the model's attestation: QuorumGuard hashes the exact request and response bytes and verifies the TEE's ed25519 signature over them.
-5. **Verdict**: `CLEAN` (text matches action), `WARN` (a human should read it), `BLOCK` (an AI must not vote on this alone). Each report has a stable SHA-256 hash.
+5. **Structure checks a voter cannot do by eye**: a code upgrade is compared with the official Sputnik releases published by the `sputnik-dao.near` factory (`get_contracts_metadata`), so a hash that is one character off an official release is blocked as a look-alike; and a function call that carries several actions is flagged when a later action moves money or control while the first one looks harmless (registering a receiver with `storage_deposit` before paying it is not flagged).
+6. **Verdict**: `CLEAN` (text matches action), `WARN` (a human should read it), `BLOCK` (an AI must not vote on this alone). Each report has a stable SHA-256 hash and a `notChecked` list: anything QuorumGuard could not verify (a method it does not model, a release list it could not load). A `CLEAN` report with items there is **partly checked**, never "safe".
+
+Real case: `deer.sputnik-dao.near` #3, "Upgrade Sputnik-DAO Contract to 3.2", passes a code hash one character short of the official v3.2 hash. QuorumGuard: `BLOCK`, "code hash only looks like official Sputnik v3.2: it differs by 1 character". The DAO's real upgrade, #5, passes as the official v3.2 release. (This case was first found and reported upstream by Proposal X-Ray, another NEAR HACKATHON entry: github.com/bars26/near-proposal-xray.)
 
 ## Results
 
@@ -46,7 +49,7 @@ See `results/realworld.json` and `results/wild-cases.json`. These are questions,
 | | Code checks only | + AI claims check (TEE) | Naive AI delegate, no guard |
 |---|---|---|---|
 | Poisoned proposals blocked | 27 / 31 | 30 / 31 | approved 10 / 31 |
-| Poisoned proposals stopped for a human (BLOCK or WARN) | 31 / 31 | 31 / 31 | |
+| Poisoned proposals stopped for a human (BLOCK or WARN) | 28 / 31 | 31 / 31 | |
 | Honest proposals wrongly blocked | 0 / 15 | 0 / 15 | |
 
 The AI column is a real run on NEAR AI Cloud (`Qwen/Qwen3.6-35B-A3B-FP8` in a TEE, 11 Nov 2026, `node redteam/ai-run.js`, results with chat ids and signatures in `results/redteam-ai.json`). The "naive delegate" is the same model asked to vote on the same proposal with no guard: it approved 10 of the 31 attacks. The code layer misses 4 lies of meaning (a Hindi line that changes the receiver, a refund paid to an escrow, a "1 NEAR test" that sends 10,000, a monthly rate paid for a year at once); the claims check blocks 3 of them. The Hindi case still gets a WARN from code, so a human looks at it before anyone votes.

@@ -5,6 +5,7 @@ import { decodeKind, decodeProposal } from "./decode.js";
 import { account, ftMetadata, networkOf, view } from "./near.js";
 import { checkReceivers, knownAccounts, lookalike } from "./receivers.js";
 import { scan } from "./scan.js";
+import { hiddenActionFindings, officialReleases, upgradeFindings } from "./upgrades.js";
 
 export const VERSION = "quorumguard/0.1";
 
@@ -19,7 +20,7 @@ const stable = (v) => Array.isArray(v) ? `[${v.map(stable).join(",")}]` : v && t
 export const reportHash = (report) => crypto.createHash("sha256").update(stable({ ...report, hash: undefined, ai: undefined })).digest("hex");
 
 /** Pure check for proposals that are not on chain yet (red-team suite, drafts, tests). */
-export function checkOffline({ description, kind }, { meta, known, accounts = {}, policyBefore = null } = {}) {
+export function checkOffline({ description, kind }, { meta, known, accounts = {}, policyBefore = null, releases = null } = {}) {
   const decoded = decodeKind(kind, { meta, policyBefore, rolePolicy: policyBefore });
   const s = scan(description);
   const c = compareClaims(s.visibleText + "\n" + s.hiddenText, decoded);
@@ -34,14 +35,20 @@ export function checkOffline({ description, kind }, { meta, known, accounts = {}
       if (accounts[r] === false) findings.push({ family: "receiver", severity: "block", why: `${r} does not exist on chain`, evidence: r });
     }
   }
-  return finish({ decoded, findings, hiddenText: s.hiddenText });
+  const u = upgradeFindings(decoded, releases);
+  findings.push(...hiddenActionFindings(decoded), ...u.findings);
+  return finish({ decoded, findings, hiddenText: s.hiddenText, notChecked: [...u.notChecked, ...unmodeled(decoded)] });
 }
 
-function finish({ decoded, findings, hiddenText, dao, id, network }) {
+const unmodeled = (decoded) => (decoded.facts.unmodeled || []).map((m) => `QuorumGuard does not model ${m}; read its arguments before voting`);
+
+function finish({ decoded, findings, hiddenText, dao, id, network, notChecked = [] }) {
   const report = {
     version: VERSION, dao, id, network,
     does: decoded.summary, type: decoded.type, power: decoded.power, highPower: decoded.highPower, notes: decoded.lines,
     hiddenText: hiddenText || "", verdict: verdictOf(findings), findings,
+    // What could not be checked. A CLEAN verdict with anything here is "partly checked", never "safe".
+    notChecked, partly: notChecked.length > 0,
   };
   report.hash = reportHash(report);
   return report;
@@ -65,7 +72,11 @@ export async function checkProposal(proposal, { dao, network, policy, proposals 
   // Known accounts are built only from proposals BEFORE this one, as a voter at the time would see them.
   const known = fast ? fast.known : knownAccounts(policy, proposals.filter((p) => p.id < proposal.id));
   const r = await checkReceivers(decoded, known, fast ? async () => null : (a) => account(a, network));
-  return finish({ decoded, findings: [...s.findings, ...c.findings, ...r], hiddenText: s.hiddenText, dao, id: proposal.id, network });
+  const u = upgradeFindings(decoded, decoded.type === "UpgradeSelf" ? await officialReleases(network) : null);
+  return finish({
+    decoded, findings: [...s.findings, ...c.findings, ...r, ...hiddenActionFindings(decoded), ...u.findings], hiddenText: s.hiddenText,
+    dao, id: proposal.id, network, notChecked: [...u.notChecked, ...unmodeled(decoded)],
+  });
 }
 
 /** Bulk check of every proposal in a DAO, in id order, with known accounts and policy built incrementally. */

@@ -28,6 +28,8 @@ const HIGH_POWER = {
 
 // Methods that move money or control when called by the DAO.
 // Methods that move the DAO's money or hand over control (block if undisclosed) vs ones worth a look (warn).
+// Methods whose effect QuorumGuard decodes fully; anything else is listed as "not checked" for a human.
+const MODELED_METHOD = /^(ft_transfer|ft_transfer_call|transfer|storage_deposit|storage_withdraw|nft_transfer|nft_transfer_call|near_deposit|near_withdraw|deposit|deposit_and_stake|stake|unstake|unstake_all|withdraw|withdraw_all|add_proposal|act_proposal|set_owner|set_admin|add_admin|upgrade|migrate)$/;
 const RISKY_METHOD = /(^|_)(transfer|withdraw|unstake|delete|upgrade|migrate|set_owner|owner|add_key|add_full_access|set_admin)(_|$)/i;
 const NOTABLE_METHOD = /(^|_)(send|pay|grant|approve|mint|burn|claim)(_|$)/i;
 
@@ -102,7 +104,8 @@ export function decodeKind(kind, { meta = () => null, policyBefore = null, roleP
     out.facts.receivers.push(body.receiver_id);
     out.facts.methods = (body.actions || []).map((a) => a.method_name);
     const parts = [];
-    for (const a of body.actions || []) {
+    out.facts.actionEffects = [];
+    for (const [index, a] of (body.actions || []).entries()) {
       const { text, json } = tryJson(a.args);
       const deposit = BigInt(a.deposit || "0");
       if (deposit > 0n) out.facts.amounts.push({ raw: a.deposit, value: Number(formatUnits(a.deposit, NEAR_DECIMALS)), symbol: "NEAR", token: "NEAR", attached: true });
@@ -124,6 +127,12 @@ export function decodeKind(kind, { meta = () => null, policyBefore = null, roleP
         if (/owner|admin/i.test(k) && /owner|admin|config|init|migrate|^set_|update/i.test(a.method_name)) out.lines.push(`Sets ${k} = ${JSON.stringify(v)}.`);
       }
       if (!json && text) out.lines.push(`Arguments of ${a.method_name} are not JSON (${text.length} bytes).`);
+      // Per-action effect, so a harmless first call cannot hide a later transfer or control change.
+      const movesMoney = Boolean(detail) || deposit > 0n || /(^|_)(transfer|withdraw|unstake)(_|$)/i.test(a.method_name);
+      const movesControl = !movesMoney && RISKY_METHOD.test(a.method_name);
+      out.facts.actionEffects.push({ index, method: a.method_name, moves: movesMoney || movesControl, kind: movesMoney ? "money" : movesControl ? "control" : "none",
+        what: detail ? detail.trim() : deposit > 0n ? `${formatUnits(a.deposit, NEAR_DECIMALS)} NEAR attached` : "" });
+      if (!MODELED_METHOD.test(a.method_name)) (out.facts.unmodeled ||= []).push(`${a.method_name} on ${body.receiver_id}`);
       parts.push(`${a.method_name}(${json ? JSON.stringify(json).slice(0, 160) : "…"})${deposit > 0n ? ` with ${formatUnits(a.deposit, NEAR_DECIMALS)} NEAR attached` : ""}${detail}`);
     }
     out.summary = `Call ${body.receiver_id}: ${parts.join("; ")}`;
@@ -153,6 +162,7 @@ export function decodeKind(kind, { meta = () => null, policyBefore = null, roleP
     }
   } else if (type === "UpgradeSelf") {
     out.power = "control";
+    out.facts.codeHash = body.hash;
     out.summary = `Replace this DAO's contract code with blob ${body.hash}`;
   } else if (type === "UpgradeRemote") {
     out.power = "control";
