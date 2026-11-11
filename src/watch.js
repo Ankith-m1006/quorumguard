@@ -68,17 +68,24 @@ export async function tick({ max = 900, startBack = 600, budgetMs = Infinity } =
   if (state.cursor === null) state.cursor = head - startBack; // first run: look back ~10 minutes
   const to = Math.min(head, state.cursor + max);
   const found = [];
-  for (let h = state.cursor + 1; h <= to; h++) {
+  // Fetch blocks a few at a time (Cloud Run bills the whole request, so waiting one by one costs money),
+  // then handle them in order so the cursor never skips a block.
+  const par = Number(process.env.BLOCK_PARALLEL || 8);
+  let stop = false;
+  for (let h = state.cursor + 1; h <= to && !stop; h += par) {
     if (Date.now() > stopAt) break; // the rest waits for the next tick
-    let block = null;
-    try { block = await getJson(`${DATA}/block/${h}`); } catch { state.errors++; break; }
-    state.cursor = h;
-    state.blocksRead++;
-    await pause(Number(process.env.BLOCK_PAUSE_MS || 120)); // stay polite to the free API
-    if (!block) continue; // skipped height
-    for (const p of proposalsInBlock(block)) {
-      try { const item = await handle(p, h); if (item) found.push(item); } catch { state.errors++; }
+    const heights = []; for (let x = h; x < h + par && x <= to; x++) heights.push(x);
+    const blocks = await Promise.all(heights.map((x) => getJson(`${DATA}/block/${x}`).catch(() => undefined)));
+    for (let i = 0; i < heights.length; i++) {
+      if (blocks[i] === undefined) { state.errors++; stop = true; break; } // fetch failed: retry from here next tick
+      state.cursor = heights[i];
+      state.blocksRead++;
+      if (!blocks[i]) continue; // skipped height
+      for (const p of proposalsInBlock(blocks[i])) {
+        try { const item = await handle(p, heights[i]); if (item) found.push(item); } catch { state.errors++; }
+      }
     }
+    await pause(Number(process.env.BLOCK_PAUSE_MS || 100)); // stay polite to the free API between batches
   }
   state.lastTick = new Date().toISOString();
   return { head, cursor: state.cursor, behind: head - state.cursor, found };
