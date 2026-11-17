@@ -5,7 +5,7 @@
 Built at NEAR HACKATHON. Tracks: Social Money, AI Security & Defense, Open Innovation.
 
 - Demo video (2 min): https://youtu.be/W5d7P6O3U_w
-- Live: https://quorumguard-1037019152152.asia-south1.run.app
+- Live: https://arnold-related-publications-management.trycloudflare.com (moved to AWS on 18 Nov 2026 after the Google Cloud billing lapse; the original https://quorumguard-1037019152152.asia-south1.run.app is offline for now)
 - Telegram alerts: https://t.me/quorumguard_alerts_bot (`/watch yourdao.sputnik-dao.near`, `/check yourdao.sputnik-dao.near 12`)
 
 ## The problem
